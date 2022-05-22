@@ -27,9 +27,9 @@ class MenuCard extends StatelessWidget {
               children: _menuTagList,
             ),
           ),
-          SizedBox(height: 8),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const SizedBox(height: 8),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text(
               "キムチチゲ",
               style: TextStyle(fontSize: 12, fontWeight: FontWeight.w100),
@@ -51,11 +51,15 @@ Widget _buildChip(String label, Color color) {
   return Padding(
     padding: const EdgeInsets.only(top: 8.0),
     child: Chip(
-      label: Text(
-        label,
-        style: TextStyle(color: Colors.black, fontSize: 10),
-      ),
-      backgroundColor: color,
-    ),
+        label: Text(
+          label,
+          style: TextStyle(color: Colors.black, fontSize: 8),
+        ),
+        backgroundColor: color,
+        materialTapTargetSize:
+            MaterialTapTargetSize.shrinkWrap, // 追加：上下の余計なmarginを削除
+        labelPadding:
+            EdgeInsets.symmetric(horizontal: 1), // 追加：文字左右の多すぎるpaddingを調整
+        visualDensity: VisualDensity(horizontal: 0.0, vertical: -4)),
   );
 }
