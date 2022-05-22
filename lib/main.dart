@@ -47,7 +47,16 @@ class _MyHomePageState extends State<MyHomePage> {
           child: GridView.count(
             childAspectRatio: (itemWidth / itemHeight),
             crossAxisCount: 2,
-            children: [MenuCard(), MenuCard(), MenuCard(), MenuCard()],
+            children: [
+              MenuCard(),
+              MenuCard(),
+              MenuCard(),
+              MenuCard(),
+              MenuCard(),
+              MenuCard(),
+              MenuCard(),
+              MenuCard(),
+            ],
           ),
         ));
   }
