@@ -12,7 +12,6 @@ class AddMenuScreen extends StatefulWidget {
 
 class _AddMenuScreenState extends State<AddMenuScreen> {
   final ImagePicker _picker = ImagePicker();
-  // List<File>? _file;
   final _files = <File>[];
 
   @override
@@ -24,19 +23,22 @@ class _AddMenuScreenState extends State<AddMenuScreen> {
       appBar: AppBar(
         title: Text("メニュー追加"),
       ),
+      resizeToAvoidBottomInset: false,
       body: Column(
         children: [
           TitleTextField(),
-          OutlinedButton(
-              onPressed: () async {
-                final List<XFile>? _images = await _picker.pickMultiImage();
-                _files
-                    .addAll(_images?.map((e) => File(e.path)) ?? List.empty());
-                setState(() {});
-              },
-              child: Container(
-                child: Icon(Icons.add_a_photo),
-              )),
+          SizedBox(height: 40),
+          if (_files.length < 9)
+            OutlinedButton(
+                onPressed: () async {
+                  final List<XFile>? _images = await _picker.pickMultiImage();
+                  _files.addAll(
+                      _images?.map((e) => File(e.path)) ?? List.empty());
+                  setState(() {});
+                },
+                child: Container(
+                  child: Icon(Icons.add_a_photo),
+                )),
           Padding(
             padding: const EdgeInsets.only(
               top: 40.0,
@@ -50,12 +52,16 @@ class _AddMenuScreenState extends State<AddMenuScreen> {
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     if (_files.isNotEmpty)
                       SizedBox(
-                          width: itemSize,
-                          height: itemSize,
-                          child: Image.file(_files[index], fit: BoxFit.fill)),
+                        width: itemSize,
+                        height: itemSize,
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.file(_files[index], fit: BoxFit.fill)),
+                      ),
                   ],
                 );
               },
@@ -86,7 +92,7 @@ class TitleTextField extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 borderSide: BorderSide(color: Colors.green, width: 2.0)),
             labelStyle: TextStyle(fontSize: 12, color: Colors.green[300]),
-            labelText: "Menu Title",
+            labelText: "メニューの名前",
             floatingLabelStyle: TextStyle(fontSize: 12),
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
