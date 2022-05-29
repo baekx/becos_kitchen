@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class MenuCard extends StatelessWidget {
   const MenuCard({
@@ -14,26 +15,43 @@ class MenuCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // 画像
           ClipRRect(
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(10),
                 topRight: Radius.circular(10),
               ),
               child: Image.asset("assets/images/chige.png")),
-          Container(
-            alignment: Alignment.center,
-            child: Wrap(
-              spacing: 4.0,
-              children: _menuTagList,
+          // メニュータグ
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              alignment: Alignment.centerLeft,
+              child: Wrap(
+                spacing: 4.0,
+                children: _menuTagList,
+              ),
             ),
           ),
-          const SizedBox(height: 8),
+          // タイトル
           const Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
               "キムチチゲ",
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w100),
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w100),
             ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: RatingBar.builder(
+                itemBuilder: (context, _) => const Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                    ),
+                itemCount: 5,
+                itemSize: 20.0,
+                initialRating: 3,
+                onRatingUpdate: (rating) {}),
           )
         ],
       ),
