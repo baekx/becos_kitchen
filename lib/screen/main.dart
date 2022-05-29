@@ -1,4 +1,4 @@
-import 'package:becos_kitchen/screen/add_menu.dart';
+import 'package:becos_kitchen/component/expandable_fab.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -21,15 +21,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'メニュー一覧'),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -44,14 +42,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text(widget.title),
+          title: const Text('メニュー一覧'),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AddMenuScreen()))
-          },
-          child: const Icon(Icons.add),
+        floatingActionButton: ExpandableFab(
+          distance: 100.0,
+          children: [
+            ActionButton(onPressed: () {}, icon: const Icon(Icons.add_a_photo)),
+            ActionButton(onPressed: () {}, icon: const Icon(Icons.photo_album)),
+          ],
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
