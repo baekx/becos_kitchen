@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "865173967988",
+    "project_id": "becos-kitchen",
+    "storage_bucket": "becos-kitchen.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865173967988:android:909998af287229e61e2d21",
+        "android_client_info": {
+          "package_name": "com.example.becos_kitchen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "865173967988-76orfc5omvpkmbf1445ql7qqosueeke0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0NcueQ0jBVfsgwDYtdkhFEuEDGTUo42Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "865173967988-76orfc5omvpkmbf1445ql7qqosueeke0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "865173967988-fe3ocm7ckbi4a07llcv4uov5ed2ribd4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.becosKitchen"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
