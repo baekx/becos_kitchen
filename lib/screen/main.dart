@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'component/menu_card.dart';
+import '../component/menu_card.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,7 +44,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
-          actions: [IconButton(onPressed: () => {}, icon: Icon(Icons.add))],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => {},
+          child: const Icon(Icons.add),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
