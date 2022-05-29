@@ -1,3 +1,4 @@
+import 'package:becos_kitchen/screen/add_menu.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -38,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    final double itemHeight = (size.height - kToolbarHeight) / 2.5;
+    final double itemHeight = (size.height - kToolbarHeight) / 3;
     final double itemWidth = size.width / 2;
 
     return Scaffold(
@@ -46,7 +47,10 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () => {},
+          onPressed: () => {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => AddMenuScreen()))
+          },
           child: const Icon(Icons.add),
         ),
         body: Padding(

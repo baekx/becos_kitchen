@@ -9,7 +9,13 @@ class AddMenuScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("メニュー追加"),
       ),
-      body: Container(),
+      body: Column(
+        children: [
+          Text("画像"),
+          Text("タイトル"),
+          Text("作成日"),
+        ],
+      ),
     );
   }
 }
