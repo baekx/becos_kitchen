@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class TagModel {
+class Tag {
   String title;
   Color backgroundColor;
 
-  TagModel({
+  Tag({
     required this.title,
     required this.backgroundColor,
   });

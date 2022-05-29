@@ -1,3 +1,4 @@
+import 'package:becos_kitchen/component/menu_tag.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -51,6 +52,7 @@ class MenuCard extends StatelessWidget {
                 itemCount: 5,
                 itemSize: 20.0,
                 initialRating: 3,
+                ignoreGestures: true,
                 onRatingUpdate: (rating) {}),
           )
         ],
@@ -60,24 +62,7 @@ class MenuCard extends StatelessWidget {
 }
 
 final List<Widget> _menuTagList = [
-  _buildChip("さっぱり", Colors.blue),
-  _buildChip("こってり", Colors.orange),
-  _buildChip("かんたん", Colors.yellow),
+  MenuTag(label: "さっぱり", color: Colors.blue),
+  MenuTag(label: "こってり", color: Colors.orange),
+  MenuTag(label: "かんたん", color: Colors.yellow),
 ];
-
-Widget _buildChip(String label, Color color) {
-  return Padding(
-    padding: const EdgeInsets.only(top: 8.0),
-    child: Chip(
-        label: Text(
-          label,
-          style: TextStyle(color: Colors.black, fontSize: 8),
-        ),
-        backgroundColor: color,
-        materialTapTargetSize:
-            MaterialTapTargetSize.shrinkWrap, // 追加：上下の余計なmarginを削除
-        labelPadding:
-            EdgeInsets.symmetric(horizontal: 1), // 追加：文字左右の多すぎるpaddingを調整
-        visualDensity: VisualDensity(horizontal: 0.0, vertical: -4)),
-  );
-}
