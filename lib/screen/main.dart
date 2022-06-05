@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:becos_kitchen/component/expandable_fab.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../component/menu_card.dart';
 
@@ -34,6 +37,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final ImagePicker _picker = ImagePicker();
+  File? _image;
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -45,9 +51,11 @@ class _MyHomePageState extends State<MyHomePage> {
           title: const Text('メニュー一覧'),
         ),
         floatingActionButton: ExpandableFab(
-          distance: 100.0,
+          distance: 80.0,
           children: [
-            ActionButton(onPressed: () {}, icon: const Icon(Icons.add_a_photo)),
+            ActionButton(
+                onPressed: _getImageFromCamera,
+                icon: const Icon(Icons.add_a_photo)),
             ActionButton(onPressed: () {}, icon: const Icon(Icons.photo_album)),
           ],
         ),
@@ -68,5 +76,15 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ));
+  }
+
+  Future _getImageFromCamera() async {
+    final pickedFile = await _picker.pickImage(source: ImageSource.camera);
+
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      }
+    });
   }
 }
