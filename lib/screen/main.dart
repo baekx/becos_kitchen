@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:becos_kitchen/component/expandable_fab.dart';
+import 'package:becos_kitchen/screen/add_menu.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -86,5 +87,8 @@ class _MyHomePageState extends State<MyHomePage> {
         _image = File(pickedFile.path);
       }
     });
+
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => AddMenuScreen()));
   }
 }
