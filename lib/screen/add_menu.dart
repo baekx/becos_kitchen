@@ -1,13 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
-class AddMenuScreen extends StatefulWidget {
-  const AddMenuScreen({Key? key}) : super(key: key);
+class AddMenuScreen extends StatelessWidget {
+  const AddMenuScreen({Key? key, this.image}) : super(key: key);
+  final File? image;
 
-  @override
-  _AddMenuScreenState createState() => _AddMenuScreenState();
-}
-
-class _AddMenuScreenState extends State<AddMenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +15,7 @@ class _AddMenuScreenState extends State<AddMenuScreen> {
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
-          MenuImage(imagePath: "assets/images/noImage.png"),
+          MenuImage(imagePath: image),
           TitleTextField(),
         ],
       ),
@@ -26,18 +24,17 @@ class _AddMenuScreenState extends State<AddMenuScreen> {
 }
 
 class MenuImage extends StatelessWidget {
-  const MenuImage({Key? key, required this.imagePath}) : super(key: key);
-  final String imagePath;
+  const MenuImage({Key? key, this.imagePath}) : super(key: key);
+  final File? imagePath;
 
   @override
   Widget build(BuildContext context) {
     return Container(
         width: 300,
         height: 300,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-          image: AssetImage(imagePath),
-        )));
+        child: imagePath != null
+            ? Image(image: FileImage(imagePath!))
+            : Image(image: AssetImage("assets/images/noImage.png")));
   }
 }
 
