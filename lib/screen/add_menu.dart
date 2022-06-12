@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
 class AddMenuScreen extends StatefulWidget {
   const AddMenuScreen({Key? key}) : super(key: key);
@@ -11,14 +8,8 @@ class AddMenuScreen extends StatefulWidget {
 }
 
 class _AddMenuScreenState extends State<AddMenuScreen> {
-  final ImagePicker _picker = ImagePicker();
-  final _files = <File>[];
-
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    final double itemSize = size.width / 4;
-
     return Scaffold(
       appBar: AppBar(
         title: Text("メニュー追加"),
@@ -26,50 +17,27 @@ class _AddMenuScreenState extends State<AddMenuScreen> {
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
+          MenuImage(imagePath: "assets/images/noImage.png"),
           TitleTextField(),
-          SizedBox(height: 40),
-          if (_files.length < 9)
-            OutlinedButton(
-                onPressed: () async {
-                  final List<XFile>? _images = await _picker.pickMultiImage();
-                  _files.addAll(
-                      _images?.map((e) => File(e.path)) ?? List.empty());
-                  setState(() {});
-                },
-                child: Container(
-                  child: Icon(Icons.add_a_photo),
-                )),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 40.0,
-              left: 40.0,
-              right: 40.0,
-            ),
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3),
-              itemCount: _files.length,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    if (_files.isNotEmpty)
-                      SizedBox(
-                        width: itemSize,
-                        height: itemSize,
-                        child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.file(_files[index], fit: BoxFit.fill)),
-                      ),
-                  ],
-                );
-              },
-            ),
-          )
         ],
       ),
     );
+  }
+}
+
+class MenuImage extends StatelessWidget {
+  const MenuImage({Key? key, required this.imagePath}) : super(key: key);
+  final String imagePath;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        width: 300,
+        height: 300,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+          image: AssetImage(imagePath),
+        )));
   }
 }
 
