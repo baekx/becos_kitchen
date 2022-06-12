@@ -55,9 +55,11 @@ class _MyHomePageState extends State<MyHomePage> {
           distance: 80.0,
           children: [
             ActionButton(
-                onPressed: _getImageFromCamera,
+                onPressed: () => _getImage(ImageSource.camera),
                 icon: const Icon(Icons.add_a_photo)),
-            ActionButton(onPressed: () {}, icon: const Icon(Icons.photo_album)),
+            ActionButton(
+                onPressed: () => _getImage(ImageSource.gallery),
+                icon: const Icon(Icons.photo_album)),
           ],
         ),
         body: Padding(
@@ -79,8 +81,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ));
   }
 
-  Future _getImageFromCamera() async {
-    final pickedFile = await _picker.pickImage(source: ImageSource.camera);
+  Future _getImage(ImageSource source) async {
+    final pickedFile = await _picker.pickImage(source: source);
 
     setState(() {
       if (pickedFile != null) {
