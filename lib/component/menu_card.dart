@@ -42,6 +42,7 @@ class MenuCard extends StatelessWidget {
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.w100),
             ),
           ),
+          // 星
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: RatingBar.builder(
