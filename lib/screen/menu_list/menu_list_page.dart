@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:becos_kitchen/component/expandable_fab.dart';
 import 'package:becos_kitchen/component/menu_card.dart';
-import 'package:becos_kitchen/screen/add_menu/add_menu.dart';
+import 'package:becos_kitchen/screen/add_menu/add_menu_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
@@ -68,6 +68,6 @@ class _MenuListPageState extends ConsumerState<MenuListPage> {
     });
 
     Navigator.push(context,
-        MaterialPageRoute(builder: (context) => AddMenuScreen(image: _image)));
+        MaterialPageRoute(builder: (context) => AddMenuPage(image: _image)));
   }
 }

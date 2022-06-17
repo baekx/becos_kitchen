@@ -8,11 +8,17 @@ import 'package:becos_kitchen/screen/add_menu/menu_title.dart';
 import 'package:becos_kitchen/screen/common/button_expanded.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AddMenuScreen extends StatelessWidget {
-  const AddMenuScreen({Key? key, this.image}) : super(key: key);
+class AddMenuPage extends ConsumerStatefulWidget {
+  const AddMenuPage({Key? key, this.image}) : super(key: key);
   final File? image;
 
+  @override
+  ConsumerState<AddMenuPage> createState() => _AddMenuScreenState();
+}
+
+class _AddMenuScreenState extends ConsumerState<AddMenuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +35,7 @@ class AddMenuScreen extends StatelessWidget {
           children: [
             // 写真
             const ColumnPadding(height: 32.0),
-            MenuImage(imagePath: image),
+            MenuImage(imagePath: widget.image),
             // タイトル
             const ColumnPadding(height: 8.0),
             const MenuTitle(),
@@ -43,9 +49,7 @@ class AddMenuScreen extends StatelessWidget {
             const MenuTagList(),
             // 次へボタン
             const ColumnPadding(height: 8.0),
-            Container(
-                alignment: Alignment.bottomCenter,
-                child: const ButtonExpanded(text: "次へ")),
+            const ButtonExpanded(text: "次へ"),
             const ColumnPadding(height: 32.0),
           ],
         ),
