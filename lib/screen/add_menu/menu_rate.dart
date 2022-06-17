@@ -12,7 +12,7 @@ class MenuRate extends StatelessWidget {
                 Icons.star,
                 color: Colors.amber,
               ),
-          // itemPadding: EdgeInsets.only(left: 8.0),
+          initialRating: 3,
           itemPadding: EdgeInsets.symmetric(horizontal: 16.0),
           itemSize: 40.0,
           onRatingUpdate: (rating) {}),
