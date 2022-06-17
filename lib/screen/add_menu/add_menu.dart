@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:becos_kitchen/screen/add_menu/label.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_image.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_rate.dart';
+import 'package:becos_kitchen/screen/add_menu/menu_tag_list.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_title.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class AddMenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("料理を追加"),
+        title: const Text("料理を追加"),
       ),
       resizeToAvoidBottomInset: false,
       body: Padding(
@@ -25,15 +26,19 @@ class AddMenuScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: [
             // 写真
-            ColumnPadding(height: 24.0),
+            const ColumnPadding(height: 24.0),
             MenuImage(imagePath: image),
             // タイトル
-            ColumnPadding(height: 24.0),
-            MenuTitle(),
+            const ColumnPadding(height: 24.0),
+            const MenuTitle(),
             // 星
-            ColumnPadding(height: 24.0),
-            Label(text: "お気に入り度"),
-            MenuRate()
+            const ColumnPadding(height: 24.0),
+            const Label(text: "お気に入り度"),
+            const MenuRate(),
+            // タグ
+            const ColumnPadding(height: 24.0),
+            const Label(text: "タグ"),
+            const MenuTagList()
           ],
         ),
       ),
