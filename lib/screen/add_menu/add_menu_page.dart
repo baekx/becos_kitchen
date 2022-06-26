@@ -1,7 +1,7 @@
 import 'dart:io';
 
+import 'package:becos_kitchen/provider.dart';
 import 'package:becos_kitchen/screen/add_menu/label.dart';
-import 'package:becos_kitchen/screen/add_menu/menu_image.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_rate.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_tag_list.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_title.dart';
@@ -10,17 +10,12 @@ import 'package:becos_kitchen/screen/common/column_padding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AddMenuPage extends ConsumerStatefulWidget {
+class AddMenuPage extends ConsumerWidget {
   const AddMenuPage({Key? key, this.image}) : super(key: key);
   final File? image;
 
   @override
-  ConsumerState<AddMenuPage> createState() => _AddMenuScreenState();
-}
-
-class _AddMenuScreenState extends ConsumerState<AddMenuPage> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("料理を追加"),
@@ -35,7 +30,7 @@ class _AddMenuScreenState extends ConsumerState<AddMenuPage> {
           children: [
             // 写真
             const ColumnPadding(height: 32.0),
-            MenuImage(imagePath: widget.image),
+            // MenuImage(imagePath: widget.image),
             // タイトル
             const ColumnPadding(height: 8.0),
             const MenuTitle(),
@@ -49,7 +44,10 @@ class _AddMenuScreenState extends ConsumerState<AddMenuPage> {
             const MenuTagList(),
             // 次へボタン
             const ColumnPadding(height: 8.0),
-            const ButtonExpanded(text: "次へ"),
+            ButtonExpanded(
+              text: "次へ",
+              onPressed: ref.watch(addMenuPageProvider.notifier).addMenu,
+            ),
             const ColumnPadding(height: 32.0),
           ],
         ),
