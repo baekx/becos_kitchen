@@ -19,7 +19,7 @@ class MenuDao {
     }
   }
 
-  // void saveMenu(MenuState menu) {
+  // void setMenu(MenuState menu) {
   //   _menus.add(menu.toJson());
   // }
 }
