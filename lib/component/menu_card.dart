@@ -9,53 +9,58 @@ class MenuCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 4.0,
-      shape: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
+    final Size size = MediaQuery.of(context).size;
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // 画像
-          ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
+          Stack(
+            alignment: AlignmentDirectional.bottomStart,
+            children: [
+              ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
+                child: SizedBox(
+                  width: size.width / 2,
+                  height: size.width / 2,
+                  child: Image.asset(
+                    "assets/images/chige.png",
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-              child: Image.asset("assets/images/chige.png")),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: RatingBar.builder(
+                    itemBuilder: (context, _) => const Icon(
+                          Icons.star,
+                          color: Color(0xffF2C530),
+                        ),
+                    itemCount: 5,
+                    itemSize: 16.0,
+                    initialRating: 3,
+                    ignoreGestures: true,
+                    onRatingUpdate: (rating) {}),
+              )
+            ],
+          ),
           // メニュータグ
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              alignment: Alignment.centerLeft,
-              child: Wrap(
-                spacing: 4.0,
-                children: _menuTagList,
-              ),
+          Container(
+            alignment: Alignment.centerLeft,
+            child: Wrap(
+              spacing: 4.0,
+              children: _menuTagList,
             ),
           ),
           // タイトル
-          const Padding(
-            padding: EdgeInsets.all(8.0),
+          Padding(
+            padding: const EdgeInsets.only(top: 4.0),
             child: Text(
               "キムチチゲ",
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.w100),
             ),
           ),
-          // 星
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: RatingBar.builder(
-                itemBuilder: (context, _) => const Icon(
-                      Icons.star,
-                      color: Colors.amber,
-                    ),
-                itemCount: 5,
-                itemSize: 20.0,
-                initialRating: 3,
-                ignoreGestures: true,
-                onRatingUpdate: (rating) {}),
-          )
         ],
       ),
     );
@@ -63,7 +68,7 @@ class MenuCard extends StatelessWidget {
 }
 
 final List<Widget> _menuTagList = [
-  MenuTag(label: "さっぱり", color: Colors.blue),
-  MenuTag(label: "こってり", color: Colors.orange),
-  MenuTag(label: "かんたん", color: Colors.yellow),
+  MenuTag(label: "さっぱり"),
+  MenuTag(label: "こってり"),
+  MenuTag(label: "かんたん"),
 ];

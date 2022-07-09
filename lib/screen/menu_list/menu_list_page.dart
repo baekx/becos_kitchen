@@ -5,6 +5,7 @@ import 'package:becos_kitchen/component/menu_card.dart';
 import 'package:becos_kitchen/screen/add_menu/add_menu_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 
 class MenuListPage extends ConsumerStatefulWidget {
@@ -25,8 +26,53 @@ class _MenuListPageState extends ConsumerState<MenuListPage> {
     final double itemWidth = size.width / 2;
 
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('メニュー一覧'),
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(80),
+          child: AppBar(
+            toolbarHeight: 80,
+            title: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    width: 280,
+                    height: 48,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Center(
+                      child: TextField(
+                        decoration: InputDecoration(
+                            isDense: true,
+                            isCollapsed: true,
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 12.0, horizontal: 16.0),
+                            border: InputBorder.none,
+                            suffixIcon: IconButton(
+                                onPressed: () {},
+                                icon: const Icon(Icons.search),
+                                iconSize: 24),
+                            hintText: "今日はなに食べよう？"),
+                      ),
+                    ),
+                  ),
+                ),
+                IconButton(
+                    onPressed: () {},
+                    icon: SvgPicture.asset(
+                      'assets/icons/filter.svg',
+                      width: 16,
+                      height: 16,
+                    )),
+                IconButton(
+                    onPressed: () {},
+                    icon: SvgPicture.asset(
+                      'assets/icons/sort.svg',
+                      width: 16,
+                      height: 16,
+                    )),
+              ],
+            ),
+          ),
         ),
         floatingActionButton: ExpandableFab(
           distance: 80.0,

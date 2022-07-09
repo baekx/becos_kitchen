@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MenuTag extends StatelessWidget {
-  const MenuTag({Key? key, required this.label, required this.color})
-      : super(key: key);
+  const MenuTag({Key? key, required this.label}) : super(key: key);
 
   final String label;
-  final Color color;
+  // final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +13,13 @@ class MenuTag extends StatelessWidget {
       child: Chip(
           label: Text(
             label,
-            style: const TextStyle(color: Colors.black, fontSize: 8),
+            style: const TextStyle(color: Colors.white, fontSize: 10),
           ),
-          backgroundColor: color,
+          backgroundColor: Color(0xffAF5F56),
           materialTapTargetSize:
               MaterialTapTargetSize.shrinkWrap, // 追加：上下の余計なmarginを削除
           labelPadding: const EdgeInsets.symmetric(
-              horizontal: 1), // 追加：文字左右の多すぎるpaddingを調整
+              horizontal: 4), // 追加：文字左右の多すぎるpaddingを調整
           visualDensity: const VisualDensity(horizontal: 0.0, vertical: -4)),
     );
   }
