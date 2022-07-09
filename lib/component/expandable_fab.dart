@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:becos_kitchen/common/material_color.dart';
 import 'package:flutter/material.dart';
 
 @immutable
@@ -129,7 +130,11 @@ class _ExpandableFabState extends State<ExpandableFab>
           duration: const Duration(milliseconds: 250),
           child: FloatingActionButton(
             onPressed: _toggle,
-            child: const Icon(Icons.create),
+            child: const Icon(
+              Icons.add,
+              size: 40,
+              color: Color(iconColor),
+            ),
           ),
         ),
       ),
