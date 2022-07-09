@@ -29,20 +29,29 @@ class _MenuListPageState extends ConsumerState<MenuListPage> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(80),
           child: AppBar(
+            toolbarHeight: 80,
             title: Row(
               children: [
-                Container(
-                  width: 280,
-                  height: 48,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: Center(
-                    child: TextField(
-                      decoration: InputDecoration(
-                          suffixIcon: IconButton(
-                              onPressed: () {}, icon: const Icon(Icons.clear)),
-                          hintText: "今日はなに食べよう？"),
+                Expanded(
+                  child: Container(
+                    width: 280,
+                    height: 48,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Center(
+                      child: TextField(
+                        decoration: InputDecoration(
+                            isDense: true,
+                            isCollapsed: true,
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 12.0, horizontal: 16.0),
+                            border: InputBorder.none,
+                            suffixIcon: IconButton(
+                                onPressed: () {},
+                                icon: const Icon(Icons.search)),
+                            hintText: "今日はなに食べよう？"),
+                      ),
                     ),
                   ),
                 ),
