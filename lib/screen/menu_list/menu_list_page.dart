@@ -49,7 +49,8 @@ class _MenuListPageState extends ConsumerState<MenuListPage> {
                             border: InputBorder.none,
                             suffixIcon: IconButton(
                                 onPressed: () {},
-                                icon: const Icon(Icons.search)),
+                                icon: const Icon(Icons.search),
+                                iconSize: 24),
                             hintText: "今日はなに食べよう？"),
                       ),
                     ),
@@ -59,15 +60,15 @@ class _MenuListPageState extends ConsumerState<MenuListPage> {
                     onPressed: () {},
                     icon: SvgPicture.asset(
                       'assets/icons/filter.svg',
-                      width: 20,
-                      height: 20,
+                      width: 16,
+                      height: 16,
                     )),
                 IconButton(
                     onPressed: () {},
                     icon: SvgPicture.asset(
                       'assets/icons/sort.svg',
-                      width: 20,
-                      height: 20,
+                      width: 16,
+                      height: 16,
                     )),
               ],
             ),
