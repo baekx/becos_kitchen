@@ -1,3 +1,4 @@
+import 'package:becos_kitchen/common/material_color.dart';
 import 'package:becos_kitchen/screen/menu_list/menu_list_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Beco's Kitchen",
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: customSwatch,
       ),
       home: const MenuListPage(),
     );
