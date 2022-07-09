@@ -45,9 +45,8 @@ class AddMenuPage extends ConsumerWidget {
             // 次へボタン
             const ColumnPadding(height: 8.0),
             ButtonExpanded(
-              text: "次へ",
-              onPressed: ref.watch(addMenuPageProvider.notifier).addMenu,
-            ),
+                text: "次へ",
+                onPressed: ref.watch(addMenuPageProvider.notifier).addMenu),
             const ColumnPadding(height: 32.0),
           ],
         ),

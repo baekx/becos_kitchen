@@ -20,7 +20,7 @@ class _MenuListPageState extends ConsumerState<MenuListPage> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     final double itemHeight = (size.height - kToolbarHeight) / 3;
     final double itemWidth = size.width / 2;
 
