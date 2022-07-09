@@ -68,7 +68,7 @@ class MenuCard extends StatelessWidget {
 }
 
 final List<Widget> _menuTagList = [
-  MenuTag(label: "さっぱり", color: Colors.blue),
-  MenuTag(label: "こってり", color: Colors.orange),
-  MenuTag(label: "かんたん", color: Colors.yellow),
+  MenuTag(label: "さっぱり"),
+  MenuTag(label: "こってり"),
+  MenuTag(label: "かんたん"),
 ];
