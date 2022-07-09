@@ -13,3 +13,5 @@ const MaterialColor customSwatch = MaterialColor(_mainColor, <int, Color>{
   800: Color(0xFFECDBA7),
   900: Color(0xFFE8D599),
 });
+
+const int iconColor = 0xFF588C7E;

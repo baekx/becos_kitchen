@@ -17,10 +17,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Beco's Kitchen",
       theme: ThemeData(
-        primarySwatch: customSwatch,
-      ),
+          primarySwatch: customSwatch,
+          iconTheme: const IconThemeData.fallback()
+              .copyWith(color: const Color(iconColor))),
       home: const MenuListPage(),
     );
   }
