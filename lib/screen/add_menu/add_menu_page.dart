@@ -44,9 +44,36 @@ class AddMenuPage extends ConsumerWidget {
             const MenuTagList(),
             // 次へボタン
             const ColumnPadding(height: 8.0),
+            // Container(
+            //   height: 200,
+            //   child: StreamBuilder<QuerySnapshot>(
+            //     stream:
+            //         FirebaseFirestore.instance.collection('menu').snapshots(),
+            //     builder: (context, snapshot) {
+            //       if (snapshot.hasError) {
+            //         return Text("エラー");
+            //       }
+            //       final list = snapshot.requireData.docs
+            //           .map<String>((DocumentSnapshot document) {
+            //         final documentData =
+            //             document.data()! as Map<String, dynamic>;
+            //         return documentData['name']! as String;
+            //       }).toList();
+            //
+            //       return ListView.builder(
+            //           itemCount: list.length,
+            //           itemBuilder: (BuildContext context, int index) {
+            //             return Text(list[index]);
+            //           });
+            //     },
+            //   ),
+            // ),
             ButtonExpanded(
-                text: "次へ",
-                onPressed: ref.watch(addMenuPageProvider.notifier).addMenu),
+              text: "次へ",
+              onPressed: () {
+                ref.watch(addMenuPageProvider.notifier).addMenu();
+              },
+            ),
             const ColumnPadding(height: 32.0),
           ],
         ),
