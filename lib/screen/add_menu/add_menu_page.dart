@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:becos_kitchen/provider.dart';
 import 'package:becos_kitchen/screen/add_menu/label.dart';
+import 'package:becos_kitchen/screen/add_menu/menu_image.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_rate.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_tag_list.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_title.dart';
@@ -30,7 +31,7 @@ class AddMenuPage extends ConsumerWidget {
           children: [
             // 写真
             const ColumnPadding(height: 32.0),
-            // MenuImage(imagePath: widget.image),
+            MenuImage(imagePath: image),
             // タイトル
             const ColumnPadding(height: 8.0),
             const MenuTitle(),
@@ -44,30 +45,6 @@ class AddMenuPage extends ConsumerWidget {
             const MenuTagList(),
             // 次へボタン
             const ColumnPadding(height: 8.0),
-            // Container(
-            //   height: 200,
-            //   child: StreamBuilder<QuerySnapshot>(
-            //     stream:
-            //         FirebaseFirestore.instance.collection('menu').snapshots(),
-            //     builder: (context, snapshot) {
-            //       if (snapshot.hasError) {
-            //         return Text("エラー");
-            //       }
-            //       final list = snapshot.requireData.docs
-            //           .map<String>((DocumentSnapshot document) {
-            //         final documentData =
-            //             document.data()! as Map<String, dynamic>;
-            //         return documentData['name']! as String;
-            //       }).toList();
-            //
-            //       return ListView.builder(
-            //           itemCount: list.length,
-            //           itemBuilder: (BuildContext context, int index) {
-            //             return Text(list[index]);
-            //           });
-            //     },
-            //   ),
-            // ),
             ButtonExpanded(
               text: "次へ",
               onPressed: () {
