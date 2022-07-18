@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:becos_kitchen/provider.dart';
 import 'package:becos_kitchen/screen/add_menu/label.dart';
+import 'package:becos_kitchen/screen/add_menu/menu_image.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_rate.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_tag_list.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_title.dart';
@@ -16,6 +17,7 @@ class AddMenuPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final _vm = ref.watch(addMenuPageProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text("料理を追加"),
@@ -30,7 +32,7 @@ class AddMenuPage extends ConsumerWidget {
           children: [
             // 写真
             const ColumnPadding(height: 32.0),
-            // MenuImage(imagePath: widget.image),
+            MenuImage(imagePath: image),
             // タイトル
             const ColumnPadding(height: 8.0),
             const MenuTitle(),
@@ -45,8 +47,12 @@ class AddMenuPage extends ConsumerWidget {
             // 次へボタン
             const ColumnPadding(height: 8.0),
             ButtonExpanded(
-                text: "次へ",
-                onPressed: ref.watch(addMenuPageProvider.notifier).addMenu),
+              text: "次へ",
+              onPressed: () {
+                ref.watch(addMenuPageProvider.notifier).addMenu();
+                ref.watch(addMenuPageProvider.notifier).uploadImage(image!);
+              },
+            ),
             const ColumnPadding(height: 32.0),
           ],
         ),
