@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:becos_kitchen/model/menu_state.dart';
+import 'package:becos_kitchen/model/menu.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AddMenuViewModel extends StateNotifier<MenuState> {
-  AddMenuViewModel() : super(const MenuState(title: '', score: 1));
+class AddMenuViewModel extends StateNotifier<Menu> {
+  AddMenuViewModel() : super(const Menu(name: '', rate: 1));
 
   void setTitle(String newTitle) {
     state = state.copyWith(title: newTitle);
