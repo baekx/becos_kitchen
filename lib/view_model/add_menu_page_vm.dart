@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:becos_kitchen/model/menu_state.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AddMenuPageStateNotifier extends StateNotifier<MenuState> {
-  AddMenuPageStateNotifier() : super(const MenuState(title: '', score: 1));
+class AddMenuViewModel extends StateNotifier<MenuState> {
+  AddMenuViewModel() : super(const MenuState(title: '', score: 1));
 
   void setTitle(String newTitle) {
     state = state.copyWith(title: newTitle);
@@ -20,6 +23,15 @@ class AddMenuPageStateNotifier extends StateNotifier<MenuState> {
       'score': state.score
     };
     FirebaseFirestore.instance.collection('menu').doc().set(document);
+  }
+
+  void uploadImage(File file) async {
+    FirebaseStorage storage = FirebaseStorage.instance;
+    try {
+      await storage.ref("menu/${file.path}").putFile(file);
+    } catch (e) {
+      print(e);
+    }
   }
 
   Stream<QuerySnapshot<Map<String, dynamic>>> getData() {

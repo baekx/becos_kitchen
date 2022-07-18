@@ -17,6 +17,7 @@ class AddMenuPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final _vm = ref.watch(addMenuPageProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text("料理を追加"),
@@ -49,6 +50,7 @@ class AddMenuPage extends ConsumerWidget {
               text: "次へ",
               onPressed: () {
                 ref.watch(addMenuPageProvider.notifier).addMenu();
+                ref.watch(addMenuPageProvider.notifier).uploadImage(image!);
               },
             ),
             const ColumnPadding(height: 32.0),
