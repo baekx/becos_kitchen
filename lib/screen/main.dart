@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: customSwatch,
           iconTheme: const IconThemeData.fallback()
-              .copyWith(color: const Color(iconColor))),
+              .copyWith(color: const Color(green))),
       home: const MenuListPage(),
     );
   }

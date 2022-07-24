@@ -16,8 +16,9 @@ class AddMenuViewModel extends StateNotifier<Menu> {
     state = state.copyWith(rate: newScore);
   }
 
+  void setImageOnAddPage(File file) {}
+
   void addMenu() {
-    // MenuDao.setMenu(state);
     final document = <String, dynamic>{
       'title': state.name,
       'score': state.rate

@@ -1,3 +1,4 @@
+import 'package:becos_kitchen/common/material_color.dart';
 import 'package:flutter/material.dart';
 
 class Label extends StatelessWidget {
@@ -10,7 +11,7 @@ class Label extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 16, left: 8),
       child: Text(
         text,
-        style: TextStyle(fontSize: 12, color: Colors.blue),
+        style: const TextStyle(fontSize: 12, color: Color(textColor)),
       ),
     );
   }

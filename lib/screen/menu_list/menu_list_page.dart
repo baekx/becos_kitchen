@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:becos_kitchen/component/expandable_fab.dart';
 import 'package:becos_kitchen/provider.dart';
+import 'package:becos_kitchen/screen/add_menu/add_menu_page.dart';
 import 'package:becos_kitchen/screen/menu_list/menu_list.dart';
 import 'package:becos_kitchen/screen/menu_list/menu_list_header.dart';
 import 'package:flutter/material.dart';
@@ -20,29 +21,27 @@ class MenuListPage extends StatelessWidget {
           distance: 80.0,
           children: [
             ActionButton(
-                onPressed: () => _getImage(ImageSource.camera),
+                onPressed: () => _getImage(context, ImageSource.camera),
                 icon: const Icon(Icons.add_a_photo)),
             ActionButton(
-                onPressed: () => _getImage(ImageSource.gallery),
+                onPressed: () => _getImage(context, ImageSource.gallery),
                 icon: const Icon(Icons.photo_album)),
           ],
         ),
         body: _MenuList());
   }
 
-  Future _getImage(ImageSource source) async {
+  Future _getImage(BuildContext context, ImageSource source) async {
     final ImagePicker _picker = ImagePicker();
     File? _image;
     final pickedFile = await _picker.pickImage(source: source);
 
-    // setState(() {
-    //   if (pickedFile != null) {
-    //     _image = File(pickedFile.path);
-    //   }
-    // });
+    if (pickedFile != null) {
+      _image = File(pickedFile.path);
+    }
 
-    // Navigator.push(context,
-    //     MaterialPageRoute(builder: (context) => AddMenuPage(image: _image)));
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => AddMenuPage(image: _image)));
   }
 }
 

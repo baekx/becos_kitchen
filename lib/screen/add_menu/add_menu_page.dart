@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:becos_kitchen/common/material_color.dart';
 import 'package:becos_kitchen/provider.dart';
 import 'package:becos_kitchen/screen/add_menu/label.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_image.dart';
@@ -10,6 +11,7 @@ import 'package:becos_kitchen/screen/common/button_expanded.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class AddMenuPage extends ConsumerWidget {
   const AddMenuPage({Key? key, this.image}) : super(key: key);
@@ -20,8 +22,19 @@ class AddMenuPage extends ConsumerWidget {
     final _vm = ref.watch(addMenuPageProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("料理を追加"),
-      ),
+          title: const Text(
+            "料理を追加",
+            style: TextStyle(color: Color(green)),
+          ),
+          automaticallyImplyLeading: false,
+          centerTitle: true,
+          actions: [
+            IconButton(
+                icon: SvgPicture.asset('assets/icons/cancel.svg'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                })
+          ]),
       resizeToAvoidBottomInset: false,
       body: Padding(
         padding: const EdgeInsets.only(left: 24.0, right: 24.0),
@@ -31,7 +44,8 @@ class AddMenuPage extends ConsumerWidget {
           mainAxisSize: MainAxisSize.max,
           children: [
             // 写真
-            const ColumnPadding(height: 32.0),
+            const ColumnPadding(height: 16.0),
+            const Label(text: "写真"),
             MenuImage(imagePath: image),
             // タイトル
             const ColumnPadding(height: 8.0),
@@ -50,7 +64,6 @@ class AddMenuPage extends ConsumerWidget {
               text: "次へ",
               onPressed: () {
                 ref.watch(addMenuPageProvider.notifier).addMenu();
-                ref.watch(addMenuPageProvider.notifier).uploadImage(image!);
               },
             ),
             const ColumnPadding(height: 32.0),

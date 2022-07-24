@@ -14,4 +14,5 @@ const MaterialColor customSwatch = MaterialColor(_mainColor, <int, Color>{
   900: Color(0xFFE8D599),
 });
 
-const int iconColor = 0xFF588C7E;
+const int green = 0xFF588C7E;
+const int textColor = 0xFF85837E;
