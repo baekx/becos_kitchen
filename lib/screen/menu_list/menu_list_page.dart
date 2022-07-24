@@ -1,30 +1,18 @@
 import 'dart:io';
 
 import 'package:becos_kitchen/component/expandable_fab.dart';
-import 'package:becos_kitchen/component/menu_card.dart';
-import 'package:becos_kitchen/screen/add_menu/add_menu_page.dart';
+import 'package:becos_kitchen/provider.dart';
+import 'package:becos_kitchen/screen/menu_list/menu_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 
-class MenuListPage extends ConsumerStatefulWidget {
+class MenuListPage extends StatelessWidget {
   const MenuListPage({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<MenuListPage> createState() => _MenuListPageState();
-}
-
-class _MenuListPageState extends ConsumerState<MenuListPage> {
-  final ImagePicker _picker = ImagePicker();
-  File? _image;
-
-  @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    final double itemHeight = (size.height - kToolbarHeight) / 3;
-    final double itemWidth = size.width / 2;
-
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(80),
@@ -85,35 +73,37 @@ class _MenuListPageState extends ConsumerState<MenuListPage> {
                 icon: const Icon(Icons.photo_album)),
           ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GridView.count(
-            childAspectRatio: (itemWidth / itemHeight),
-            crossAxisCount: 2,
-            children: [
-              MenuCard(),
-              MenuCard(),
-              MenuCard(),
-              MenuCard(),
-              MenuCard(),
-              MenuCard(),
-              MenuCard(),
-              MenuCard(),
-            ],
-          ),
-        ));
+        body: _MenuList());
   }
 
   Future _getImage(ImageSource source) async {
+    final ImagePicker _picker = ImagePicker();
+    File? _image;
     final pickedFile = await _picker.pickImage(source: source);
 
-    setState(() {
-      if (pickedFile != null) {
-        _image = File(pickedFile.path);
-      }
-    });
+    // setState(() {
+    //   if (pickedFile != null) {
+    //     _image = File(pickedFile.path);
+    //   }
+    // });
 
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => AddMenuPage(image: _image)));
+    // Navigator.push(context,
+    //     MaterialPageRoute(builder: (context) => AddMenuPage(image: _image)));
+  }
+}
+
+class _MenuList extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final menuList = ref.watch(menuListProvider);
+
+    return menuList.when(
+        data: (data) => MenuList(menuList: data),
+        error: (_, stackTrace) => const Center(
+              child: Text('データ取得に失敗しました'),
+            ),
+        loading: () => const Center(
+              child: CircularProgressIndicator(),
+            ));
   }
 }

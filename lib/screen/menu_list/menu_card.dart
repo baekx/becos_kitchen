@@ -1,11 +1,14 @@
 import 'package:becos_kitchen/component/menu_tag.dart';
+import 'package:becos_kitchen/model/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class MenuCard extends StatelessWidget {
   const MenuCard({
     Key? key,
+    required this.menu,
   }) : super(key: key);
+  final Menu menu;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +27,8 @@ class MenuCard extends StatelessWidget {
                 child: SizedBox(
                   width: size.width / 2,
                   height: size.width / 2,
-                  child: Image.asset(
-                    "assets/images/chige.png",
+                  child: Image.network(
+                    menu.image,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -39,7 +42,7 @@ class MenuCard extends StatelessWidget {
                         ),
                     itemCount: 5,
                     itemSize: 16.0,
-                    initialRating: 3,
+                    initialRating: menu.rate.toDouble(),
                     ignoreGestures: true,
                     onRatingUpdate: (rating) {}),
               )
@@ -57,8 +60,8 @@ class MenuCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 4.0),
             child: Text(
-              "キムチチゲ",
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w100),
+              menu.name,
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w100),
             ),
           ),
         ],
