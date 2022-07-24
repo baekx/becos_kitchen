@@ -6,7 +6,8 @@ part 'menu.g.dart';
 @freezed
 class Menu with _$Menu {
   const factory Menu(
-      {required String name,
+      {String? id,
+      required String name,
       required int rate,
       required String image,
       required List<String> tag}) = _Menu;

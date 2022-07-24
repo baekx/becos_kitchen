@@ -20,6 +20,7 @@ Menu _$MenuFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Menu {
+  String? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get rate => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
@@ -34,7 +35,8 @@ mixin _$Menu {
 abstract class $MenuCopyWith<$Res> {
   factory $MenuCopyWith(Menu value, $Res Function(Menu) then) =
       _$MenuCopyWithImpl<$Res>;
-  $Res call({String name, int rate, String image, List<String> tag});
+  $Res call(
+      {String? id, String name, int rate, String image, List<String> tag});
 }
 
 /// @nodoc
@@ -47,12 +49,17 @@ class _$MenuCopyWithImpl<$Res> implements $MenuCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? rate = freezed,
     Object? image = freezed,
     Object? tag = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -78,7 +85,8 @@ abstract class _$$_MenuCopyWith<$Res> implements $MenuCopyWith<$Res> {
   factory _$$_MenuCopyWith(_$_Menu value, $Res Function(_$_Menu) then) =
       __$$_MenuCopyWithImpl<$Res>;
   @override
-  $Res call({String name, int rate, String image, List<String> tag});
+  $Res call(
+      {String? id, String name, int rate, String image, List<String> tag});
 }
 
 /// @nodoc
@@ -92,12 +100,17 @@ class __$$_MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? rate = freezed,
     Object? image = freezed,
     Object? tag = freezed,
   }) {
     return _then(_$_Menu(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -122,7 +135,8 @@ class __$$_MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Menu implements _Menu {
   const _$_Menu(
-      {required this.name,
+      {this.id,
+      required this.name,
       required this.rate,
       required this.image,
       required final List<String> tag})
@@ -130,6 +144,8 @@ class _$_Menu implements _Menu {
 
   factory _$_Menu.fromJson(Map<String, dynamic> json) => _$$_MenuFromJson(json);
 
+  @override
+  final String? id;
   @override
   final String name;
   @override
@@ -145,7 +161,7 @@ class _$_Menu implements _Menu {
 
   @override
   String toString() {
-    return 'Menu(name: $name, rate: $rate, image: $image, tag: $tag)';
+    return 'Menu(id: $id, name: $name, rate: $rate, image: $image, tag: $tag)';
   }
 
   @override
@@ -153,6 +169,7 @@ class _$_Menu implements _Menu {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Menu &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.rate, rate) &&
             const DeepCollectionEquality().equals(other.image, image) &&
@@ -163,6 +180,7 @@ class _$_Menu implements _Menu {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(rate),
       const DeepCollectionEquality().hash(image),
@@ -181,13 +199,16 @@ class _$_Menu implements _Menu {
 
 abstract class _Menu implements Menu {
   const factory _Menu(
-      {required final String name,
+      {final String? id,
+      required final String name,
       required final int rate,
       required final String image,
       required final List<String> tag}) = _$_Menu;
 
   factory _Menu.fromJson(Map<String, dynamic> json) = _$_Menu.fromJson;
 
+  @override
+  String? get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
   @override

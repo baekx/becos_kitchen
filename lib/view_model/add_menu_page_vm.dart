@@ -6,21 +6,21 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AddMenuViewModel extends StateNotifier<Menu> {
-  AddMenuViewModel() : super(const Menu(name: '', rate: 1));
+  AddMenuViewModel() : super(const Menu(name: '', rate: 1, image: "", tag: []));
 
   void setTitle(String newTitle) {
-    state = state.copyWith(title: newTitle);
+    state = state.copyWith(name: newTitle);
   }
 
   void setRate(int newScore) {
-    state = state.copyWith(score: newScore);
+    state = state.copyWith(rate: newScore);
   }
 
   void addMenu() {
     // MenuDao.setMenu(state);
     final document = <String, dynamic>{
-      'title': state.title,
-      'score': state.score
+      'title': state.name,
+      'score': state.rate
     };
     FirebaseFirestore.instance.collection('menu').doc().set(document);
   }
