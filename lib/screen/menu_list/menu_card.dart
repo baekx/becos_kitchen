@@ -53,7 +53,7 @@ class MenuCard extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Wrap(
               spacing: 4.0,
-              children: _menuTagList,
+              children: menu.tag.map((tag) => MenuTag(label: tag)).toList(),
             ),
           ),
           // タイトル
@@ -69,9 +69,3 @@ class MenuCard extends StatelessWidget {
     );
   }
 }
-
-final List<Widget> _menuTagList = [
-  MenuTag(label: "さっぱり"),
-  MenuTag(label: "こってり"),
-  MenuTag(label: "かんたん"),
-];
