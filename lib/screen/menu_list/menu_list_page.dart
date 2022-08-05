@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:becos_kitchen/component/expandable_fab.dart';
 import 'package:becos_kitchen/provider.dart';
 import 'package:becos_kitchen/screen/add_menu/add_menu_first_page.dart';
@@ -31,19 +29,18 @@ class MenuListPage extends StatelessWidget {
         body: _MenuList());
   }
 
+  // TODO:
   Future _getImage(BuildContext context, ImageSource source) async {
-    final ImagePicker _picker = ImagePicker();
-    File? _image;
-    final pickedFile = await _picker.pickImage(source: source);
-
-    if (pickedFile != null) {
-      _image = File(pickedFile.path);
-    }
+    // final ImagePicker _picker = ImagePicker();
+    // File? _image;
+    // final pickedFile = await _picker.pickImage(source: source);
+    //
+    // if (pickedFile != null) {
+    //   _image = File(pickedFile.path);
+    // }
 
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => AddMenuFirstPage(image: _image)));
+        context, MaterialPageRoute(builder: (context) => AddMenuFirstPage()));
   }
 }
 

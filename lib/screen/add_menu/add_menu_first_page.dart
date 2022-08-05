@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:becos_kitchen/common/material_color.dart';
-import 'package:becos_kitchen/provider.dart';
 import 'package:becos_kitchen/screen/add_menu/add_menu_second_page.dart';
 import 'package:becos_kitchen/screen/add_menu/label.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_image.dart';
@@ -9,6 +8,7 @@ import 'package:becos_kitchen/screen/add_menu/menu_tag_list.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_title.dart';
 import 'package:becos_kitchen/screen/common/button_expanded.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
+import 'package:becos_kitchen/view_model/add_menu_page_vm.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,7 +20,7 @@ class AddMenuFirstPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _vm = ref.watch(addMenuPageProvider);
+    final _vm = ref.watch(addMenuViewModelProvider);
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(

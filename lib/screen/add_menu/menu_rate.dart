@@ -1,4 +1,4 @@
-import 'package:becos_kitchen/provider.dart';
+import 'package:becos_kitchen/view_model/add_menu_page_vm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,7 +8,7 @@ class MenuRate extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final int rate = ref.watch(addMenuPageProvider).rate;
+    final int? rate = ref.watch(addMenuViewModelProvider).rate;
 
     return Center(
       child: RatingBar.builder(
@@ -16,11 +16,13 @@ class MenuRate extends ConsumerWidget {
                 Icons.star,
                 color: Colors.amber,
               ),
-          initialRating: rate.toDouble(),
+          initialRating: rate?.toDouble() ?? 0,
           itemPadding: EdgeInsets.symmetric(horizontal: 16.0),
           itemSize: 40.0,
           onRatingUpdate: (rating) {
-            ref.watch(addMenuPageProvider.notifier).setRate(rating.toInt());
+            ref
+                .watch(addMenuViewModelProvider.notifier)
+                .setRate(rating.toInt());
           }),
     );
   }

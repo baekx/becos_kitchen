@@ -1,5 +1,5 @@
 import 'package:becos_kitchen/common/material_color.dart';
-import 'package:becos_kitchen/provider.dart';
+import 'package:becos_kitchen/view_model/add_menu_page_vm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -22,7 +22,7 @@ class MenuTitle extends ConsumerWidget {
               borderRadius: BorderRadius.circular(16),
               borderSide: BorderSide(color: Color(textColor), width: 0.5))),
       onChanged: (text) {
-        ref.watch(addMenuPageProvider.notifier).setTitle(text);
+        ref.watch(addMenuViewModelProvider.notifier).setTitle(text);
       },
     );
   }

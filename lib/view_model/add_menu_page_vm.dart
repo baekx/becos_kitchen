@@ -1,12 +1,17 @@
 import 'dart:io';
 
-import 'package:becos_kitchen/model/menu.dart';
+import 'package:becos_kitchen/model/add_menu.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
-class AddMenuViewModel extends StateNotifier<Menu> {
-  AddMenuViewModel() : super(const Menu(name: '', rate: 1, image: "", tag: []));
+final addMenuViewModelProvider =
+    StateNotifierProvider.autoDispose<AddMenuViewModel, AddMenu>(
+        (ref) => AddMenuViewModel());
+
+class AddMenuViewModel extends StateNotifier<AddMenu> {
+  AddMenuViewModel() : super(const AddMenu());
 
   void setTitle(String newTitle) {
     state = state.copyWith(name: newTitle);
@@ -16,7 +21,10 @@ class AddMenuViewModel extends StateNotifier<Menu> {
     state = state.copyWith(rate: newScore);
   }
 
-  void setImageOnAddPage(File file) {}
+  Future<void> setImage(XFile? newImage) async {
+    if (newImage == null) return;
+    state = state.copyWith(imageFile: File(newImage.path));
+  }
 
   void addMenu() {
     final document = <String, dynamic>{
