@@ -21,9 +21,11 @@ class AddMenuViewModel extends StateNotifier<AddMenu> {
     state = state.copyWith(rate: newScore);
   }
 
-  Future<void> setImage(XFile? newImage) async {
-    if (newImage == null) return;
-    state = state.copyWith(imageFile: File(newImage.path));
+  Future<void> setImage() async {
+    final ImagePicker _picker = ImagePicker();
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile == null) return;
+    state = state.copyWith(imageFile: File(pickedFile.path));
   }
 
   void addMenu() {

@@ -31,14 +31,6 @@ class MenuListPage extends StatelessWidget {
 
   // TODO:
   Future _getImage(BuildContext context, ImageSource source) async {
-    // final ImagePicker _picker = ImagePicker();
-    // File? _image;
-    // final pickedFile = await _picker.pickImage(source: source);
-    //
-    // if (pickedFile != null) {
-    //   _image = File(pickedFile.path);
-    // }
-
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => AddMenuFirstPage()));
   }

@@ -51,7 +51,7 @@ class AddMenuFirstPage extends ConsumerWidget {
               // 写真
               const ColumnPadding(height: 16.0),
               const Label(text: "写真"),
-              MenuImage(imagePath: image),
+              const MenuImage(),
               // タイトル
               const ColumnPadding(height: 16.0),
               const Label(text: "タイトル"),
