@@ -10,19 +10,21 @@ class MenuTitle extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final vm = ref.watch(addMenuViewModelProvider.notifier);
     return TextFormField(
       decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
               borderSide:
                   const BorderSide(color: Color(textColor), width: 0.5)),
-          labelStyle: TextStyle(fontSize: 12, color: Color(textColor)),
+          labelStyle: const TextStyle(fontSize: 12, color: Color(textColor)),
           floatingLabelStyle: const TextStyle(fontSize: 14),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
-              borderSide: BorderSide(color: Color(textColor), width: 0.5))),
+              borderSide:
+                  const BorderSide(color: Color(textColor), width: 0.5))),
       onChanged: (text) {
-        ref.watch(addMenuViewModelProvider.notifier).setTitle(text);
+        vm.setTitle(text);
       },
     );
   }
