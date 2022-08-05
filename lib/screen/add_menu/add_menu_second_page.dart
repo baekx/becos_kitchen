@@ -1,5 +1,6 @@
 import 'package:becos_kitchen/common/material_color.dart';
 import 'package:becos_kitchen/screen/add_menu/label.dart';
+import 'package:becos_kitchen/screen/add_menu/menu_date_picker.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_rate.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
 import 'package:flutter/material.dart';
@@ -36,10 +37,13 @@ class AddMenuSecondPage extends ConsumerWidget {
           mainAxisSize: MainAxisSize.max,
           children: [
             // 星
-            const ColumnPadding(height: 8.0),
+            const ColumnPadding(height: 24.0),
             const Label(text: "お気に入り"),
             const MenuRate(),
             // 料理した日
+            const ColumnPadding(height: 30.0),
+            const Label(text: "料理した日"),
+            MenuDatePicker()
           ],
         ),
       ),

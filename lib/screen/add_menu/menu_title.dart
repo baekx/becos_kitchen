@@ -15,12 +15,12 @@ class MenuTitle extends ConsumerWidget {
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
               borderSide:
-                  const BorderSide(color: Color(textColor), width: 2.0)),
+                  const BorderSide(color: Color(textColor), width: 0.5)),
           labelStyle: TextStyle(fontSize: 12, color: Color(textColor)),
           floatingLabelStyle: const TextStyle(fontSize: 14),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
-              borderSide: BorderSide(color: Color(textColor), width: 1.0))),
+              borderSide: BorderSide(color: Color(textColor), width: 0.5))),
       onChanged: (text) {
         ref.watch(addMenuPageProvider.notifier).setTitle(text);
       },
