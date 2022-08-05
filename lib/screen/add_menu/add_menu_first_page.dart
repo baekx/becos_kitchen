@@ -70,6 +70,7 @@ class AddMenuFirstPage extends ConsumerWidget {
                     builder: (context) => AddMenuSecondPage(),
                   ));
                 },
+                backgroundColor: const Color(green),
               ),
               const ColumnPadding(height: 32.0),
             ],

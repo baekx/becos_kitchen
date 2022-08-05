@@ -4,6 +4,7 @@ import 'package:becos_kitchen/screen/add_menu/menu_date_picker.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_memo.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_rate.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_url.dart';
+import 'package:becos_kitchen/screen/common/button_expanded.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -37,9 +38,9 @@ class AddMenuSecondPage extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
-            children: const [
+            children: [
               // 星
               ColumnPadding(height: 24.0),
               Label(text: "お気に入り"),
@@ -55,7 +56,26 @@ class AddMenuSecondPage extends ConsumerWidget {
               // メモ
               ColumnPadding(height: 30.0),
               Label(text: "メモ"),
-              MenuMemo()
+              MenuMemo(),
+              // 戻るボタン
+              ColumnPadding(height: 30.0),
+              ButtonExpanded(
+                text: "前の画面へ",
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                backgroundColor: Color(cancel),
+              ),
+              //追加ボタン
+              ColumnPadding(height: 16.0),
+              ButtonExpanded(
+                text: "追加",
+                onPressed: () {
+                  // Navigator.of(context).pop();
+                },
+                backgroundColor: Color(green),
+              ),
+              ColumnPadding(height: 30.0),
             ],
           ),
         ),
