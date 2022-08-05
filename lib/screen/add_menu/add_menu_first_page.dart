@@ -5,7 +5,6 @@ import 'package:becos_kitchen/provider.dart';
 import 'package:becos_kitchen/screen/add_menu/add_menu_second_page.dart';
 import 'package:becos_kitchen/screen/add_menu/label.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_image.dart';
-import 'package:becos_kitchen/screen/add_menu/menu_rate.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_tag_list.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_title.dart';
 import 'package:becos_kitchen/screen/common/button_expanded.dart';
@@ -24,19 +23,21 @@ class AddMenuFirstPage extends ConsumerWidget {
     final _vm = ref.watch(addMenuPageProvider);
     return Scaffold(
       appBar: AppBar(
-          title: const Text(
-            "料理を追加",
-            style: TextStyle(color: Color(green)),
-          ),
-          automaticallyImplyLeading: false,
-          centerTitle: true,
-          actions: [
-            IconButton(
-                icon: SvgPicture.asset('assets/icons/cancel.svg'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                })
-          ]),
+        title: const Text(
+          "料理を追加",
+          style: TextStyle(color: Color(green)),
+        ),
+        automaticallyImplyLeading: false,
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: SvgPicture.asset('assets/icons/cancel.svg'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          )
+        ],
+      ),
       resizeToAvoidBottomInset: false,
       body: Padding(
         padding: const EdgeInsets.only(left: 24.0, right: 24.0),
@@ -53,10 +54,6 @@ class AddMenuFirstPage extends ConsumerWidget {
             const ColumnPadding(height: 16.0),
             const Label(text: "タイトル"),
             const MenuTitle(),
-            // 星
-            const ColumnPadding(height: 8.0),
-            const Label(text: "お気に入り度"),
-            const MenuRate(),
             // タグ
             const ColumnPadding(height: 8.0),
             const Label(text: "タグ"),
