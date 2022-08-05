@@ -1,10 +1,9 @@
 import 'package:becos_kitchen/common/material_color.dart';
-import 'package:becos_kitchen/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MenuTitle extends ConsumerWidget {
-  const MenuTitle({
+class MenuUrl extends ConsumerWidget {
+  const MenuUrl({
     Key? key,
   }) : super(key: key);
 
@@ -22,7 +21,7 @@ class MenuTitle extends ConsumerWidget {
               borderRadius: BorderRadius.circular(16),
               borderSide: BorderSide(color: Color(textColor), width: 0.5))),
       onChanged: (text) {
-        ref.watch(addMenuPageProvider.notifier).setTitle(text);
+        // ref.watch(addMenuPageProvider.notifier).setTitle(text);
       },
     );
   }

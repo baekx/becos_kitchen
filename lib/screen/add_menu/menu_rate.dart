@@ -8,7 +8,7 @@ class MenuRate extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final int rate = ref.watch(addMenuPageProvider).score;
+    final int rate = ref.watch(addMenuPageProvider).rate;
 
     return Center(
       child: RatingBar.builder(

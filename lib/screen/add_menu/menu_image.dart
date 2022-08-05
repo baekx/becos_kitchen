@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 
 class MenuImage extends StatelessWidget {
@@ -9,27 +10,23 @@ class MenuImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      SizedBox(
-        width: double.infinity,
-        height: 300,
-        child: ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(10)),
-            child: imagePath != null
-                ? Image(image: FileImage(imagePath!), fit: BoxFit.cover)
-                : const Image(
-                    image: AssetImage("assets/images/noImage.png"),
-                    fit: BoxFit.cover)),
-      ),
-      const Align(
-        alignment: Alignment(1, -1),
-        child: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Icon(Icons.change_circle, size: 40),
-          // child: IconButton(
-          //     icon: Icon(Icons.change_circle), iconSize: 40, onPressed: () {}),
+    return Stack(alignment: Alignment.bottomRight, children: [
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 21.0),
+        child: SizedBox(
+          width: double.infinity,
+          height: 360,
+          child: ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(16)),
+              child: imagePath != null
+                  ? Image(image: FileImage(imagePath!), fit: BoxFit.cover)
+                  : const Image(
+                      image: AssetImage("assets/images/noImage.png"),
+                      fit: BoxFit.cover)),
         ),
-      )
+      ),
+      GestureDetector(
+          child: SvgPicture.asset('assets/icons/change.svg'), onTap: () {}),
     ]);
   }
 

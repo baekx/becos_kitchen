@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'menu_state.dart';
+part of 'menu.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,149 +14,210 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-MenuState _$MenuStateFromJson(Map<String, dynamic> json) {
-  return _MenuState.fromJson(json);
+Menu _$MenuFromJson(Map<String, dynamic> json) {
+  return _Menu.fromJson(json);
 }
 
 /// @nodoc
-mixin _$MenuState {
-  String get title => throw _privateConstructorUsedError;
-  int get score => throw _privateConstructorUsedError;
+mixin _$Menu {
+  String? get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  int get rate => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
+  List<String> get tag => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MenuStateCopyWith<MenuState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MenuCopyWith<Menu> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MenuStateCopyWith<$Res> {
-  factory $MenuStateCopyWith(MenuState value, $Res Function(MenuState) then) =
-      _$MenuStateCopyWithImpl<$Res>;
-  $Res call({String title, int score});
+abstract class $MenuCopyWith<$Res> {
+  factory $MenuCopyWith(Menu value, $Res Function(Menu) then) =
+      _$MenuCopyWithImpl<$Res>;
+  $Res call(
+      {String? id, String name, int rate, String image, List<String> tag});
 }
 
 /// @nodoc
-class _$MenuStateCopyWithImpl<$Res> implements $MenuStateCopyWith<$Res> {
-  _$MenuStateCopyWithImpl(this._value, this._then);
+class _$MenuCopyWithImpl<$Res> implements $MenuCopyWith<$Res> {
+  _$MenuCopyWithImpl(this._value, this._then);
 
-  final MenuState _value;
+  final Menu _value;
   // ignore: unused_field
-  final $Res Function(MenuState) _then;
+  final $Res Function(Menu) _then;
 
   @override
   $Res call({
-    Object? title = freezed,
-    Object? score = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? rate = freezed,
+    Object? image = freezed,
+    Object? tag = freezed,
   }) {
     return _then(_value.copyWith(
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      score: score == freezed
-          ? _value.score
-          : score // ignore: cast_nullable_to_non_nullable
+      rate: rate == freezed
+          ? _value.rate
+          : rate // ignore: cast_nullable_to_non_nullable
               as int,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      tag: tag == freezed
+          ? _value.tag
+          : tag // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$$_MenuStateCopyWith<$Res> implements $MenuStateCopyWith<$Res> {
-  factory _$$_MenuStateCopyWith(
-          _$_MenuState value, $Res Function(_$_MenuState) then) =
-      __$$_MenuStateCopyWithImpl<$Res>;
+abstract class _$$_MenuCopyWith<$Res> implements $MenuCopyWith<$Res> {
+  factory _$$_MenuCopyWith(_$_Menu value, $Res Function(_$_Menu) then) =
+      __$$_MenuCopyWithImpl<$Res>;
   @override
-  $Res call({String title, int score});
+  $Res call(
+      {String? id, String name, int rate, String image, List<String> tag});
 }
 
 /// @nodoc
-class __$$_MenuStateCopyWithImpl<$Res> extends _$MenuStateCopyWithImpl<$Res>
-    implements _$$_MenuStateCopyWith<$Res> {
-  __$$_MenuStateCopyWithImpl(
-      _$_MenuState _value, $Res Function(_$_MenuState) _then)
-      : super(_value, (v) => _then(v as _$_MenuState));
+class __$$_MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res>
+    implements _$$_MenuCopyWith<$Res> {
+  __$$_MenuCopyWithImpl(_$_Menu _value, $Res Function(_$_Menu) _then)
+      : super(_value, (v) => _then(v as _$_Menu));
 
   @override
-  _$_MenuState get _value => super._value as _$_MenuState;
+  _$_Menu get _value => super._value as _$_Menu;
 
   @override
   $Res call({
-    Object? title = freezed,
-    Object? score = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? rate = freezed,
+    Object? image = freezed,
+    Object? tag = freezed,
   }) {
-    return _then(_$_MenuState(
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+    return _then(_$_Menu(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      score: score == freezed
-          ? _value.score
-          : score // ignore: cast_nullable_to_non_nullable
+      rate: rate == freezed
+          ? _value.rate
+          : rate // ignore: cast_nullable_to_non_nullable
               as int,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      tag: tag == freezed
+          ? _value._tag
+          : tag // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_MenuState implements _MenuState {
-  const _$_MenuState({required this.title, required this.score});
+class _$_Menu implements _Menu {
+  const _$_Menu(
+      {this.id,
+      required this.name,
+      required this.rate,
+      required this.image,
+      required final List<String> tag})
+      : _tag = tag;
 
-  factory _$_MenuState.fromJson(Map<String, dynamic> json) =>
-      _$$_MenuStateFromJson(json);
+  factory _$_Menu.fromJson(Map<String, dynamic> json) => _$$_MenuFromJson(json);
 
   @override
-  final String title;
+  final String? id;
   @override
-  final int score;
+  final String name;
+  @override
+  final int rate;
+  @override
+  final String image;
+  final List<String> _tag;
+  @override
+  List<String> get tag {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tag);
+  }
 
   @override
   String toString() {
-    return 'MenuState(title: $title, score: $score)';
+    return 'Menu(id: $id, name: $name, rate: $rate, image: $image, tag: $tag)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MenuState &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.score, score));
+            other is _$_Menu &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.rate, rate) &&
+            const DeepCollectionEquality().equals(other.image, image) &&
+            const DeepCollectionEquality().equals(other._tag, _tag));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(score));
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(rate),
+      const DeepCollectionEquality().hash(image),
+      const DeepCollectionEquality().hash(_tag));
 
   @JsonKey(ignore: true)
   @override
-  _$$_MenuStateCopyWith<_$_MenuState> get copyWith =>
-      __$$_MenuStateCopyWithImpl<_$_MenuState>(this, _$identity);
+  _$$_MenuCopyWith<_$_Menu> get copyWith =>
+      __$$_MenuCopyWithImpl<_$_Menu>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MenuStateToJson(this);
+    return _$$_MenuToJson(this);
   }
 }
 
-abstract class _MenuState implements MenuState {
-  const factory _MenuState(
-      {required final String title, required final int score}) = _$_MenuState;
+abstract class _Menu implements Menu {
+  const factory _Menu(
+      {final String? id,
+      required final String name,
+      required final int rate,
+      required final String image,
+      required final List<String> tag}) = _$_Menu;
 
-  factory _MenuState.fromJson(Map<String, dynamic> json) =
-      _$_MenuState.fromJson;
+  factory _Menu.fromJson(Map<String, dynamic> json) = _$_Menu.fromJson;
 
   @override
-  String get title => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  int get score => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  @override
+  int get rate => throw _privateConstructorUsedError;
+  @override
+  String get image => throw _privateConstructorUsedError;
+  @override
+  List<String> get tag => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$$_MenuStateCopyWith<_$_MenuState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_MenuCopyWith<_$_Menu> get copyWith => throw _privateConstructorUsedError;
 }
