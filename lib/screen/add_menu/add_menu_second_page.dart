@@ -1,6 +1,7 @@
 import 'package:becos_kitchen/common/material_color.dart';
 import 'package:becos_kitchen/screen/add_menu/label.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_date_picker.dart';
+import 'package:becos_kitchen/screen/add_menu/menu_memo.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_rate.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_url.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
@@ -51,6 +52,10 @@ class AddMenuSecondPage extends ConsumerWidget {
               ColumnPadding(height: 30.0),
               Label(text: "URL"),
               MenuUrl(),
+              // メモ
+              ColumnPadding(height: 30.0),
+              Label(text: "メモ"),
+              MenuMemo()
             ],
           ),
         ),
