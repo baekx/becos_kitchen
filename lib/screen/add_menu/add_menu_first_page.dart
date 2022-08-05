@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:becos_kitchen/common/material_color.dart';
 import 'package:becos_kitchen/provider.dart';
+import 'package:becos_kitchen/screen/add_menu/add_menu_second_page.dart';
 import 'package:becos_kitchen/screen/add_menu/label.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_image.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_rate.dart';
@@ -9,12 +10,13 @@ import 'package:becos_kitchen/screen/add_menu/menu_tag_list.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_title.dart';
 import 'package:becos_kitchen/screen/common/button_expanded.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class AddMenuPage extends ConsumerWidget {
-  const AddMenuPage({Key? key, this.image}) : super(key: key);
+class AddMenuFirstPage extends ConsumerWidget {
+  const AddMenuFirstPage({Key? key, this.image}) : super(key: key);
   final File? image;
 
   @override
@@ -64,7 +66,10 @@ class AddMenuPage extends ConsumerWidget {
             ButtonExpanded(
               text: "次へ",
               onPressed: () {
-                ref.watch(addMenuPageProvider.notifier).addMenu();
+                // ref.watch(addMenuPageProvider.notifier).addMenu();
+                Navigator.of(context).push(CupertinoPageRoute(
+                  builder: (context) => AddMenuSecondPage(),
+                ));
               },
             ),
             const ColumnPadding(height: 32.0),

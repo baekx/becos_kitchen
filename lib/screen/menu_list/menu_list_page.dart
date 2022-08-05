@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:becos_kitchen/component/expandable_fab.dart';
 import 'package:becos_kitchen/provider.dart';
-import 'package:becos_kitchen/screen/add_menu/add_menu_page.dart';
+import 'package:becos_kitchen/screen/add_menu/add_menu_first_page.dart';
 import 'package:becos_kitchen/screen/menu_list/menu_list.dart';
 import 'package:becos_kitchen/screen/menu_list/menu_list_header.dart';
 import 'package:flutter/material.dart';
@@ -40,8 +40,10 @@ class MenuListPage extends StatelessWidget {
       _image = File(pickedFile.path);
     }
 
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => AddMenuPage(image: _image)));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => AddMenuFirstPage(image: _image)));
   }
 }
 
