@@ -10,7 +10,7 @@ import 'package:image_picker/image_picker.dart';
 import '../screen/add_menu/menu_tag_list.dart';
 
 final addMenuViewModelProvider =
-    StateNotifierProvider<AddMenuViewModel, AddMenuState>(
+    StateNotifierProvider.autoDispose<AddMenuViewModel, AddMenuState>(
         (ref) => AddMenuViewModel());
 
 class AddMenuViewModel extends StateNotifier<AddMenuState> {
@@ -79,6 +79,10 @@ class AddMenuViewModel extends StateNotifier<AddMenuState> {
     if (picked != null) {
       setCreatedAt(picked);
     }
+  }
+
+  void setUrl(String newUrl) {
+    state = state.copyWith(url: newUrl);
   }
 
   void uploadImage(File file) async {

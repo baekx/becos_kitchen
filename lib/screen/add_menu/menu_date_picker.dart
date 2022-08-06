@@ -14,6 +14,7 @@ class MenuDatePicker extends ConsumerWidget {
     final state = ref.watch(addMenuViewModelProvider);
     final vm = ref.watch(addMenuViewModelProvider.notifier);
     initializeDateFormatting('ja');
+    // TODO: VM
     final dateString = DateFormat.yMMMEd('ja').format(state.createdAt!);
 
     return GestureDetector(
