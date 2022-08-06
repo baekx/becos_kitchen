@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:becos_kitchen/model/add_menu.dart';
+import 'package:becos_kitchen/model/add_menu_state.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,11 +9,18 @@ import 'package:image_picker/image_picker.dart';
 import '../screen/add_menu/menu_tag_list.dart';
 
 final addMenuViewModelProvider =
-    StateNotifierProvider.autoDispose<AddMenuViewModel, AddMenu>(
+    StateNotifierProvider<AddMenuViewModel, AddMenuState>(
         (ref) => AddMenuViewModel());
 
-class AddMenuViewModel extends StateNotifier<AddMenu> {
-  AddMenuViewModel() : super(const AddMenu());
+class AddMenuViewModel extends StateNotifier<AddMenuState> {
+  AddMenuViewModel()
+      : super(AddMenuState(
+            name: '',
+            tag: [],
+            rate: 3,
+            createdAt: DateTime.now(),
+            url: '',
+            memo: ''));
 
   void setTitle(String newTitle) {
     state = state.copyWith(name: newTitle);
@@ -46,12 +53,9 @@ class AddMenuViewModel extends StateNotifier<AddMenu> {
     state = state.copyWith(imageFile: File(pickedFile.path));
   }
 
-  void addMenu() {
-    final document = <String, dynamic>{
-      'title': state.name,
-      'score': state.rate
-    };
-    FirebaseFirestore.instance.collection('menu').doc().set(document);
+  void initCreatedAt() {
+    DateTime today = DateTime.now();
+    state = state.copyWith(createdAt: today);
   }
 
   void uploadImage(File file) async {
@@ -61,6 +65,14 @@ class AddMenuViewModel extends StateNotifier<AddMenu> {
     } catch (e) {
       print(e);
     }
+  }
+
+  void addMenu() {
+    final document = <String, dynamic>{
+      'title': state.name,
+      'score': state.rate
+    };
+    FirebaseFirestore.instance.collection('menu').doc().set(document);
   }
 
   Stream<QuerySnapshot<Map<String, dynamic>>> getData() {

@@ -38,16 +38,16 @@ class AddMenuSecondPage extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
             children: [
               // 星
-              ColumnPadding(height: 24.0),
-              Label(text: "お気に入り"),
-              MenuRate(),
+              const ColumnPadding(height: 24.0),
+              const Label(text: "お気に入り"),
+              const MenuRate(),
               // 料理した日
-              ColumnPadding(height: 30.0),
-              Label(text: "料理した日"),
+              const ColumnPadding(height: 30.0),
+              const Label(text: "料理した日"),
               MenuDatePicker(),
               // URL
               ColumnPadding(height: 30.0),
