@@ -6,6 +6,7 @@ import 'package:becos_kitchen/screen/add_menu/menu_rate.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_url.dart';
 import 'package:becos_kitchen/screen/common/button_expanded.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
+import 'package:becos_kitchen/view_model/add_menu_page_vm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,6 +16,7 @@ class AddMenuSecondPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final vm = ref.watch(addMenuViewModelProvider.notifier);
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
@@ -71,7 +73,7 @@ class AddMenuSecondPage extends ConsumerWidget {
               ButtonExpanded(
                 text: "追加",
                 onPressed: () {
-                  // Navigator.of(context).pop();
+                  vm.uploadImage();
                 },
                 backgroundColor: Color(green),
               ),
