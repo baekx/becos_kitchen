@@ -6,6 +6,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../screen/add_menu/menu_tag_list.dart';
+
 final addMenuViewModelProvider =
     StateNotifierProvider.autoDispose<AddMenuViewModel, AddMenu>(
         (ref) => AddMenuViewModel());
@@ -15,6 +17,22 @@ class AddMenuViewModel extends StateNotifier<AddMenu> {
 
   void setTitle(String newTitle) {
     state = state.copyWith(name: newTitle);
+  }
+
+  void setTag(MenuTag menuTag) {
+    var list = List.of(state.tag);
+    list.add(menuTag.name);
+    state = state.copyWith(tag: list);
+  }
+
+  void removeTag(MenuTag menuTag) {
+    var list = List.of(state.tag);
+    list.remove(menuTag.name);
+    state = state.copyWith(tag: list);
+  }
+
+  bool hasTag(MenuTag menuTag) {
+    return state.tag.contains(menuTag.name);
   }
 
   void setRate(int newScore) {

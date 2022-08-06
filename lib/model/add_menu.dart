@@ -11,5 +11,5 @@ class AddMenu with _$AddMenu {
       String? name,
       int? rate,
       File? imageFile,
-      List<String>? tag}) = _AddMenu;
+      @Default([]) List<String> tag}) = _AddMenu;
 }

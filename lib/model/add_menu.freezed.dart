@@ -20,7 +20,7 @@ mixin _$AddMenu {
   String? get name => throw _privateConstructorUsedError;
   int? get rate => throw _privateConstructorUsedError;
   File? get imageFile => throw _privateConstructorUsedError;
-  List<String>? get tag => throw _privateConstructorUsedError;
+  List<String> get tag => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddMenuCopyWith<AddMenu> get copyWith => throw _privateConstructorUsedError;
@@ -31,11 +31,7 @@ abstract class $AddMenuCopyWith<$Res> {
   factory $AddMenuCopyWith(AddMenu value, $Res Function(AddMenu) then) =
       _$AddMenuCopyWithImpl<$Res>;
   $Res call(
-      {String? id,
-      String? name,
-      int? rate,
-      File? imageFile,
-      List<String>? tag});
+      {String? id, String? name, int? rate, File? imageFile, List<String> tag});
 }
 
 /// @nodoc
@@ -74,7 +70,7 @@ class _$AddMenuCopyWithImpl<$Res> implements $AddMenuCopyWith<$Res> {
       tag: tag == freezed
           ? _value.tag
           : tag // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String>,
     ));
   }
 }
@@ -86,11 +82,7 @@ abstract class _$$_AddMenuCopyWith<$Res> implements $AddMenuCopyWith<$Res> {
       __$$_AddMenuCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? id,
-      String? name,
-      int? rate,
-      File? imageFile,
-      List<String>? tag});
+      {String? id, String? name, int? rate, File? imageFile, List<String> tag});
 }
 
 /// @nodoc
@@ -130,7 +122,7 @@ class __$$_AddMenuCopyWithImpl<$Res> extends _$AddMenuCopyWithImpl<$Res>
       tag: tag == freezed
           ? _value._tag
           : tag // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String>,
     ));
   }
 }
@@ -139,7 +131,11 @@ class __$$_AddMenuCopyWithImpl<$Res> extends _$AddMenuCopyWithImpl<$Res>
 
 class _$_AddMenu implements _AddMenu {
   const _$_AddMenu(
-      {this.id, this.name, this.rate, this.imageFile, final List<String>? tag})
+      {this.id,
+      this.name,
+      this.rate,
+      this.imageFile,
+      final List<String> tag = const []})
       : _tag = tag;
 
   @override
@@ -150,13 +146,12 @@ class _$_AddMenu implements _AddMenu {
   final int? rate;
   @override
   final File? imageFile;
-  final List<String>? _tag;
+  final List<String> _tag;
   @override
-  List<String>? get tag {
-    final value = _tag;
-    if (value == null) return null;
+  @JsonKey()
+  List<String> get tag {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_tag);
   }
 
   @override
@@ -197,7 +192,7 @@ abstract class _AddMenu implements AddMenu {
       final String? name,
       final int? rate,
       final File? imageFile,
-      final List<String>? tag}) = _$_AddMenu;
+      final List<String> tag}) = _$_AddMenu;
 
   @override
   String? get id => throw _privateConstructorUsedError;
@@ -208,7 +203,7 @@ abstract class _AddMenu implements AddMenu {
   @override
   File? get imageFile => throw _privateConstructorUsedError;
   @override
-  List<String>? get tag => throw _privateConstructorUsedError;
+  List<String> get tag => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_AddMenuCopyWith<_$_AddMenu> get copyWith =>
