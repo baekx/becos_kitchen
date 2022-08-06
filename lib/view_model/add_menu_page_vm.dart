@@ -85,6 +85,10 @@ class AddMenuViewModel extends StateNotifier<AddMenuState> {
     state = state.copyWith(url: newUrl);
   }
 
+  void setMemo(String newMemo) {
+    state = state.copyWith(memo: newMemo);
+  }
+
   void uploadImage(File file) async {
     FirebaseStorage storage = FirebaseStorage.instance;
     try {
