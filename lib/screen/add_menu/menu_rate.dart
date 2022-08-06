@@ -8,7 +8,7 @@ class MenuRate extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final int? rate = ref.watch(addMenuViewModelProvider).rate;
+    final vm = ref.watch(addMenuViewModelProvider.notifier);
 
     return Center(
       child: RatingBar.builder(
@@ -16,13 +16,11 @@ class MenuRate extends ConsumerWidget {
                 Icons.star,
                 color: Colors.amber,
               ),
-          initialRating: rate?.toDouble() ?? 0,
-          itemPadding: EdgeInsets.symmetric(horizontal: 16.0),
-          itemSize: 40.0,
+          initialRating: 3.0,
+          itemPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+          itemSize: 48.0,
           onRatingUpdate: (rating) {
-            ref
-                .watch(addMenuViewModelProvider.notifier)
-                .setRate(rating.toInt());
+            vm.setRate(rating.toInt());
           }),
     );
   }

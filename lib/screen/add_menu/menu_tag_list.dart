@@ -29,7 +29,6 @@ class _AddMenuTagState extends ConsumerState {
   @override
   Widget build(BuildContext context) {
     final vm = ref.watch(addMenuViewModelProvider.notifier);
-    final state = ref.watch(addMenuViewModelProvider);
     return Wrap(
         spacing: 16.0,
         children: MenuTag.values
