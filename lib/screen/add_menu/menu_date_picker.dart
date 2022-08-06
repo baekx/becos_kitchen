@@ -6,45 +6,65 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
-class MenuDatePicker extends ConsumerWidget {
+class MenuDatePicker extends ConsumerStatefulWidget {
   const MenuDatePicker({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  _MenuDatePicker createState() => _MenuDatePicker();
+}
+
+class _MenuDatePicker extends ConsumerState {
+  @override
+  Widget build(BuildContext context) {
     final state = ref.watch(addMenuViewModelProvider);
     final vm = ref.watch(addMenuViewModelProvider.notifier);
     initializeDateFormatting('ja');
     final dateString = DateFormat.yMMMEd('ja').format(state.createdAt!);
 
-    return Container(
-      decoration: BoxDecoration(
-          border: Border.all(color: const Color(textColor), width: 0.5),
-          borderRadius: BorderRadius.circular(16)),
-      height: 56,
-      width: double.infinity,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Row(
-          children: [
-            IconButton(
-              icon: SvgPicture.asset(
-                'assets/icons/calendar.svg',
-                width: 24,
-                height: 24,
-              ),
-              onPressed: () {
-                // Navigator.of(context).pop();
-              },
-            ),
-            Expanded(
-              child: Center(
-                child: Text(
-                  dateString,
-                  style: const TextStyle(fontSize: 16),
+    void _onTapDatePicker() async {
+      final DateTime? picked = await showDatePicker(
+          locale: const Locale("ja"),
+          context: context,
+          initialDate: state.createdAt!,
+          firstDate: DateTime(2022),
+          lastDate: DateTime.now().add(const Duration(days: 360)));
+      if (picked != null) {
+        vm.setCreatedAt(picked);
+      }
+    }
+
+    return GestureDetector(
+      onTap: _onTapDatePicker,
+      child: Container(
+        decoration: BoxDecoration(
+            border: Border.all(color: const Color(textColor), width: 0.5),
+            borderRadius: BorderRadius.circular(16)),
+        height: 56,
+        width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Row(
+            children: [
+              IconButton(
+                icon: SvgPicture.asset(
+                  'assets/icons/calendar.svg',
+                  width: 24,
+                  height: 24,
                 ),
+                onPressed: () {
+                  // Navigator.of(context).pop();
+                },
               ),
-            )
-          ],
+              Expanded(
+                child: Center(
+                  child: Text(
+                    dateString,
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -53,9 +53,8 @@ class AddMenuViewModel extends StateNotifier<AddMenuState> {
     state = state.copyWith(imageFile: File(pickedFile.path));
   }
 
-  void initCreatedAt() {
-    DateTime today = DateTime.now();
-    state = state.copyWith(createdAt: today);
+  void setCreatedAt(DateTime newDate) {
+    state = state.copyWith(createdAt: newDate);
   }
 
   void uploadImage(File file) async {
