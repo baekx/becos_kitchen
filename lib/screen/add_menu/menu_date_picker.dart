@@ -6,35 +6,18 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
-class MenuDatePicker extends ConsumerStatefulWidget {
+class MenuDatePicker extends ConsumerWidget {
   const MenuDatePicker({Key? key}) : super(key: key);
 
   @override
-  _MenuDatePicker createState() => _MenuDatePicker();
-}
-
-class _MenuDatePicker extends ConsumerState {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(addMenuViewModelProvider);
     final vm = ref.watch(addMenuViewModelProvider.notifier);
     initializeDateFormatting('ja');
     final dateString = DateFormat.yMMMEd('ja').format(state.createdAt!);
 
-    void _onTapDatePicker() async {
-      final DateTime? picked = await showDatePicker(
-          locale: const Locale("ja"),
-          context: context,
-          initialDate: state.createdAt!,
-          firstDate: DateTime(2022),
-          lastDate: DateTime.now().add(const Duration(days: 360)));
-      if (picked != null) {
-        vm.setCreatedAt(picked);
-      }
-    }
-
     return GestureDetector(
-      onTap: _onTapDatePicker,
+      onTap: () => vm.onTapDatePicker(context),
       child: Container(
         decoration: BoxDecoration(
             border: Border.all(color: const Color(textColor), width: 0.5),

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:becos_kitchen/model/add_menu_state.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -55,6 +56,29 @@ class AddMenuViewModel extends StateNotifier<AddMenuState> {
 
   void setCreatedAt(DateTime newDate) {
     state = state.copyWith(createdAt: newDate);
+  }
+
+  void onTapDatePicker(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      locale: const Locale("ja"),
+      context: context,
+      initialDate: state.createdAt!,
+      firstDate: DateTime(2022),
+      lastDate: DateTime.now().add(const Duration(days: 360)),
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(primary: Colors.orange),
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+    if (picked != null) {
+      setCreatedAt(picked);
+    }
   }
 
   void uploadImage(File file) async {
