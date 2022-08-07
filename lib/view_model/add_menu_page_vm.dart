@@ -1,8 +1,8 @@
 import 'dart:io';
 
+import 'package:becos_kitchen/di/repository_provider.dart';
 import 'package:becos_kitchen/model/add_menu_state.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:becos_kitchen/repository/menu_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
@@ -11,10 +11,10 @@ import '../screen/add_menu/menu_tag_list.dart';
 
 final addMenuViewModelProvider =
     StateNotifierProvider.autoDispose<AddMenuViewModel, AddMenuState>(
-        (ref) => AddMenuViewModel());
+        (ref) => AddMenuViewModel(ref.read(menuRepositoryProvider)));
 
 class AddMenuViewModel extends StateNotifier<AddMenuState> {
-  AddMenuViewModel()
+  AddMenuViewModel(this._menuRepository)
       : super(AddMenuState(
             name: '',
             tag: [],
@@ -22,6 +22,8 @@ class AddMenuViewModel extends StateNotifier<AddMenuState> {
             createdAt: DateTime.now(),
             url: '',
             memo: ''));
+
+  final MenuRepository _menuRepository;
 
   void setTitle(String newTitle) {
     state = state.copyWith(name: newTitle);
@@ -89,28 +91,7 @@ class AddMenuViewModel extends StateNotifier<AddMenuState> {
     state = state.copyWith(memo: newMemo);
   }
 
-  Future<void> postMenuData(BuildContext context) async {
-    final image = state.imageFile;
-    if (image == null) return;
-
-    try {
-      FirebaseStorage storage = FirebaseStorage.instance;
-      Reference ref = storage.ref().child("menu/${state.name}");
-      final TaskSnapshot snapshot = await ref.putFile(image);
-      final url = snapshot.ref.getDownloadURL();
-      url.then((value) {
-        final data = {
-          'name': state.name,
-          'image': value,
-          'rate': state.rate,
-          'tag': state.tag,
-          'url': state.url,
-          'memo': state.memo
-        };
-        FirebaseFirestore.instance.collection('menu').doc().set(data);
-      });
-    } catch (e) {
-      print(e);
-    }
+  Future<void> addMenuData() async {
+    _menuRepository.addMenuData(state);
   }
 }
