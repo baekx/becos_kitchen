@@ -1,5 +1,5 @@
 import 'package:becos_kitchen/component/menu_tag.dart';
-import 'package:becos_kitchen/model/menu.dart';
+import 'package:becos_kitchen/model/menu_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -8,7 +8,7 @@ class MenuCard extends StatelessWidget {
     Key? key,
     required this.menu,
   }) : super(key: key);
-  final Menu menu;
+  final MenuModel menu;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class MenuCard extends StatelessWidget {
                   width: size.width / 2,
                   height: size.width / 2,
                   child: Image.network(
-                    menu.image ?? '',
+                    menu.image,
                     fit: BoxFit.cover,
                     errorBuilder: (c, o, s) {
                       return const Image(

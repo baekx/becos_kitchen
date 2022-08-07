@@ -1,10 +1,10 @@
-import 'package:becos_kitchen/model/menu.dart';
+import 'package:becos_kitchen/model/menu_model.dart';
 import 'package:becos_kitchen/screen/menu_list/menu_card.dart';
 import 'package:flutter/material.dart';
 
 class MenuList extends StatelessWidget {
   const MenuList({Key? key, required this.menuList}) : super(key: key);
-  final List<Menu> menuList;
+  final List<MenuModel> menuList;
 
   @override
   Widget build(BuildContext context) {
