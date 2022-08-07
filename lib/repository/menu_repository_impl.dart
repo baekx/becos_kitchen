@@ -1,13 +1,15 @@
+import 'package:becos_kitchen/data/firebase_module.dart';
 import 'package:becos_kitchen/model/menu.dart';
 import 'package:becos_kitchen/repository/menu_repository.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
-class MenuRepositoryImpl with MenuRepository {
-  final _menusManager = FirebaseFirestore.instance.collection('menu');
+class MenuRepositoryImpl implements MenuRepository {
+  MenuRepositoryImpl(this.firebaseModule);
+
+  final FirebaseModule firebaseModule;
 
   @override
   Future<List<Menu>> fetchMenuList() async {
-    final menuRef = _menusManager.withConverter<Menu>(
+    final menuRef = firebaseModule.menuCollection.withConverter<Menu>(
         fromFirestore: (snapshot, _) => Menu.fromJson(snapshot.data()!),
         toFirestore: (menu, _) => menu.toJson());
     final menuListSnapshot = await menuRef.get();
@@ -16,7 +18,7 @@ class MenuRepositoryImpl with MenuRepository {
 
   @override
   Future<String> addMenu(Menu menu) async {
-    final data = await _menusManager.add(menu.toJson());
+    final data = await firebaseModule.menuCollection.add(menu.toJson());
     return data.id;
   }
 }

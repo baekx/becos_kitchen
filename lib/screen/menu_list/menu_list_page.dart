@@ -11,6 +11,7 @@ class MenuListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final vm = ref.watch(menuListViewModelProvider.notifier);
     return Scaffold(
       appBar: const PreferredSize(
           preferredSize: Size.fromHeight(80), child: MenuListHeader()),
@@ -28,13 +29,13 @@ class MenuListPage extends ConsumerWidget {
               fullscreenDialog: true,
             ),
           ).then((value) async {
-            await ref.watch(menuListViewModelProvider.notifier).getMenuList();
+            await vm.getMenuList();
           });
         },
       ),
       body: RefreshIndicator(
         onRefresh: () async {
-          await ref.watch(menuListViewModelProvider.notifier).getMenuList();
+          await vm.getMenuList();
         },
         child: _MenuList(),
       ),
