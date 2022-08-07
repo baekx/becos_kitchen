@@ -113,8 +113,4 @@ class AddMenuViewModel extends StateNotifier<AddMenuState> {
       print(e);
     }
   }
-
-  Stream<QuerySnapshot<Map<String, dynamic>>> getData() {
-    return FirebaseFirestore.instance.collection('menu').snapshots();
-  }
 }
