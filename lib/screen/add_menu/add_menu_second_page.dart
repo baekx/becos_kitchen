@@ -6,6 +6,7 @@ import 'package:becos_kitchen/screen/add_menu/menu_rate.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_url.dart';
 import 'package:becos_kitchen/screen/common/button_expanded.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
+import 'package:becos_kitchen/view_model/add_menu_page_vm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,6 +16,7 @@ class AddMenuSecondPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final vm = ref.watch(addMenuViewModelProvider.notifier);
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
@@ -29,7 +31,7 @@ class AddMenuSecondPage extends ConsumerWidget {
             IconButton(
                 icon: SvgPicture.asset('assets/icons/cancel.svg'),
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  Navigator.of(context).popUntil((route) => route.isFirst);
                 })
           ],
         ),
@@ -38,27 +40,26 @@ class AddMenuSecondPage extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
             children: [
               // 星
-              ColumnPadding(height: 24.0),
-              Label(text: "お気に入り"),
-              MenuRate(),
+              const ColumnPadding(height: 16.0),
+              const Label(text: "お気に入り"),
+              const MenuRate(),
               // 料理した日
-              ColumnPadding(height: 30.0),
-              Label(text: "料理した日"),
-              MenuDatePicker(),
+              const ColumnPadding(height: 16.0),
+              const Label(text: "料理した日"),
+              const MenuDatePicker(),
               // URL
-              ColumnPadding(height: 30.0),
-              Label(text: "URL"),
-              MenuUrl(),
+              const ColumnPadding(height: 16.0),
+              const Label(text: "URL"),
+              const MenuUrl(),
               // メモ
-              ColumnPadding(height: 30.0),
-              Label(text: "メモ"),
-              MenuMemo(),
+              const ColumnPadding(height: 16.0),
+              const Label(text: "メモ"),
+              const MenuMemo(),
               // 戻るボタン
-              ColumnPadding(height: 30.0),
+              const ColumnPadding(height: 16.0),
               ButtonExpanded(
                 text: "前の画面へ",
                 onPressed: () {
@@ -67,15 +68,16 @@ class AddMenuSecondPage extends ConsumerWidget {
                 backgroundColor: Color(cancel),
               ),
               //追加ボタン
-              ColumnPadding(height: 16.0),
+              const ColumnPadding(height: 16.0),
               ButtonExpanded(
                 text: "追加",
-                onPressed: () {
-                  // Navigator.of(context).pop();
+                onPressed: () async {
+                  await vm.addMenuData();
+                  Navigator.of(context).popUntil((route) => route.isFirst);
                 },
-                backgroundColor: Color(green),
+                backgroundColor: const Color(green),
               ),
-              ColumnPadding(height: 30.0),
+              const ColumnPadding(height: 30.0),
             ],
           ),
         ),

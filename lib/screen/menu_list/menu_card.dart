@@ -28,8 +28,13 @@ class MenuCard extends StatelessWidget {
                   width: size.width / 2,
                   height: size.width / 2,
                   child: Image.network(
-                    menu.image,
+                    menu.image ?? '',
                     fit: BoxFit.cover,
+                    errorBuilder: (c, o, s) {
+                      return const Image(
+                          image: AssetImage("assets/images/noImage.png"),
+                          fit: BoxFit.cover);
+                    },
                   ),
                 ),
               ),

@@ -7,10 +7,10 @@ part 'menu.g.dart';
 class Menu with _$Menu {
   const factory Menu(
       {String? id,
-      required String name,
-      required int rate,
-      required String image,
-      required List<String> tag}) = _Menu;
+      @Default('') String name,
+      @Default(1) int rate,
+      String? image,
+      @Default([]) List<String> tag}) = _Menu;
 
   factory Menu.fromJson(Map<String, dynamic> json) => _$MenuFromJson(json);
 }

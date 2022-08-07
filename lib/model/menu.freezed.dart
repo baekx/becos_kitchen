@@ -23,7 +23,7 @@ mixin _$Menu {
   String? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get rate => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
   List<String> get tag => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ abstract class $MenuCopyWith<$Res> {
   factory $MenuCopyWith(Menu value, $Res Function(Menu) then) =
       _$MenuCopyWithImpl<$Res>;
   $Res call(
-      {String? id, String name, int rate, String image, List<String> tag});
+      {String? id, String name, int rate, String? image, List<String> tag});
 }
 
 /// @nodoc
@@ -71,7 +71,7 @@ class _$MenuCopyWithImpl<$Res> implements $MenuCopyWith<$Res> {
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       tag: tag == freezed
           ? _value.tag
           : tag // ignore: cast_nullable_to_non_nullable
@@ -86,7 +86,7 @@ abstract class _$$_MenuCopyWith<$Res> implements $MenuCopyWith<$Res> {
       __$$_MenuCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? id, String name, int rate, String image, List<String> tag});
+      {String? id, String name, int rate, String? image, List<String> tag});
 }
 
 /// @nodoc
@@ -122,7 +122,7 @@ class __$$_MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res>
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       tag: tag == freezed
           ? _value._tag
           : tag // ignore: cast_nullable_to_non_nullable
@@ -136,10 +136,10 @@ class __$$_MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res>
 class _$_Menu implements _Menu {
   const _$_Menu(
       {this.id,
-      required this.name,
-      required this.rate,
-      required this.image,
-      required final List<String> tag})
+      this.name = '',
+      this.rate = 1,
+      this.image,
+      final List<String> tag = const []})
       : _tag = tag;
 
   factory _$_Menu.fromJson(Map<String, dynamic> json) => _$$_MenuFromJson(json);
@@ -147,13 +147,16 @@ class _$_Menu implements _Menu {
   @override
   final String? id;
   @override
+  @JsonKey()
   final String name;
   @override
+  @JsonKey()
   final int rate;
   @override
-  final String image;
+  final String? image;
   final List<String> _tag;
   @override
+  @JsonKey()
   List<String> get tag {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tag);
@@ -200,10 +203,10 @@ class _$_Menu implements _Menu {
 abstract class _Menu implements Menu {
   const factory _Menu(
       {final String? id,
-      required final String name,
-      required final int rate,
-      required final String image,
-      required final List<String> tag}) = _$_Menu;
+      final String name,
+      final int rate,
+      final String? image,
+      final List<String> tag}) = _$_Menu;
 
   factory _Menu.fromJson(Map<String, dynamic> json) = _$_Menu.fromJson;
 
@@ -214,7 +217,7 @@ abstract class _Menu implements Menu {
   @override
   int get rate => throw _privateConstructorUsedError;
   @override
-  String get image => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
   @override
   List<String> get tag => throw _privateConstructorUsedError;
   @override
