@@ -89,41 +89,30 @@ class AddMenuViewModel extends StateNotifier<AddMenuState> {
     state = state.copyWith(memo: newMemo);
   }
 
-  void postMenuData() async {
+  Future<void> postMenuData(BuildContext context) async {
     final image = state.imageFile;
     if (image == null) return;
+
     try {
-      final TaskSnapshot task = await FirebaseStorage.instance
-          .ref("menu/${state.name}")
-          .putFile(image);
-
-      // final String imageUrl = await task.ref.getDownloadURL();
-      final String imageUrl = await FirebaseStorage.instance
-          .ref()
-          .child('menu/${state.name}')
-          .getDownloadURL();
-      final data = {
-        'name': state.name,
-        'image': imageUrl,
-        'rate': state.rate,
-        'tag': state.tag,
-        'url': state.url,
-        'memo': state.memo
-      };
-
-      await FirebaseFirestore.instance.collection('menu').doc().set(data);
+      FirebaseStorage storage = FirebaseStorage.instance;
+      Reference ref = storage.ref().child("menu/${state.name}");
+      final TaskSnapshot snapshot = await ref.putFile(image);
+      final url = snapshot.ref.getDownloadURL();
+      url.then((value) {
+        final data = {
+          'name': state.name,
+          'image': value,
+          'rate': state.rate,
+          'tag': state.tag,
+          'url': state.url,
+          'memo': state.memo
+        };
+        FirebaseFirestore.instance.collection('menu').doc().set(data);
+      });
     } catch (e) {
       print(e);
     }
   }
-
-  // void addMenu() {
-  //   final document = <String, dynamic>{
-  //     'title': state.name,
-  //     'score': state.rate
-  //   };
-  //   FirebaseFirestore.instance.collection('menu').doc().set(document);
-  // }
 
   Stream<QuerySnapshot<Map<String, dynamic>>> getData() {
     return FirebaseFirestore.instance.collection('menu').snapshots();

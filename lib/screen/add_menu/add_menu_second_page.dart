@@ -71,8 +71,8 @@ class AddMenuSecondPage extends ConsumerWidget {
               const ColumnPadding(height: 16.0),
               ButtonExpanded(
                 text: "追加",
-                onPressed: () {
-                  vm.postMenuData();
+                onPressed: () async {
+                  await vm.postMenuData(context);
                   Navigator.of(context).popUntil((route) => route.isFirst);
                 },
                 backgroundColor: const Color(green),
