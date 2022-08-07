@@ -26,6 +26,8 @@ mixin _$MenuModel {
   List<String> get tag => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
   String get memo => throw _privateConstructorUsedError;
+  @CreatedAtField()
+  DateTime? get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +45,8 @@ abstract class $MenuModelCopyWith<$Res> {
       String image,
       List<String> tag,
       String url,
-      String memo});
+      String memo,
+      @CreatedAtField() DateTime? createdAt});
 }
 
 /// @nodoc
@@ -62,6 +65,7 @@ class _$MenuModelCopyWithImpl<$Res> implements $MenuModelCopyWith<$Res> {
     Object? tag = freezed,
     Object? url = freezed,
     Object? memo = freezed,
+    Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -88,6 +92,10 @@ class _$MenuModelCopyWithImpl<$Res> implements $MenuModelCopyWith<$Res> {
           ? _value.memo
           : memo // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -104,7 +112,8 @@ abstract class _$$_MenuModelCopyWith<$Res> implements $MenuModelCopyWith<$Res> {
       String image,
       List<String> tag,
       String url,
-      String memo});
+      String memo,
+      @CreatedAtField() DateTime? createdAt});
 }
 
 /// @nodoc
@@ -125,6 +134,7 @@ class __$$_MenuModelCopyWithImpl<$Res> extends _$MenuModelCopyWithImpl<$Res>
     Object? tag = freezed,
     Object? url = freezed,
     Object? memo = freezed,
+    Object? createdAt = freezed,
   }) {
     return _then(_$_MenuModel(
       name: name == freezed
@@ -151,6 +161,10 @@ class __$$_MenuModelCopyWithImpl<$Res> extends _$MenuModelCopyWithImpl<$Res>
           ? _value.memo
           : memo // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -164,7 +178,8 @@ class _$_MenuModel implements _MenuModel {
       this.image = '',
       final List<String> tag = const [],
       this.url = '',
-      this.memo = ''})
+      this.memo = '',
+      @CreatedAtField() this.createdAt})
       : _tag = tag;
 
   factory _$_MenuModel.fromJson(Map<String, dynamic> json) =>
@@ -193,10 +208,13 @@ class _$_MenuModel implements _MenuModel {
   @override
   @JsonKey()
   final String memo;
+  @override
+  @CreatedAtField()
+  final DateTime? createdAt;
 
   @override
   String toString() {
-    return 'MenuModel(name: $name, rate: $rate, image: $image, tag: $tag, url: $url, memo: $memo)';
+    return 'MenuModel(name: $name, rate: $rate, image: $image, tag: $tag, url: $url, memo: $memo, createdAt: $createdAt)';
   }
 
   @override
@@ -209,7 +227,8 @@ class _$_MenuModel implements _MenuModel {
             const DeepCollectionEquality().equals(other.image, image) &&
             const DeepCollectionEquality().equals(other._tag, _tag) &&
             const DeepCollectionEquality().equals(other.url, url) &&
-            const DeepCollectionEquality().equals(other.memo, memo));
+            const DeepCollectionEquality().equals(other.memo, memo) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt));
   }
 
   @JsonKey(ignore: true)
@@ -221,7 +240,8 @@ class _$_MenuModel implements _MenuModel {
       const DeepCollectionEquality().hash(image),
       const DeepCollectionEquality().hash(_tag),
       const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(memo));
+      const DeepCollectionEquality().hash(memo),
+      const DeepCollectionEquality().hash(createdAt));
 
   @JsonKey(ignore: true)
   @override
@@ -241,7 +261,8 @@ abstract class _MenuModel implements MenuModel {
       final String image,
       final List<String> tag,
       final String url,
-      final String memo}) = _$_MenuModel;
+      final String memo,
+      @CreatedAtField() final DateTime? createdAt}) = _$_MenuModel;
 
   factory _MenuModel.fromJson(Map<String, dynamic> json) =
       _$_MenuModel.fromJson;
@@ -258,6 +279,9 @@ abstract class _MenuModel implements MenuModel {
   String get url => throw _privateConstructorUsedError;
   @override
   String get memo => throw _privateConstructorUsedError;
+  @override
+  @CreatedAtField()
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_MenuModelCopyWith<_$_MenuModel> get copyWith =>
