@@ -27,13 +27,13 @@ class AddMenuFirstPage extends ConsumerWidget {
         appBar: AppBar(
           title: const Text(
             "料理を追加",
-            style: TextStyle(color: Color(green)),
+            style: TextStyle(color: Color(textColor)),
           ),
           automaticallyImplyLeading: false,
           centerTitle: true,
           actions: [
             IconButton(
-              icon: SvgPicture.asset('assets/icons/cancel.svg'),
+              icon: SvgPicture.asset('assets/icons/backArrow.svg'),
               onPressed: () {
                 Navigator.of(context).pop();
               },

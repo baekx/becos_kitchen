@@ -1,7 +1,9 @@
+import 'package:becos_kitchen/common/material_color.dart';
 import 'package:becos_kitchen/model/menu_model.dart';
 import 'package:becos_kitchen/view_model/menu_detail_vm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class MenuDetailPage extends StatelessWidget {
   const MenuDetailPage({Key? key, required this.menu}) : super(key: key);
@@ -16,8 +18,17 @@ class MenuDetailPage extends StatelessWidget {
       ],
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('詳細'),
-        ),
+            title: const Text(
+              '詳細',
+              style: TextStyle(color: Color(textColor)),
+            ),
+            automaticallyImplyLeading: false,
+            centerTitle: true,
+            leading: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: SvgPicture.asset('assets/icons/backArrow.svg'))),
         body: _MenuDetailBody(),
       ),
     );
@@ -28,13 +39,25 @@ class _MenuDetailBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final menu = ref.watch(menuDetailViewModelProvider);
-    return Column(
-      children: [
-        Text(menu.name),
-        Image.network(menu.image, width: 120, height: 120),
-        Text(menu.createdAt.toString()),
-        Text(menu.tag.toString())
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Image.network(
+            menu.image,
+            width: double.infinity,
+            height: 300,
+            fit: BoxFit.cover,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              menu.name,
+              style: const TextStyle(fontSize: 20),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
