@@ -11,7 +11,7 @@ class MenuList extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GridView.count(
-        childAspectRatio: 0.70,
+        childAspectRatio: 0.6,
         crossAxisCount: 2,
         children: menuList.map((menu) {
           return MenuCard(menu: menu);

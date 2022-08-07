@@ -44,23 +44,23 @@ class AddMenuSecondPage extends ConsumerWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               // 星
-              const ColumnPadding(height: 24.0),
+              const ColumnPadding(height: 16.0),
               const Label(text: "お気に入り"),
               const MenuRate(),
               // 料理した日
-              const ColumnPadding(height: 30.0),
+              const ColumnPadding(height: 16.0),
               const Label(text: "料理した日"),
               MenuDatePicker(),
               // URL
-              ColumnPadding(height: 30.0),
+              ColumnPadding(height: 16.0),
               Label(text: "URL"),
               MenuUrl(),
               // メモ
-              ColumnPadding(height: 30.0),
+              ColumnPadding(height: 16.0),
               Label(text: "メモ"),
               MenuMemo(),
               // 戻るボタン
-              ColumnPadding(height: 30.0),
+              ColumnPadding(height: 16.0),
               ButtonExpanded(
                 text: "前の画面へ",
                 onPressed: () {
@@ -73,7 +73,8 @@ class AddMenuSecondPage extends ConsumerWidget {
               ButtonExpanded(
                 text: "追加",
                 onPressed: () {
-                  vm.uploadImage();
+                  vm.postMenuData();
+                  Navigator.of(context).popUntil((route) => route.isFirst);
                 },
                 backgroundColor: Color(green),
               ),

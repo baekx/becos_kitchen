@@ -15,7 +15,7 @@ class MenuImage extends ConsumerWidget {
         padding: const EdgeInsets.symmetric(horizontal: 21.0),
         child: SizedBox(
           width: double.infinity,
-          height: 360,
+          height: 260,
           child: GestureDetector(
             onTap: () => vm.setImage(),
             child: ClipRRect(

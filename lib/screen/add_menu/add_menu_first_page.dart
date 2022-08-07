@@ -45,15 +45,14 @@ class AddMenuFirstPage extends ConsumerWidget {
           padding: const EdgeInsets.only(left: 24.0, right: 24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
             children: [
               // 写真
-              const ColumnPadding(height: 16.0),
+              const ColumnPadding(height: 8.0),
               const Label(text: "写真"),
               const MenuImage(),
               // タイトル
-              const ColumnPadding(height: 16.0),
+              const ColumnPadding(height: 8.0),
               const Label(text: "タイトル"),
               const MenuTitle(),
               // タグ
@@ -61,18 +60,16 @@ class AddMenuFirstPage extends ConsumerWidget {
               const Label(text: "タグ"),
               const MenuTagList(),
               // 次へボタン
-              const ColumnPadding(height: 8.0),
+              const ColumnPadding(height: 24.0),
               ButtonExpanded(
                 text: "次へ",
                 onPressed: () {
-                  // ref.watch(addMenuPageProvider.notifier).addMenu();
                   Navigator.of(context).push(CupertinoPageRoute(
-                    builder: (context) => AddMenuSecondPage(),
+                    builder: (context) => const AddMenuSecondPage(),
                   ));
                 },
                 backgroundColor: const Color(green),
               ),
-              const ColumnPadding(height: 32.0),
             ],
           ),
         ),

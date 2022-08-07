@@ -30,7 +30,6 @@ class _AddMenuTagState extends ConsumerState {
   Widget build(BuildContext context) {
     final vm = ref.watch(addMenuViewModelProvider.notifier);
     return Wrap(
-        spacing: 16.0,
         children: MenuTag.values
             .map(
               (menuTag) => Padding(

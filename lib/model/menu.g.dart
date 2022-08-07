@@ -8,10 +8,11 @@ part of 'menu.dart';
 
 _$_Menu _$$_MenuFromJson(Map<String, dynamic> json) => _$_Menu(
       id: json['id'] as String?,
-      name: json['name'] as String,
-      rate: json['rate'] as int,
-      image: json['image'] as String,
-      tag: (json['tag'] as List<dynamic>).map((e) => e as String).toList(),
+      name: json['name'] as String? ?? '',
+      rate: json['rate'] as int? ?? 1,
+      image: json['image'] as String?,
+      tag: (json['tag'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$_MenuToJson(_$_Menu instance) => <String, dynamic>{
