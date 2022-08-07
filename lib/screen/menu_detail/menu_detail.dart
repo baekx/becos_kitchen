@@ -1,4 +1,5 @@
 import 'package:becos_kitchen/common/material_color.dart';
+import 'package:becos_kitchen/component/menu_tag.dart';
 import 'package:becos_kitchen/model/menu_model.dart';
 import 'package:becos_kitchen/view_model/menu_detail_vm.dart';
 import 'package:flutter/material.dart';
@@ -54,6 +55,16 @@ class _MenuDetailBody extends ConsumerWidget {
             child: Text(
               menu.name,
               style: const TextStyle(fontSize: 20),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Container(
+              alignment: Alignment.centerLeft,
+              child: Wrap(
+                spacing: 16.0,
+                children: menu.tag.map((tag) => MenuTag(label: tag)).toList(),
+              ),
             ),
           ),
         ],
