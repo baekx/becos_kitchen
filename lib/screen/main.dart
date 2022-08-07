@@ -22,7 +22,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,13 +32,13 @@ class MyApp extends StatelessWidget {
           iconTheme: const IconThemeData.fallback()
               .copyWith(color: const Color(green))),
       home: const MenuListPage(),
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
-      supportedLocales: [
-        const Locale("en"),
-        const Locale("ja"),
+      supportedLocales: const [
+        Locale("en"),
+        Locale("ja"),
       ],
     );
   }

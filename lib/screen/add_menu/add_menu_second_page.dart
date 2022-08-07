@@ -31,7 +31,7 @@ class AddMenuSecondPage extends ConsumerWidget {
             IconButton(
                 icon: SvgPicture.asset('assets/icons/cancel.svg'),
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  Navigator.of(context).popUntil((route) => route.isFirst);
                 })
           ],
         ),
@@ -40,7 +40,6 @@ class AddMenuSecondPage extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
             children: [
               // 星
@@ -50,17 +49,17 @@ class AddMenuSecondPage extends ConsumerWidget {
               // 料理した日
               const ColumnPadding(height: 16.0),
               const Label(text: "料理した日"),
-              MenuDatePicker(),
+              const MenuDatePicker(),
               // URL
-              ColumnPadding(height: 16.0),
-              Label(text: "URL"),
-              MenuUrl(),
+              const ColumnPadding(height: 16.0),
+              const Label(text: "URL"),
+              const MenuUrl(),
               // メモ
-              ColumnPadding(height: 16.0),
-              Label(text: "メモ"),
-              MenuMemo(),
+              const ColumnPadding(height: 16.0),
+              const Label(text: "メモ"),
+              const MenuMemo(),
               // 戻るボタン
-              ColumnPadding(height: 16.0),
+              const ColumnPadding(height: 16.0),
               ButtonExpanded(
                 text: "前の画面へ",
                 onPressed: () {
@@ -69,16 +68,16 @@ class AddMenuSecondPage extends ConsumerWidget {
                 backgroundColor: Color(cancel),
               ),
               //追加ボタン
-              ColumnPadding(height: 16.0),
+              const ColumnPadding(height: 16.0),
               ButtonExpanded(
                 text: "追加",
                 onPressed: () {
                   vm.postMenuData();
                   Navigator.of(context).popUntil((route) => route.isFirst);
                 },
-                backgroundColor: Color(green),
+                backgroundColor: const Color(green),
               ),
-              ColumnPadding(height: 30.0),
+              const ColumnPadding(height: 30.0),
             ],
           ),
         ),
