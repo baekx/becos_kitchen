@@ -38,51 +38,57 @@ class AddMenuSecondPage extends ConsumerWidget {
         resizeToAvoidBottomInset: false,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              // 星
-              const ColumnPadding(height: 16.0),
-              const Label(text: "お気に入り"),
-              const MenuRate(),
-              // 料理した日
-              const ColumnPadding(height: 16.0),
-              const Label(text: "料理した日"),
-              const MenuDatePicker(),
-              // URL
-              const ColumnPadding(height: 16.0),
-              const Label(text: "URL"),
-              const MenuUrl(),
-              // メモ
-              const ColumnPadding(height: 16.0),
-              const Label(text: "メモ"),
-              const MenuMemo(),
-              // 戻るボタン
-              const ColumnPadding(height: 16.0),
-              ButtonExpanded(
-                text: "前の画面へ",
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                backgroundColor: const Color(cancel),
-              ),
-              //追加ボタン
-              const ColumnPadding(height: 16.0),
-              ButtonExpanded(
-                text: "追加",
-                onPressed: () async {
-                  if (vm.isValidMenuData()) {
-                    await vm.addMenuData();
-                    Navigator.of(context).popUntil((route) => route.isFirst);
-                  }
-                },
-                backgroundColor: vm.isValidMenuData()
-                    ? const Color(green)
-                    : const Color(cancel),
-              ),
-              const ColumnPadding(height: 30.0),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                // 星
+                const ColumnPadding(height: 16.0),
+                const Label(text: "お気に入り"),
+                const ColumnPadding(height: 8.0),
+                const MenuRate(),
+                // 料理した日
+                const ColumnPadding(height: 16.0),
+                const Label(text: "料理した日"),
+                const ColumnPadding(height: 8.0),
+                const MenuDatePicker(),
+                // URL
+                const ColumnPadding(height: 16.0),
+                const Label(text: "URL"),
+                const ColumnPadding(height: 8.0),
+                const MenuUrl(),
+                // コメント
+                const ColumnPadding(height: 16.0),
+                const Label(text: "コメント"),
+                const ColumnPadding(height: 8.0),
+                const MenuMemo(),
+                const ColumnPadding(height: 24.0),
+                // 戻るボタン
+                ButtonExpanded(
+                  text: "前の画面へ",
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  backgroundColor: const Color(cancel),
+                ),
+                //追加ボタン
+                const ColumnPadding(height: 16.0),
+                ButtonExpanded(
+                  text: "追加",
+                  onPressed: () async {
+                    if (vm.isValidMenuData()) {
+                      await vm.addMenuData();
+                      Navigator.of(context).popUntil((route) => route.isFirst);
+                    }
+                  },
+                  backgroundColor: vm.isValidMenuData()
+                      ? const Color(green)
+                      : const Color(cancel),
+                ),
+                const ColumnPadding(height: 30.0),
+              ],
+            ),
           ),
         ),
       ),

@@ -18,8 +18,8 @@ class MenuDatePicker extends ConsumerWidget {
       child: Container(
         decoration: BoxDecoration(
             border: Border.all(color: const Color(textColor), width: 0.5),
-            borderRadius: BorderRadius.circular(16)),
-        height: 56,
+            borderRadius: BorderRadius.circular(8)),
+        height: 42,
         width: double.infinity,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),

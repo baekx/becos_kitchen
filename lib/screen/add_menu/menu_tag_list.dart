@@ -34,13 +34,13 @@ class _AddMenuTagState extends ConsumerState {
             .map(
               (menuTag) => Padding(
                 padding:
-                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                    const EdgeInsets.symmetric(vertical: 4.0, horizontal: 4.0),
                 child: FilterChip(
                   label: Text(
                     menuTag.name,
                     style: const TextStyle(color: Colors.white, fontSize: 14),
                   ),
-                  backgroundColor: const Color(cancel),
+                  backgroundColor: const Color(textColor),
                   selected: vm.hasTag(menuTag),
                   selectedColor: const Color(mainRed),
                   showCheckmark: false,

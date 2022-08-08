@@ -19,8 +19,6 @@ class MenuTitle extends ConsumerWidget {
               borderRadius: BorderRadius.circular(8),
               borderSide:
                   const BorderSide(color: Color(textColor), width: 0.5)),
-          // labelStyle: const TextStyle(fontSize: 12, color: Color(textColor)),
-          floatingLabelStyle: const TextStyle(fontSize: 14),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide:

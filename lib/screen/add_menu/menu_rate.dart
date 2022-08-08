@@ -18,7 +18,7 @@ class MenuRate extends ConsumerWidget {
               ),
           initialRating: 3.0,
           itemPadding: const EdgeInsets.symmetric(horizontal: 16.0),
-          itemSize: 36.0,
+          itemSize: 32.0,
           onRatingUpdate: (rating) {
             vm.setRate(rating.toInt());
           }),

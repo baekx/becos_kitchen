@@ -47,7 +47,7 @@ class AddMenuFirstPage extends ConsumerWidget {
               mainAxisSize: MainAxisSize.max,
               children: [
                 // 写真
-                const ColumnPadding(height: 8.0),
+                const ColumnPadding(height: 16.0),
                 const Label(text: "写真"),
                 const ColumnPadding(height: 8.0),
                 const MenuImage(),
