@@ -1,4 +1,5 @@
 import 'package:becos_kitchen/common/material_color.dart';
+import 'package:becos_kitchen/screen/common/row_padding.dart';
 import 'package:becos_kitchen/view_model/menu_detail_vm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -24,6 +25,7 @@ class MenuDetailRating extends ConsumerWidget {
             ),
           ),
         ),
+        const RowPadding(width: 8),
         RatingBar.builder(
           itemBuilder: (context, _) => const Icon(
             Icons.star,
