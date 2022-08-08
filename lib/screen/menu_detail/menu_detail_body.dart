@@ -2,7 +2,7 @@ import 'package:becos_kitchen/common/material_color.dart';
 import 'package:becos_kitchen/component/menu_tag.dart';
 import 'package:becos_kitchen/ext/date_ext.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
-import 'package:becos_kitchen/screen/common/row_padding.dart';
+import 'package:becos_kitchen/screen/menu_detail/menu_detail_comment_cell.dart';
 import 'package:becos_kitchen/screen/menu_detail/menu_detail_rating.dart';
 import 'package:becos_kitchen/view_model/menu_detail_vm.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +22,7 @@ class MenuDetailBody extends ConsumerWidget {
           Image.network(
             menu.image,
             width: double.infinity,
-            height: 300,
+            height: 240,
             fit: BoxFit.cover,
           ),
           Padding(
@@ -48,10 +48,9 @@ class MenuDetailBody extends ConsumerWidget {
                 const ColumnPadding(height: 24),
                 // お気に入り
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MenuDetailRating(),
-                    const RowPadding(width: 16.0),
                     MenuDetailRating(),
                   ],
                 ),
@@ -72,6 +71,10 @@ class MenuDetailBody extends ConsumerWidget {
                   'コメント',
                   style: TextStyle(fontSize: 12, color: Color(textColor)),
                 ),
+                const ColumnPadding(height: 8),
+                MenuDetailCommentCell(),
+                MenuDetailCommentCell(),
+                MenuDetailCommentCell(),
               ],
             ),
           )

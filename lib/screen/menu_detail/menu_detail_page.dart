@@ -19,17 +19,19 @@ class MenuDetailPage extends StatelessWidget {
       ],
       child: Scaffold(
         appBar: AppBar(
-            title: const Text(
-              '詳細',
-              style: TextStyle(color: Color(textColor)),
-            ),
-            automaticallyImplyLeading: false,
-            centerTitle: true,
-            leading: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: SvgPicture.asset('assets/icons/backArrow.svg'))),
+          title: const Text(
+            '詳細',
+            style: TextStyle(color: Color(textColor)),
+          ),
+          automaticallyImplyLeading: false,
+          centerTitle: true,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: SvgPicture.asset('assets/icons/backArrow.svg'),
+          ),
+        ),
         body: const MenuDetailBody(),
       ),
     );
