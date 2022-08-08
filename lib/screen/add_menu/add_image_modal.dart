@@ -1,13 +1,17 @@
 import 'package:becos_kitchen/common/material_color.dart';
 import 'package:becos_kitchen/screen/common/button_expanded.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
+import 'package:becos_kitchen/view_model/add_menu_page_vm.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
-class AddImageModal extends StatelessWidget {
+class AddImageModal extends ConsumerWidget {
   const AddImageModal({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final vm = ref.watch(addMenuViewModelProvider.notifier);
     return Column(
       children: [
         const ColumnPadding(height: 24),
@@ -15,13 +19,18 @@ class AddImageModal extends StatelessWidget {
         const ColumnPadding(height: 24),
         _ExpandedButtonWithBorder(
           text: 'カメラを起動',
-          onPressed: () {},
+          onPressed: () async {
+            await vm.setImage(ImageSource.camera);
+            Navigator.of(context).pop();
+          },
         ),
         const ColumnPadding(height: 16),
         _ExpandedButtonWithBorder(
-          text: 'ライブラリから選択',
-          onPressed: () {},
-        ),
+            text: 'ライブラリから選択',
+            onPressed: () async {
+              await vm.setImage(ImageSource.gallery);
+              Navigator.of(context).pop();
+            }),
         const ColumnPadding(height: 16),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -32,7 +41,7 @@ class AddImageModal extends StatelessWidget {
               Navigator.of(context).pop();
             },
           ),
-        )
+        ),
       ],
     );
   }

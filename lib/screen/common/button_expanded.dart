@@ -25,7 +25,12 @@ class ButtonExpanded extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          style: ElevatedButton.styleFrom(primary: backgroundColor),
+          style: ElevatedButton.styleFrom(
+            primary: backgroundColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
         ));
   }
 }
