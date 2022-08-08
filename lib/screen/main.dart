@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:becos_kitchen/common/material_color.dart';
 import 'package:becos_kitchen/firebase_options.dart';
-import 'package:becos_kitchen/screen/menu_list/menu_list_page.dart';
+import 'package:becos_kitchen/screen/login/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -31,7 +31,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: customSwatch,
           iconTheme: const IconThemeData.fallback()
               .copyWith(color: const Color(green))),
-      home: const MenuListPage(),
+      // home: const MenuListPage(),
+      home: const LoginPage(),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
