@@ -14,19 +14,17 @@ class MenuMemo extends ConsumerWidget {
     return TextFormField(
       decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(8),
               borderSide:
                   const BorderSide(color: Color(textColor), width: 0.5)),
-          labelStyle: const TextStyle(fontSize: 12, color: Color(textColor)),
-          floatingLabelStyle: const TextStyle(fontSize: 14),
           enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(8),
               borderSide:
                   const BorderSide(color: Color(textColor), width: 0.5))),
       onChanged: (text) {
         vm.setMemo(text);
       },
-      maxLines: 10,
+      maxLines: 6,
     );
   }
 }

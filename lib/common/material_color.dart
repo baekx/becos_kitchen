@@ -15,6 +15,9 @@ const MaterialColor customSwatch = MaterialColor(_mainColor, <int, Color>{
 });
 
 const int green = 0xFF588C7E;
+const int lightGreen = 0xffEEF3F2;
 const int textColor = 0xFF85837E;
+const int textBlack = 0xFF5C5A53;
 const int cancel = 0xFFADACA9;
 const int mainRed = 0xFFAF5F56;
+const int starYellow = 0xffF2C530;
