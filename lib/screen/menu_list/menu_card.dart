@@ -26,7 +26,7 @@ class MenuCard extends StatelessWidget {
         );
       },
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -38,7 +38,7 @@ class MenuCard extends StatelessWidget {
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                   child: SizedBox(
                     width: size.width / 2,
-                    height: size.width / 2,
+                    height: 160,
                     child: Image.network(
                       menu.image,
                       fit: BoxFit.cover,

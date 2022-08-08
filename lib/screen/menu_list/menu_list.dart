@@ -9,9 +9,9 @@ class MenuList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: GridView.count(
-        childAspectRatio: 0.6,
+        childAspectRatio: 0.60,
         crossAxisCount: 2,
         children: menuList.map((menu) {
           return MenuCard(menu: menu);
