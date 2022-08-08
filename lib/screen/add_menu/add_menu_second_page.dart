@@ -23,17 +23,16 @@ class AddMenuSecondPage extends ConsumerWidget {
         appBar: AppBar(
           title: const Text(
             "料理を追加",
-            style: TextStyle(color: Color(green)),
+            style: TextStyle(color: Color(textBlack)),
           ),
           automaticallyImplyLeading: false,
           centerTitle: true,
-          actions: [
-            IconButton(
-                icon: SvgPicture.asset('assets/icons/cancel.svg'),
-                onPressed: () {
-                  Navigator.of(context).popUntil((route) => route.isFirst);
-                })
-          ],
+          leading: IconButton(
+            icon: SvgPicture.asset('assets/icons/cancel.svg'),
+            onPressed: () {
+              Navigator.of(context).popUntil((route) => route.isFirst);
+            },
+          ),
         ),
         resizeToAvoidBottomInset: false,
         body: Padding(
@@ -45,7 +44,7 @@ class AddMenuSecondPage extends ConsumerWidget {
               children: [
                 // 星
                 const ColumnPadding(height: 16.0),
-                const Label(text: "お気に入り"),
+                const Label(text: "お気に入り度"),
                 const ColumnPadding(height: 8.0),
                 const MenuRate(),
                 // 料理した日
