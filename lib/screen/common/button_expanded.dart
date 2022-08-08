@@ -15,12 +15,13 @@ class ButtonExpanded extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
         width: double.infinity,
-        height: 48,
+        height: 42,
         child: ElevatedButton(
           onPressed: onPressed,
           child: Text(
             text,
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold),
           ),
           style: ElevatedButton.styleFrom(primary: backgroundColor),
         ));

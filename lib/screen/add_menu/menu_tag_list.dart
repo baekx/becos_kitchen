@@ -13,7 +13,7 @@ class MenuTagList extends ConsumerWidget {
         width: double.maxFinite,
         decoration: BoxDecoration(
             border: Border.all(width: 0.5, color: const Color(textColor)),
-            borderRadius: const BorderRadius.all(Radius.circular(16))),
+            borderRadius: const BorderRadius.all(Radius.circular(8))),
         child: const AddMenuTag());
   }
 }
@@ -34,7 +34,7 @@ class _AddMenuTagState extends ConsumerState {
             .map(
               (menuTag) => Padding(
                 padding:
-                    const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
                 child: FilterChip(
                   label: Text(
                     menuTag.name,
