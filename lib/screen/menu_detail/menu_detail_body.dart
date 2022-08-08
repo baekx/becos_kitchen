@@ -1,7 +1,7 @@
 import 'package:becos_kitchen/common/material_color.dart';
-import 'package:becos_kitchen/component/menu_tag.dart';
 import 'package:becos_kitchen/ext/date_ext.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
+import 'package:becos_kitchen/screen/common/menu_tag_red_label.dart';
 import 'package:becos_kitchen/screen/menu_detail/menu_detail_comment_cell.dart';
 import 'package:becos_kitchen/screen/menu_detail/menu_detail_rating.dart';
 import 'package:becos_kitchen/view_model/menu_detail_vm.dart';
@@ -41,8 +41,9 @@ class MenuDetailBody extends ConsumerWidget {
                   alignment: Alignment.centerLeft,
                   child: Wrap(
                     spacing: 16.0,
-                    children:
-                        menu.tag.map((tag) => MenuTag(label: tag)).toList(),
+                    children: menu.tag
+                        .map((tag) => MenuTagRedLabel(label: tag))
+                        .toList(),
                   ),
                 ),
                 const ColumnPadding(height: 24),
