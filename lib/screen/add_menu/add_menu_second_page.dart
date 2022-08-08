@@ -65,7 +65,7 @@ class AddMenuSecondPage extends ConsumerWidget {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                backgroundColor: Color(cancel),
+                backgroundColor: const Color(cancel),
               ),
               //追加ボタン
               const ColumnPadding(height: 16.0),

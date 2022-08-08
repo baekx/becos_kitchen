@@ -1,10 +1,9 @@
 import 'package:becos_kitchen/common/material_color.dart';
+import 'package:becos_kitchen/ext/date_ext.dart';
 import 'package:becos_kitchen/view_model/add_menu_page_vm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'package:intl/intl.dart';
 
 class MenuDatePicker extends ConsumerWidget {
   const MenuDatePicker({Key? key}) : super(key: key);
@@ -13,9 +12,9 @@ class MenuDatePicker extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(addMenuViewModelProvider);
     final vm = ref.watch(addMenuViewModelProvider.notifier);
-    initializeDateFormatting('ja');
+    // initializeDateFormatting('ja');
     // TODO: VM
-    final dateString = DateFormat.yMMMEd('ja').format(state.createdAt!);
+    // final dateString = DateFormat.yMMMEd('ja').format(state.createdAt!);
 
     return GestureDetector(
       onTap: () => vm.onTapDatePicker(context),
@@ -42,7 +41,7 @@ class MenuDatePicker extends ConsumerWidget {
               Expanded(
                 child: Center(
                   child: Text(
-                    dateString,
+                    state.createdAt.dateOfMonthWithWeek(),
                     style: const TextStyle(fontSize: 16),
                   ),
                 ),

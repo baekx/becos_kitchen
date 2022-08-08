@@ -1,4 +1,5 @@
 import 'package:becos_kitchen/component/menu_tag.dart';
+import 'package:becos_kitchen/ext/date_ext.dart';
 import 'package:becos_kitchen/screen/add_menu/label.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
 import 'package:becos_kitchen/screen/common/row_padding.dart';
@@ -58,8 +59,8 @@ class MenuDetailBody extends ConsumerWidget {
                 // 料理した日
                 const Label(text: "料理した日"),
                 Text(
-                  menu.createdAt.toString(),
-                  style: TextStyle(fontSize: 16),
+                  menu.createdAt.dateOfMonth(),
+                  style: const TextStyle(fontSize: 16),
                 )
               ],
             ),
