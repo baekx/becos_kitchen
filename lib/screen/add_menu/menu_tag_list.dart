@@ -13,7 +13,7 @@ class MenuTagList extends ConsumerWidget {
         width: double.maxFinite,
         decoration: BoxDecoration(
             border: Border.all(width: 0.5, color: const Color(textColor)),
-            borderRadius: BorderRadius.all(Radius.circular(16))),
+            borderRadius: const BorderRadius.all(Radius.circular(16))),
         child: const AddMenuTag());
   }
 }

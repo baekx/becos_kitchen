@@ -1,3 +1,4 @@
+import 'package:becos_kitchen/common/material_color.dart';
 import 'package:becos_kitchen/component/menu_tag.dart';
 import 'package:becos_kitchen/model/menu_model.dart';
 import 'package:becos_kitchen/screen/menu_detail/menu_detail.dart';
@@ -54,13 +55,13 @@ class MenuCard extends StatelessWidget {
                   child: RatingBar.builder(
                       itemBuilder: (context, _) => const Icon(
                             Icons.star,
-                            color: Color(0xffF2C530),
+                            color: Color(starYellow),
                           ),
                       itemCount: 5,
                       itemSize: 16.0,
                       initialRating: menu.rate.toDouble(),
                       ignoreGestures: true,
-                      onRatingUpdate: (rating) {}),
+                      onRatingUpdate: (_) {}),
                 )
               ],
             ),

@@ -1,8 +1,10 @@
 import 'package:becos_kitchen/common/material_color.dart';
 import 'package:becos_kitchen/component/menu_tag.dart';
 import 'package:becos_kitchen/model/menu_model.dart';
+import 'package:becos_kitchen/screen/common/row_padding.dart';
 import 'package:becos_kitchen/view_model/menu_detail_vm.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -67,8 +69,53 @@ class _MenuDetailBody extends ConsumerWidget {
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _MenuDetailRating(),
+                const RowPadding(width: 16.0),
+                _MenuDetailRating(),
+              ],
+            ),
+          )
         ],
       ),
+    );
+  }
+}
+
+class _MenuDetailRating extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final menu = ref.watch(menuDetailViewModelProvider);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          width: 40,
+          height: 40,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            image: DecorationImage(
+              fit: BoxFit.fill,
+              image: AssetImage('assets/images/icon_baek.jpg'),
+            ),
+          ),
+        ),
+        RatingBar.builder(
+          itemBuilder: (context, _) => const Icon(
+            Icons.star,
+            color: Color(starYellow),
+          ),
+          itemCount: 5,
+          itemSize: 24,
+          initialRating: menu.rate.toDouble(),
+          ignoreGestures: true,
+          onRatingUpdate: (_) {},
+        )
+      ],
     );
   }
 }

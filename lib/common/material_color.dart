@@ -18,3 +18,4 @@ const int green = 0xFF588C7E;
 const int textColor = 0xFF85837E;
 const int cancel = 0xFFADACA9;
 const int mainRed = 0xFFAF5F56;
+const int starYellow = 0xffF2C530;
