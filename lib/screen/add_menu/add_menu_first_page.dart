@@ -8,6 +8,7 @@ import 'package:becos_kitchen/screen/add_menu/menu_tag_list.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_title.dart';
 import 'package:becos_kitchen/screen/common/button_expanded.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
+import 'package:becos_kitchen/screen/common/custom_alert_dialog.dart';
 import 'package:becos_kitchen/view_model/add_menu_page_vm.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,16 @@ class AddMenuFirstPage extends ConsumerWidget {
           leading: IconButton(
             icon: SvgPicture.asset('assets/icons/cancel.svg'),
             onPressed: () {
-              Navigator.of(context).pop();
+              showDialog(
+                  context: context,
+                  builder: (_) {
+                    return CustomAlertDialog(
+                      onPressedEnd: () {
+                        Navigator.of(context)
+                            .popUntil((route) => route.isFirst);
+                      },
+                    );
+                  });
             },
           ),
         ),

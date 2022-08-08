@@ -12,7 +12,6 @@ class MenuImage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(addMenuViewModelProvider);
-    final vm = ref.watch(addMenuViewModelProvider.notifier);
     return GestureDetector(
       onTap: () {
         showModalBottomSheet(
@@ -23,7 +22,7 @@ class MenuImage extends ConsumerWidget {
             borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           ),
           builder: (BuildContext context) {
-            return Container(height: 240, child: const AddImageModal());
+            return const SizedBox(height: 240, child: AddImageModal());
           },
         );
       },
