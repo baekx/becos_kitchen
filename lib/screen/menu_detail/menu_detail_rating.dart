@@ -1,4 +1,6 @@
 import 'package:becos_kitchen/common/material_color.dart';
+import 'package:becos_kitchen/model/user.dart';
+import 'package:becos_kitchen/screen/common/circle_user_avatar.dart';
 import 'package:becos_kitchen/screen/common/row_padding.dart';
 import 'package:becos_kitchen/view_model/menu_detail_vm.dart';
 import 'package:flutter/material.dart';
@@ -14,16 +16,9 @@ class MenuDetailRating extends ConsumerWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          width: 40,
-          height: 40,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-              fit: BoxFit.fill,
-              image: AssetImage('assets/images/icon_baek.jpg'),
-            ),
-          ),
+        CircleUserAvatar(
+          size: 40,
+          user: User.akane,
         ),
         const RowPadding(width: 8),
         RatingBar.builder(
