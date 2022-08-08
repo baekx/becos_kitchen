@@ -13,14 +13,14 @@ class MenuTitle extends ConsumerWidget {
     final vm = ref.watch(addMenuViewModelProvider.notifier);
     return TextFormField(
       decoration: InputDecoration(
+          isDense: true,
+          contentPadding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
           focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(8),
               borderSide:
                   const BorderSide(color: Color(textColor), width: 0.5)),
-          labelStyle: const TextStyle(fontSize: 12, color: Color(textColor)),
-          floatingLabelStyle: const TextStyle(fontSize: 14),
           enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(8),
               borderSide:
                   const BorderSide(color: Color(textColor), width: 0.5))),
       onChanged: (text) {

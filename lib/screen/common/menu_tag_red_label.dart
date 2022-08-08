@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MenuTag extends StatelessWidget {
-  const MenuTag({Key? key, required this.label}) : super(key: key);
+class MenuTagRedLabel extends StatelessWidget {
+  const MenuTagRedLabel({Key? key, required this.label}) : super(key: key);
 
   final String label;
   // final Color color;
@@ -15,7 +15,7 @@ class MenuTag extends StatelessWidget {
             label,
             style: const TextStyle(color: Colors.white, fontSize: 10),
           ),
-          backgroundColor: Color(0xffAF5F56),
+          backgroundColor: const Color(0xffAF5F56),
           materialTapTargetSize:
               MaterialTapTargetSize.shrinkWrap, // 追加：上下の余計なmarginを削除
           labelPadding: const EdgeInsets.symmetric(

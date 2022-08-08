@@ -8,6 +8,7 @@ import 'package:becos_kitchen/screen/add_menu/menu_tag_list.dart';
 import 'package:becos_kitchen/screen/add_menu/menu_title.dart';
 import 'package:becos_kitchen/screen/common/button_expanded.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
+import 'package:becos_kitchen/screen/common/custom_alert_dialog.dart';
 import 'package:becos_kitchen/view_model/add_menu_page_vm.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,50 +28,63 @@ class AddMenuFirstPage extends ConsumerWidget {
         appBar: AppBar(
           title: const Text(
             "料理を追加",
-            style: TextStyle(color: Color(green)),
+            style: TextStyle(color: Color(textBlack)),
           ),
           automaticallyImplyLeading: false,
           centerTitle: true,
-          actions: [
-            IconButton(
-              icon: SvgPicture.asset('assets/icons/cancel.svg'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            )
-          ],
+          leading: IconButton(
+            icon: SvgPicture.asset('assets/icons/cancel.svg'),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (_) {
+                  return CustomAlertDialog(
+                    onPressedEnd: () {
+                      Navigator.of(context).popUntil((route) => route.isFirst);
+                    },
+                  );
+                },
+              );
+            },
+          ),
         ),
         resizeToAvoidBottomInset: false,
-        body: Padding(
-          padding: const EdgeInsets.only(left: 24.0, right: 24.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              // 写真
-              const ColumnPadding(height: 8.0),
-              const Label(text: "写真"),
-              const MenuImage(),
-              // タイトル
-              const ColumnPadding(height: 8.0),
-              const Label(text: "タイトル"),
-              const MenuTitle(),
-              // タグ
-              const ColumnPadding(height: 8.0),
-              const Label(text: "タグ"),
-              const MenuTagList(),
-              // 次へボタン
-              const ColumnPadding(height: 24.0),
-              ButtonExpanded(
-                text: "次へ",
-                onPressed: () {
-                  Navigator.of(context).push(CupertinoPageRoute(
-                    builder: (context) => const AddMenuSecondPage(),
-                  ));
-                },
-                backgroundColor: const Color(green),
-              ),
-            ],
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 24.0, right: 24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                // 写真
+                const ColumnPadding(height: 16.0),
+                const Label(text: "写真"),
+                const ColumnPadding(height: 8.0),
+                const MenuImage(),
+                // タイトル
+                const ColumnPadding(height: 12.0),
+                const Label(text: "タイトル"),
+                const ColumnPadding(height: 8.0),
+                const MenuTitle(),
+                // タグ
+                const ColumnPadding(height: 8.0),
+                const Label(text: "タグ"),
+                const ColumnPadding(height: 8.0),
+                const MenuTagList(),
+                // 次へボタン
+                const ColumnPadding(height: 24.0),
+                ButtonExpanded(
+                  text: "次へ",
+                  onPressed: () {
+                    Navigator.of(context).push(CupertinoPageRoute(
+                      builder: (context) => const AddMenuSecondPage(),
+                    ));
+                  },
+                  backgroundColor: const Color(green),
+                ),
+                const ColumnPadding(height: 24.0),
+              ],
+            ),
           ),
         ),
       ),

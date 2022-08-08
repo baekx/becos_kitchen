@@ -1,6 +1,6 @@
 import 'package:becos_kitchen/common/material_color.dart';
 import 'package:becos_kitchen/screen/add_menu/add_menu_first_page.dart';
-import 'package:becos_kitchen/screen/menu_list/menu_list.dart';
+import 'package:becos_kitchen/screen/menu_list/menu_list_body.dart';
 import 'package:becos_kitchen/screen/menu_list/menu_list_header.dart';
 import 'package:becos_kitchen/view_model/menu_list_vm.dart';
 import 'package:flutter/material.dart';
@@ -37,24 +37,8 @@ class MenuListPage extends ConsumerWidget {
         onRefresh: () async {
           await vm.getMenuList();
         },
-        child: _MenuList(),
+        child: const MenuListBody(),
       ),
     );
-  }
-}
-
-class _MenuList extends ConsumerWidget {
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final menuList = ref.watch(menuListViewModelProvider);
-
-    return menuList.when(
-        data: (data) => MenuList(menuList: data),
-        error: (_, stackTrace) => const Center(
-              child: Text('データ取得に失敗しました'),
-            ),
-        loading: () => const Center(
-              child: CircularProgressIndicator(),
-            ));
   }
 }
