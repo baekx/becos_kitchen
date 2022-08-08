@@ -36,15 +36,15 @@ class AddMenuFirstPage extends ConsumerWidget {
             icon: SvgPicture.asset('assets/icons/cancel.svg'),
             onPressed: () {
               showDialog(
-                  context: context,
-                  builder: (_) {
-                    return CustomAlertDialog(
-                      onPressedEnd: () {
-                        Navigator.of(context)
-                            .popUntil((route) => route.isFirst);
-                      },
-                    );
-                  });
+                context: context,
+                builder: (_) {
+                  return CustomAlertDialog(
+                    onPressedEnd: () {
+                      Navigator.of(context).popUntil((route) => route.isFirst);
+                    },
+                  );
+                },
+              );
             },
           ),
         ),
