@@ -91,6 +91,10 @@ class AddMenuViewModel extends StateNotifier<AddMenuState> {
     state = state.copyWith(memo: newMemo);
   }
 
+  bool isValidMenuData() {
+    return state.imageFile != null && state.name?.isNotEmpty == true;
+  }
+
   Future<void> addMenuData() async {
     _menuRepository.addMenuData(state);
   }

@@ -1,6 +1,6 @@
+import 'package:becos_kitchen/common/material_color.dart';
 import 'package:becos_kitchen/component/menu_tag.dart';
 import 'package:becos_kitchen/ext/date_ext.dart';
-import 'package:becos_kitchen/screen/add_menu/label.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
 import 'package:becos_kitchen/screen/common/row_padding.dart';
 import 'package:becos_kitchen/screen/menu_detail/menu_detail_rating.dart';
@@ -35,7 +35,7 @@ class MenuDetailBody extends ConsumerWidget {
                   menu.name,
                   style: const TextStyle(fontSize: 20),
                 ),
-                ColumnPadding(height: 16),
+                const ColumnPadding(height: 16),
                 // タグ
                 Container(
                   alignment: Alignment.centerLeft,
@@ -45,7 +45,7 @@ class MenuDetailBody extends ConsumerWidget {
                         menu.tag.map((tag) => MenuTag(label: tag)).toList(),
                   ),
                 ),
-                ColumnPadding(height: 24),
+                const ColumnPadding(height: 24),
                 // お気に入り
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -55,13 +55,23 @@ class MenuDetailBody extends ConsumerWidget {
                     MenuDetailRating(),
                   ],
                 ),
-                ColumnPadding(height: 16),
+                const ColumnPadding(height: 16),
                 // 料理した日
-                const Label(text: "料理した日"),
+                const Text(
+                  '料理した日',
+                  style: TextStyle(fontSize: 12, color: Color(textColor)),
+                ),
+                const ColumnPadding(height: 16),
                 Text(
                   menu.createdAt.dateOfMonth(),
                   style: const TextStyle(fontSize: 16),
-                )
+                ),
+                const ColumnPadding(height: 24),
+                // コメント
+                const Text(
+                  'コメント',
+                  style: TextStyle(fontSize: 12, color: Color(textColor)),
+                ),
               ],
             ),
           )

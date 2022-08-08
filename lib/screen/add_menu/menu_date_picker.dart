@@ -12,9 +12,6 @@ class MenuDatePicker extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(addMenuViewModelProvider);
     final vm = ref.watch(addMenuViewModelProvider.notifier);
-    // initializeDateFormatting('ja');
-    // TODO: VM
-    // final dateString = DateFormat.yMMMEd('ja').format(state.createdAt!);
 
     return GestureDetector(
       onTap: () => vm.onTapDatePicker(context),
@@ -35,7 +32,7 @@ class MenuDatePicker extends ConsumerWidget {
                   height: 24,
                 ),
                 onPressed: () {
-                  // Navigator.of(context).pop();
+                  vm.onTapDatePicker(context);
                 },
               ),
               Expanded(
