@@ -1,7 +1,7 @@
 import 'package:becos_kitchen/common/material_color.dart';
 import 'package:becos_kitchen/component/menu_tag.dart';
 import 'package:becos_kitchen/model/menu_model.dart';
-import 'package:becos_kitchen/screen/menu_detail/menu_detail.dart';
+import 'package:becos_kitchen/screen/menu_detail/menu_detail_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
