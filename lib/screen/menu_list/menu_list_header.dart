@@ -1,11 +1,15 @@
+import 'package:becos_kitchen/screen/common/circle_user_avatar.dart';
+import 'package:becos_kitchen/view_model/menu_list_vm.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class MenuListHeader extends StatelessWidget {
+class MenuListHeader extends ConsumerWidget {
   const MenuListHeader({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final vm = ref.watch(menuListViewModelProvider.notifier);
     return AppBar(
       toolbarHeight: 80,
       title: Row(
@@ -34,6 +38,10 @@ class MenuListHeader extends StatelessWidget {
             ),
           ),
           IconButton(
+            onPressed: () {},
+            icon: CircleUserAvatar(size: 40, user: vm.getUser()),
+          ),
+          IconButton(
               onPressed: () {},
               icon: SvgPicture.asset(
                 'assets/icons/filter.svg',
@@ -41,12 +49,13 @@ class MenuListHeader extends StatelessWidget {
                 height: 16,
               )),
           IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(
-                'assets/icons/sort.svg',
-                width: 16,
-                height: 16,
-              )),
+            onPressed: () {},
+            icon: SvgPicture.asset(
+              'assets/icons/sort.svg',
+              width: 16,
+              height: 16,
+            ),
+          ),
         ],
       ),
     );

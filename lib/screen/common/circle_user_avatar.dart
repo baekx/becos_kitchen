@@ -2,10 +2,10 @@ import 'package:becos_kitchen/model/user.dart';
 import 'package:flutter/material.dart';
 
 class CircleUserAvatar extends StatelessWidget {
-  const CircleUserAvatar({Key? key, required this.size, required this.user})
+  const CircleUserAvatar({Key? key, required this.size, this.user})
       : super(key: key);
   final double size;
-  final User user;
+  final User? user;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class CircleUserAvatar extends StatelessWidget {
         shape: BoxShape.circle,
         image: DecorationImage(
           fit: BoxFit.fill,
-          image: AssetImage(user.imagePath),
+          image: AssetImage(user?.imagePath ?? ''),
         ),
       ),
     );
