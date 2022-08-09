@@ -1,20 +1,20 @@
-// class LoginRepositoryImpl implements LoginRepository {
-//   LoginRepositoryImpl();
+import 'package:becos_kitchen/model/user.dart';
+import 'package:becos_kitchen/repository/login_repository.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-// final SharedPreferencesModule sharedPreferencesModule;
-// // final prefs =
-//
-// @override
-// void setUser(User user)  {
-//   final prefs = await sharedPreferencesModule.prefs;
-//   // sharedPreferencesProvider
-//   await prefs.setString('user', user.name);
-// }
-//
-// @override
-// Future<User> getUser() async {
-//   final prefs = await sharedPreferencesModule.prefs;
-//   final userName = prefs.getString('user');
-//   return User.values.firstWhere((element) => element.name == userName);
-// }
-// }
+class LoginRepositoryImpl implements LoginRepository {
+  LoginRepositoryImpl(this.prefs);
+
+  final SharedPreferences prefs;
+
+  @override
+  Future<void> setUser(User user) async {
+    await prefs.setString('user', user.name);
+  }
+
+  @override
+  User? getUser() {
+    final userName = prefs.getString('user');
+    return User.values.firstWhere((element) => element.name == userName);
+  }
+}
