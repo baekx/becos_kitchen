@@ -20,6 +20,8 @@ class MenuListHeader extends ConsumerWidget {
       automaticallyImplyLeading: false,
       toolbarHeight: 60,
       title: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           IconButton(
             onPressed: () {
