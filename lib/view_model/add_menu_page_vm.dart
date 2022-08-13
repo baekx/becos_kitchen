@@ -2,12 +2,11 @@ import 'dart:io';
 
 import 'package:becos_kitchen/di/repository_provider.dart';
 import 'package:becos_kitchen/model/add_menu_state.dart';
+import 'package:becos_kitchen/model/menu_tag.dart';
 import 'package:becos_kitchen/repository/menu_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
-
-import '../screen/add_menu/menu_tag_list.dart';
 
 final addMenuViewModelProvider =
     StateNotifierProvider.autoDispose<AddMenuViewModel, AddMenuState>(

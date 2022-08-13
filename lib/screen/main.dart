@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:becos_kitchen/common/material_color.dart';
 import 'package:becos_kitchen/firebase_options.dart';
-import 'package:becos_kitchen/screen/menu_list/menu_list_page.dart';
+import 'package:becos_kitchen/screen/login/auth_verification.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (Platform.isIOS) {
     await Firebase.initializeApp(
@@ -31,7 +31,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: customSwatch,
           iconTheme: const IconThemeData.fallback()
               .copyWith(color: const Color(green))),
-      home: const MenuListPage(),
+      // home: const MenuListPage(),
+      home: const AuthVerification(),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

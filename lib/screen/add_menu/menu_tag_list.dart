@@ -1,4 +1,5 @@
 import 'package:becos_kitchen/common/material_color.dart';
+import 'package:becos_kitchen/model/menu_tag.dart';
 import 'package:becos_kitchen/view_model/add_menu_page_vm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -45,6 +46,7 @@ class _AddMenuTagState extends ConsumerState {
                   selectedColor: const Color(mainRed),
                   showCheckmark: false,
                   onSelected: (bool value) {
+                    FocusManager.instance.primaryFocus?.unfocus();
                     setState(() {
                       if (value) {
                         vm.setTag(menuTag);
@@ -58,18 +60,4 @@ class _AddMenuTagState extends ConsumerState {
             )
             .toList());
   }
-}
-
-enum MenuTag {
-  japanese("和"),
-  western("洋"),
-  chinese("中華"),
-  ethnic("エスニック"),
-  cool("さっぱり"),
-  oily("こってり"),
-  luxury("豪華"),
-  quick("時短");
-
-  final String name;
-  const MenuTag(this.name);
 }
