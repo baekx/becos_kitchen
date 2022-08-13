@@ -6,6 +6,7 @@ import 'package:becos_kitchen/screen/common/menu_tag_red_label.dart';
 import 'package:becos_kitchen/screen/menu_detail/menu_detail_comment_cell.dart';
 import 'package:becos_kitchen/screen/menu_detail/menu_detail_rating.dart';
 import 'package:becos_kitchen/view_model/menu_detail_vm.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,11 +21,19 @@ class MenuDetailBody extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // 写真
-          Image.network(
-            menu.image,
+          CachedNetworkImage(
+            imageUrl: menu.image,
             width: double.infinity,
             height: 240,
             fit: BoxFit.cover,
+            progressIndicatorBuilder: (_, __, ___) =>
+                const CircularProgressIndicator(),
+            errorWidget: (c, url, error) {
+              return const Image(
+                image: AssetImage("assets/images/noImage.png"),
+                fit: BoxFit.cover,
+              );
+            },
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
