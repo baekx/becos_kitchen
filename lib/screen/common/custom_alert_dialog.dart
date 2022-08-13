@@ -4,17 +4,24 @@ import 'package:becos_kitchen/screen/common/row_padding.dart';
 import 'package:flutter/material.dart';
 
 class CustomAlertDialog extends StatelessWidget {
-  const CustomAlertDialog({Key? key, this.onPressedEnd}) : super(key: key);
+  const CustomAlertDialog(
+      {Key? key,
+      this.onPressedEnd,
+      required this.description,
+      required this.proceedButtonText})
+      : super(key: key);
   final VoidCallback? onPressedEnd;
+  final String description;
+  final String proceedButtonText;
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       content: Column(mainAxisSize: MainAxisSize.min, children: [
         const ColumnPadding(height: 16),
-        const Text(
-          '編集内容は保存されません。\n終了してよろしいですか？',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        Text(
+          description,
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,
         ),
         const ColumnPadding(height: 16),
@@ -28,8 +35,8 @@ class CustomAlertDialog extends StatelessWidget {
                 style:
                     ElevatedButton.styleFrom(primary: const Color(textColor)),
                 onPressed: onPressedEnd,
-                child: const Text(
-                  '終了',
+                child: Text(
+                  proceedButtonText,
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.white,

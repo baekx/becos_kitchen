@@ -39,6 +39,8 @@ class AddMenuFirstPage extends ConsumerWidget {
                 context: context,
                 builder: (_) {
                   return CustomAlertDialog(
+                    proceedButtonText: '終了',
+                    description: '編集内容は保存されません。\n終了してよろしいですか？',
                     onPressedEnd: () {
                       Navigator.of(context).popUntil((route) => route.isFirst);
                     },

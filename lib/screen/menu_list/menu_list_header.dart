@@ -1,5 +1,6 @@
 import 'package:becos_kitchen/model/user.dart';
 import 'package:becos_kitchen/screen/common/circle_user_avatar.dart';
+import 'package:becos_kitchen/screen/common/custom_alert_dialog.dart';
 import 'package:becos_kitchen/screen/common/row_padding.dart';
 import 'package:becos_kitchen/view_model/login_vm.dart';
 import 'package:becos_kitchen/view_model/menu_list_vm.dart';
@@ -20,8 +21,20 @@ class MenuListHeader extends ConsumerWidget {
       title: Row(
         children: [
           IconButton(
-            onPressed: () async {
-              await loginVm.signOut();
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (_) {
+                  return CustomAlertDialog(
+                    proceedButtonText: 'ログアウト',
+                    description: 'ログアウトしますか？',
+                    onPressedEnd: () async {
+                      await loginVm.signOut();
+                      Navigator.of(context).pop();
+                    },
+                  );
+                },
+              );
             },
             icon: CircleUserAvatar(size: 40, user: User.baek),
           ),
