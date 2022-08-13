@@ -2,6 +2,7 @@ import 'package:becos_kitchen/common/material_color.dart';
 import 'package:becos_kitchen/model/menu_model.dart';
 import 'package:becos_kitchen/screen/common/menu_tag_red_label.dart';
 import 'package:becos_kitchen/screen/menu_detail/menu_detail_page.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -39,13 +40,16 @@ class MenuCard extends StatelessWidget {
                   child: SizedBox(
                     width: size.width / 2,
                     height: 160,
-                    child: Image.network(
-                      menu.image,
+                    child: CachedNetworkImage(
+                      imageUrl: menu.image,
                       fit: BoxFit.cover,
-                      errorBuilder: (c, o, s) {
+                      progressIndicatorBuilder: (_, __, ___) =>
+                          const CircularProgressIndicator(),
+                      errorWidget: (c, url, error) {
                         return const Image(
-                            image: AssetImage("assets/images/noImage.png"),
-                            fit: BoxFit.cover);
+                          image: AssetImage("assets/images/noImage.png"),
+                          fit: BoxFit.cover,
+                        );
                       },
                     ),
                   ),

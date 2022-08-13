@@ -50,6 +50,7 @@ dependencies:
   intl: ^0.17.0
   shared_preferences: ^2.0.15
   firebase_auth: ^3.6.3
+  cached_network_image: ^3.2.1
 
 dev_dependencies:
   flutter_test:
