@@ -24,4 +24,8 @@ class LoginViewModel extends StateNotifier<User?> {
   Future<void> signIn(String email, String password) async {
     _loginRepository.signIn(email, password);
   }
+
+  Future<void> signOut() async {
+    _loginRepository.signOut();
+  }
 }
