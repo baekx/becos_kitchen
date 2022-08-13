@@ -2,6 +2,7 @@ import 'package:becos_kitchen/data/firebase_module.dart';
 import 'package:becos_kitchen/model/add_menu_state.dart';
 import 'package:becos_kitchen/model/menu_model.dart';
 import 'package:becos_kitchen/repository/menu_repository.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 class MenuRepositoryImpl implements MenuRepository {
@@ -10,12 +11,15 @@ class MenuRepositoryImpl implements MenuRepository {
   final FirebaseModule firebaseModule;
 
   @override
-  Future<List<MenuModel>> fetchMenuList() async {
+  Stream<QuerySnapshot<MenuModel>> menuListSnapshot() {
     final menuRef = firebaseModule.menuCollection.withConverter<MenuModel>(
         fromFirestore: (snapshot, _) => MenuModel.fromJson(snapshot.data()!),
         toFirestore: (menu, _) => menu.toJson());
-    final menuListSnapshot = await menuRef.get();
-    return menuListSnapshot.docs.map((doc) => doc.data()).toList();
+    final menuListSnapshot =
+        menuRef.orderBy('createdAt', descending: true).snapshots();
+    return menuListSnapshot;
+    // return menuListSnapshot.map((event) => event.docs.map((e) => e.data())).toList()
+    // return menuListSnapshot.docs.map((doc) => doc.data()).toList();
   }
 
   @override

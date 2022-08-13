@@ -4,19 +4,32 @@ import 'package:flutter/material.dart';
 
 class MenuList extends StatelessWidget {
   const MenuList({Key? key, required this.menuList}) : super(key: key);
-  final List<MenuModel> menuList;
+  final Stream<List<MenuModel>> menuList;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: GridView.count(
-        childAspectRatio: 0.60,
-        crossAxisCount: 2,
-        children: menuList.map((menu) {
-          return MenuCard(menu: menu);
-        }).toList(),
-      ),
+    return StreamBuilder<List<MenuModel>>(
+      stream: menuList,
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        if (snapshot.hasError) {
+          return const Text('エラーが発生しました');
+        }
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: GridView.count(
+            childAspectRatio: 0.60,
+            crossAxisCount: 2,
+            children: snapshot.requireData.map((menu) {
+              return MenuCard(menu: menu);
+            }).toList(),
+          ),
+        );
+      },
     );
   }
 }

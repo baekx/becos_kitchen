@@ -28,14 +28,12 @@ class MenuListPage extends ConsumerWidget {
               builder: (context) => const AddMenuFirstPage(),
               fullscreenDialog: true,
             ),
-          ).then((value) async {
-            await vm.getMenuList();
-          });
+          );
         },
       ),
       body: RefreshIndicator(
         onRefresh: () async {
-          await vm.getMenuList();
+          vm.getMenuList();
         },
         child: const MenuListBody(),
       ),
