@@ -1,14 +1,12 @@
 import 'dart:io';
 
 import 'package:becos_kitchen/common/material_color.dart';
-import 'package:becos_kitchen/data/shared_preferences_module.dart';
 import 'package:becos_kitchen/firebase_options.dart';
 import 'package:becos_kitchen/screen/login/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,11 +16,7 @@ Future<void> main() async {
   } else {
     await Firebase.initializeApp();
   }
-  runApp(ProviderScope(overrides: [
-    sharedPreferencesProvider.overrideWithValue(
-      await SharedPreferences.getInstance(),
-    )
-  ], child: MyApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

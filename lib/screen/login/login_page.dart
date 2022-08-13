@@ -1,10 +1,7 @@
 import 'package:becos_kitchen/common/material_color.dart';
-import 'package:becos_kitchen/model/user.dart';
-import 'package:becos_kitchen/screen/common/circle_user_avatar.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
 import 'package:becos_kitchen/screen/menu_list/menu_list_page.dart';
 import 'package:becos_kitchen/view_model/login_vm.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -13,58 +10,62 @@ class LoginPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final vm = ref.watch(loginViewModelProvider.notifier);
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: const BoxDecoration(color: Colors.white),
-      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        const DefaultTextStyle(
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: Color(textBlack),
+    final emailControllerProvider = ref.watch(emailControllerStateProvider);
+    final passwordControllerProvider =
+        ref.watch(passwordControllerStateProvider);
+
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(color: Colors.white),
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          const DefaultTextStyle(
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Color(textBlack),
+            ),
+            child: Text('ログイン'),
           ),
-          child: Text('ログイン'),
-        ),
-        const ColumnPadding(height: 8),
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            GestureDetector(
-              onTap: () {
-                vm.setUser(User.baek);
-                Navigator.push(
-                  context,
-                  CupertinoPageRoute(
-                    builder: (context) => const MenuListPage(),
-                  ),
-                );
-              },
-              child: const CircleUserAvatar(
-                size: 72,
-                user: User.baek,
-              ),
+          const ColumnPadding(height: 8),
+          TextFormField(
+            decoration: const InputDecoration(
+              prefixIcon: Icon(Icons.mail),
+              label: Text('メールアドレス'),
+              hintText: 'test@gmail.com',
             ),
-            GestureDetector(
-              onTap: () {
-                vm.setUser(User.akane);
-                Navigator.push(
-                  context,
-                  CupertinoPageRoute(
-                    builder: (context) => const MenuListPage(),
-                  ),
-                );
-              },
-              child: const CircleUserAvatar(
-                size: 72,
-                user: User.akane,
-              ),
+            controller: emailControllerProvider,
+            keyboardType: TextInputType.emailAddress,
+          ),
+          TextFormField(
+            decoration: const InputDecoration(
+              prefixIcon: Icon(Icons.lock),
+              label: Text('パスワード'),
+              hintText: 'password',
             ),
-          ],
-        ),
-      ]),
+            controller: passwordControllerProvider,
+            obscureText: true,
+          ),
+          ElevatedButton(
+              onPressed: () async {
+                try {
+                  await ref.read(loginViewModelProvider.notifier).signIn(
+                        emailControllerProvider.text,
+                        passwordControllerProvider.text,
+                      );
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                        builder: (context) => const MenuListPage()),
+                    (route) => false,
+                  );
+                } catch (e) {
+                  print('サインインエラー');
+                }
+              },
+              child: Text('送信'))
+        ]),
+      ),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:becos_kitchen/model/user.dart';
 import 'package:becos_kitchen/screen/common/circle_user_avatar.dart';
 import 'package:becos_kitchen/screen/common/row_padding.dart';
 import 'package:becos_kitchen/view_model/menu_list_vm.dart';
@@ -18,7 +19,7 @@ class MenuListHeader extends ConsumerWidget {
         children: [
           IconButton(
             onPressed: () {},
-            icon: CircleUserAvatar(size: 40, user: vm.getUser()),
+            icon: CircleUserAvatar(size: 40, user: User.baek),
           ),
           const Expanded(child: Center(child: Text('ホーム'))),
           // Expanded(

@@ -1,19 +1,27 @@
 import 'package:becos_kitchen/di/repository_provider.dart';
 import 'package:becos_kitchen/model/user.dart';
-import 'package:becos_kitchen/repository/login_repository.dart';
+import 'package:becos_kitchen/repository/user_repository.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final loginViewModelProvider =
-    StateNotifierProvider.autoDispose<LoginViewModel, User?>(
-        (ref) => LoginViewModel(ref.read(loginRepositoryProvider)));
+final userStateProvider =
+    StreamProvider((ref) => ref.watch(userRepositoryProvider).authStateChanges);
+
+final emailControllerStateProvider =
+    StateProvider.autoDispose((_) => TextEditingController(text: ''));
+
+final passwordControllerStateProvider =
+    StateProvider.autoDispose((_) => TextEditingController(text: ''));
+
+final loginViewModelProvider = StateNotifierProvider.autoDispose(
+    (ref) => LoginViewModel(ref.read(userRepositoryProvider)));
 
 class LoginViewModel extends StateNotifier<User?> {
   LoginViewModel(this._loginRepository) : super(null);
 
-  final LoginRepository _loginRepository;
+  final UserRepository _loginRepository;
 
-  Future<void> setUser(User user) async {
-    await _loginRepository.setUser(user);
-    state = user;
+  Future<void> signIn(String email, String password) async {
+    _loginRepository.signIn(email, password);
   }
 }
