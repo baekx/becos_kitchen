@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:becos_kitchen/common/material_color.dart';
 import 'package:becos_kitchen/firebase_options.dart';
-import 'package:becos_kitchen/screen/login/login_page.dart';
+import 'package:becos_kitchen/screen/login/auth_verification.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           iconTheme: const IconThemeData.fallback()
               .copyWith(color: const Color(green))),
       // home: const MenuListPage(),
-      home: const LoginPage(),
+      home: const AuthVerification(),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

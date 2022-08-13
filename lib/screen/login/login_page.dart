@@ -13,6 +13,7 @@ class LoginPage extends ConsumerWidget {
     final emailControllerProvider = ref.watch(emailControllerStateProvider);
     final passwordControllerProvider =
         ref.watch(passwordControllerStateProvider);
+    final state = ref.watch(userStateProvider).value;
 
     return Scaffold(
       body: Container(
@@ -50,15 +51,23 @@ class LoginPage extends ConsumerWidget {
           ElevatedButton(
               onPressed: () async {
                 try {
+                  if (emailControllerProvider.text.isEmpty) {
+                    throw 'メールアドレスを入力してください';
+                  }
+                  if (passwordControllerProvider.text.isEmpty) {
+                    throw 'パスワードを入力してください';
+                  }
                   await ref.read(loginViewModelProvider.notifier).signIn(
                         emailControllerProvider.text,
                         passwordControllerProvider.text,
                       );
-                  Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                        builder: (context) => const MenuListPage()),
-                    (route) => false,
-                  );
+                  if (state?.uid != null) {
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                          builder: (context) => const MenuListPage()),
+                      (route) => false,
+                    );
+                  }
                 } catch (e) {
                   print('サインインエラー');
                 }
