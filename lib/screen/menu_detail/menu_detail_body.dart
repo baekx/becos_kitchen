@@ -1,5 +1,6 @@
 import 'package:becos_kitchen/common/material_color.dart';
 import 'package:becos_kitchen/ext/date_ext.dart';
+import 'package:becos_kitchen/model/person.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
 import 'package:becos_kitchen/screen/common/menu_tag_red_label.dart';
 import 'package:becos_kitchen/screen/menu_detail/menu_detail_comment_cell.dart';
@@ -50,9 +51,9 @@ class MenuDetailBody extends ConsumerWidget {
                 // お気に入り
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    MenuDetailRating(),
-                    MenuDetailRating(),
+                  children: const [
+                    MenuDetailRating(Person.baek),
+                    MenuDetailRating(Person.akane),
                   ],
                 ),
                 const ColumnPadding(height: 16),

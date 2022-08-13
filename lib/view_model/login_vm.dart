@@ -1,4 +1,5 @@
 import 'package:becos_kitchen/di/repository_provider.dart';
+import 'package:becos_kitchen/model/person.dart';
 import 'package:becos_kitchen/repository/user_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,8 @@ final loginViewModelProvider = StateNotifierProvider.autoDispose(
 class LoginViewModel extends StateNotifier<User?> {
   LoginViewModel(this._loginRepository) : super(null);
 
+  // TODO: userStateProviderをvmに内包したい
+
   final UserRepository _loginRepository;
 
   Future<void> signIn(String email, String password) async {
@@ -27,5 +30,16 @@ class LoginViewModel extends StateNotifier<User?> {
 
   Future<void> signOut() async {
     _loginRepository.signOut();
+  }
+
+  String getUserIcon(String? uid) {
+    switch (uid) {
+      case 'UZEHS0qXu5YAe9cRGu6WFet7NSf1':
+        return Person.baek.imagePath;
+      case 'b30gb2uK3EZi41DevxI4Ls0z9u33':
+        return Person.akane.imagePath;
+      default:
+        return 'assets/images/noImage.png';
+    }
   }
 }

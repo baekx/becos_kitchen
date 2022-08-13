@@ -1,4 +1,3 @@
-import 'package:becos_kitchen/model/user.dart';
 import 'package:becos_kitchen/screen/common/circle_user_avatar.dart';
 import 'package:becos_kitchen/screen/common/custom_alert_dialog.dart';
 import 'package:becos_kitchen/screen/common/row_padding.dart';
@@ -15,6 +14,8 @@ class MenuListHeader extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final vm = ref.watch(menuListViewModelProvider.notifier);
     final loginVm = ref.watch(loginViewModelProvider.notifier);
+    final user = ref.watch(userStateProvider).value;
+
     return AppBar(
       automaticallyImplyLeading: false,
       toolbarHeight: 80,
@@ -36,7 +37,8 @@ class MenuListHeader extends ConsumerWidget {
                 },
               );
             },
-            icon: CircleUserAvatar(size: 40, user: User.baek),
+            icon: CircleUserAvatar(
+                size: 40, icon: loginVm.getUserIcon(user?.uid)),
           ),
           const Expanded(child: Center(child: Text('ホーム'))),
           IconButton(

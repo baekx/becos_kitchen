@@ -1,5 +1,4 @@
 import 'package:becos_kitchen/common/material_color.dart';
-import 'package:becos_kitchen/model/user.dart';
 import 'package:becos_kitchen/screen/common/circle_user_avatar.dart';
 import 'package:becos_kitchen/screen/common/row_padding.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,10 @@ class MenuDetailCommentCell extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CircleUserAvatar(size: 40, user: User.baek),
+          CircleUserAvatar(
+            size: 40,
+            icon: 'assets/images/icon_baek.jpg',
+          ),
           const RowPadding(width: 16),
           Expanded(
             child: Column(

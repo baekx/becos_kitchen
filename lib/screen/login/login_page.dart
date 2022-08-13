@@ -13,7 +13,7 @@ class LoginPage extends ConsumerWidget {
     final emailControllerProvider = ref.watch(emailControllerStateProvider);
     final passwordControllerProvider =
         ref.watch(passwordControllerStateProvider);
-    final state = ref.watch(userStateProvider).value;
+    final user = ref.watch(userStateProvider).value;
 
     return Scaffold(
       body: Container(
@@ -61,7 +61,7 @@ class LoginPage extends ConsumerWidget {
                         emailControllerProvider.text,
                         passwordControllerProvider.text,
                       );
-                  if (state?.uid != null) {
+                  if (user?.uid != null) {
                     Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(
                           builder: (context) => const MenuListPage()),
