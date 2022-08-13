@@ -18,7 +18,7 @@ class MenuListHeader extends ConsumerWidget {
 
     return AppBar(
       automaticallyImplyLeading: false,
-      toolbarHeight: 80,
+      toolbarHeight: 60,
       title: Row(
         children: [
           IconButton(
@@ -38,7 +38,7 @@ class MenuListHeader extends ConsumerWidget {
               );
             },
             icon: CircleUserAvatar(
-                size: 40, icon: loginVm.getUserIcon(user?.uid)),
+                size: 56, icon: loginVm.getUserIcon(user?.uid)),
           ),
           const Expanded(child: Center(child: Text('ホーム'))),
           IconButton(

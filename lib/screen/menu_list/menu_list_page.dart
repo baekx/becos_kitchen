@@ -14,7 +14,7 @@ class MenuListPage extends ConsumerWidget {
     final vm = ref.watch(menuListViewModelProvider.notifier);
     return Scaffold(
       appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(80), child: MenuListHeader()),
+          preferredSize: Size.fromHeight(60), child: MenuListHeader()),
       floatingActionButton: FloatingActionButton(
         child: const Icon(
           Icons.add,
