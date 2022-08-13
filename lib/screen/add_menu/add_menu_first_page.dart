@@ -10,6 +10,7 @@ import 'package:becos_kitchen/screen/common/button_expanded.dart';
 import 'package:becos_kitchen/screen/common/column_padding.dart';
 import 'package:becos_kitchen/screen/common/custom_alert_dialog.dart';
 import 'package:becos_kitchen/view_model/add_menu_page_vm.dart';
+import 'package:becos_kitchen/view_model/login_vm.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,7 +22,8 @@ class AddMenuFirstPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _vm = ref.watch(addMenuViewModelProvider);
+    final _vm = ref.watch(addMenuViewModelProvider.notifier);
+    final _user = ref.watch(userStateProvider).value;
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
@@ -78,8 +80,9 @@ class AddMenuFirstPage extends ConsumerWidget {
                 ButtonExpanded(
                   text: "次へ",
                   onPressed: () {
+                    _vm.setUid(_user?.uid ?? '');
                     Navigator.of(context).push(CupertinoPageRoute(
-                      builder: (context) => const AddMenuSecondPage(),
+                      builder: (_) => const AddMenuSecondPage(),
                     ));
                   },
                   backgroundColor: const Color(green),

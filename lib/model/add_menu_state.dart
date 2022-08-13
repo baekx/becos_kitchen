@@ -15,5 +15,6 @@ class AddMenuState with _$AddMenuState {
     DateTime? createdAt,
     String? url,
     String? memo,
+    String? uid,
   }) = _AddMenuState;
 }

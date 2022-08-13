@@ -15,12 +15,14 @@ final addMenuViewModelProvider =
 class AddMenuViewModel extends StateNotifier<AddMenuState> {
   AddMenuViewModel(this._menuRepository)
       : super(AddMenuState(
-            name: '',
-            tag: [],
-            rate: 3,
-            createdAt: DateTime.now(),
-            url: '',
-            memo: ''));
+          name: '',
+          tag: [],
+          rate: 3,
+          createdAt: DateTime.now(),
+          url: '',
+          memo: '',
+          uid: '',
+        ));
 
   final MenuRepository _menuRepository;
 
@@ -88,6 +90,10 @@ class AddMenuViewModel extends StateNotifier<AddMenuState> {
 
   void setMemo(String newMemo) {
     state = state.copyWith(memo: newMemo);
+  }
+
+  void setUid(String uid) {
+    state = state.copyWith(uid: uid);
   }
 
   bool isValidMenuData() {

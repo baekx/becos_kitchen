@@ -39,7 +39,8 @@ class MenuRepositoryImpl implements MenuRepository {
           'tag': menu.tag,
           'url': menu.url,
           'memo': menu.memo,
-          'createdAt': menu.createdAt
+          'createdAt': menu.createdAt,
+          'uid': menu.uid,
         };
         firebaseModule.menuCollection.doc().set(data);
       });

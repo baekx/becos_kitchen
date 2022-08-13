@@ -15,6 +15,7 @@ _$_MenuModel _$$_MenuModelFromJson(Map<String, dynamic> json) => _$_MenuModel(
       url: json['url'] as String? ?? '',
       memo: json['memo'] as String? ?? '',
       createdAt: const CreatedAtField().fromJson(json['createdAt']),
+      uid: json['uid'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_MenuModelToJson(_$_MenuModel instance) =>
@@ -26,4 +27,5 @@ Map<String, dynamic> _$$_MenuModelToJson(_$_MenuModel instance) =>
       'url': instance.url,
       'memo': instance.memo,
       'createdAt': const CreatedAtField().toJson(instance.createdAt),
+      'uid': instance.uid,
     };
