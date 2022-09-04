@@ -1,4 +1,6 @@
 import 'package:becos_kitchen/model/menu_model.dart';
+import 'package:becos_kitchen/model/person.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final menuDetailViewModelFamily = StateNotifierProvider.family
@@ -21,4 +23,14 @@ class MenuDetailViewModel extends StateNotifier<MenuModel> {
             memo: menu.memo));
 
   final MenuModel _menu;
+
+  Person getUser() {
+    return Person.values
+            .firstWhereOrNull((element) => element.uid == state.uid) ??
+        Person.baek;
+  }
+
+  bool hasMemo() {
+    return state.memo.isNotEmpty;
+  }
 }

@@ -18,8 +18,6 @@ class MenuRepositoryImpl implements MenuRepository {
     final menuListSnapshot =
         menuRef.orderBy('createdAt', descending: true).snapshots();
     return menuListSnapshot;
-    // return menuListSnapshot.map((event) => event.docs.map((e) => e.data())).toList()
-    // return menuListSnapshot.docs.map((doc) => doc.data()).toList();
   }
 
   @override

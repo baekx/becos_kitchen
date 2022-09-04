@@ -16,6 +16,7 @@ class MenuDetailBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final menu = ref.watch(menuDetailViewModelProvider);
+    final vm = ref.watch(menuDetailViewModelProvider.notifier);
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,14 +79,20 @@ class MenuDetailBody extends ConsumerWidget {
                 ),
                 const ColumnPadding(height: 24),
                 // コメント
-                const Text(
-                  'コメント',
-                  style: TextStyle(fontSize: 12, color: Color(textColor)),
-                ),
-                const ColumnPadding(height: 8),
-                MenuDetailCommentCell(),
-                MenuDetailCommentCell(),
-                MenuDetailCommentCell(),
+                Visibility(
+                  visible: vm.hasMemo(),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text(
+                        'コメント',
+                        style: TextStyle(fontSize: 12, color: Color(textColor)),
+                      ),
+                      ColumnPadding(height: 8),
+                      MenuDetailCommentCell(),
+                    ],
+                  ),
+                )
               ],
             ),
           )
