@@ -2,6 +2,7 @@ import 'package:becos_kitchen/data/firebase_module.dart';
 import 'package:becos_kitchen/model/add_menu_state.dart';
 import 'package:becos_kitchen/model/menu_model.dart';
 import 'package:becos_kitchen/repository/menu_repository.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 class MenuRepositoryImpl implements MenuRepository {
@@ -10,12 +11,13 @@ class MenuRepositoryImpl implements MenuRepository {
   final FirebaseModule firebaseModule;
 
   @override
-  Future<List<MenuModel>> fetchMenuList() async {
+  Stream<QuerySnapshot<MenuModel>> menuListSnapshot() {
     final menuRef = firebaseModule.menuCollection.withConverter<MenuModel>(
         fromFirestore: (snapshot, _) => MenuModel.fromJson(snapshot.data()!),
         toFirestore: (menu, _) => menu.toJson());
-    final menuListSnapshot = await menuRef.get();
-    return menuListSnapshot.docs.map((doc) => doc.data()).toList();
+    final menuListSnapshot =
+        menuRef.orderBy('createdAt', descending: true).snapshots();
+    return menuListSnapshot;
   }
 
   @override
@@ -31,16 +33,24 @@ class MenuRepositoryImpl implements MenuRepository {
         final data = {
           'name': menu.name,
           'image': value,
-          'rate': menu.rate,
+          'rateAkane': menu.rateAkane,
+          'rateBaek': menu.rateBaek,
           'tag': menu.tag,
           'url': menu.url,
           'memo': menu.memo,
-          'createdAt': menu.createdAt
+          'createdAt': menu.createdAt,
+          'uid': menu.uid,
+          'docId': menu.docId,
         };
-        firebaseModule.menuCollection.doc().set(data);
+        firebaseModule.menuCollection.doc(menu.docId).set(data);
       });
     } catch (e) {
       print(e);
     }
+  }
+
+  @override
+  Future<void> updateMenuData(MenuModel menu) async {
+    firebaseModule.menuCollection.doc(menu.docId).update(menu.toJson());
   }
 }

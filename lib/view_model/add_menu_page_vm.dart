@@ -3,26 +3,35 @@ import 'dart:io';
 import 'package:becos_kitchen/di/repository_provider.dart';
 import 'package:becos_kitchen/model/add_menu_state.dart';
 import 'package:becos_kitchen/model/menu_tag.dart';
+import 'package:becos_kitchen/model/person.dart';
 import 'package:becos_kitchen/repository/menu_repository.dart';
+import 'package:becos_kitchen/repository/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 final addMenuViewModelProvider =
     StateNotifierProvider.autoDispose<AddMenuViewModel, AddMenuState>(
-        (ref) => AddMenuViewModel(ref.read(menuRepositoryProvider)));
+        (ref) => AddMenuViewModel(
+              ref.read(menuRepositoryProvider),
+              ref.read(userRepositoryProvider),
+            ));
 
 class AddMenuViewModel extends StateNotifier<AddMenuState> {
-  AddMenuViewModel(this._menuRepository)
+  AddMenuViewModel(this._menuRepository, this._userRepository)
       : super(AddMenuState(
-            name: '',
-            tag: [],
-            rate: 3,
-            createdAt: DateTime.now(),
-            url: '',
-            memo: ''));
+          name: '',
+          tag: [],
+          rateAkane: 0,
+          rateBaek: 0,
+          createdAt: DateTime.now(),
+          url: '',
+          memo: '',
+          uid: '',
+        ));
 
   final MenuRepository _menuRepository;
+  final UserRepository _userRepository;
 
   void setTitle(String newTitle) {
     state = state.copyWith(name: newTitle);
@@ -45,7 +54,16 @@ class AddMenuViewModel extends StateNotifier<AddMenuState> {
   }
 
   void setRate(int newScore) {
-    state = state.copyWith(rate: newScore);
+    switch (_userRepository.currentUser) {
+      case Person.baek:
+        state = state.copyWith(rateBaek: newScore);
+        break;
+      case Person.akane:
+        state = state.copyWith(rateAkane: newScore);
+        break;
+      default:
+        break;
+    }
   }
 
   Future<void> setImage(ImageSource source) async {
@@ -90,11 +108,16 @@ class AddMenuViewModel extends StateNotifier<AddMenuState> {
     state = state.copyWith(memo: newMemo);
   }
 
+  void setUid() {
+    state = state.copyWith(uid: _userRepository.currentUser.uid);
+  }
+
   bool isValidMenuData() {
     return state.imageFile != null && state.name?.isNotEmpty == true;
   }
 
   Future<void> addMenuData() async {
-    _menuRepository.addMenuData(state);
+    final docId = DateTime.now().millisecondsSinceEpoch.toString();
+    _menuRepository.addMenuData(state.copyWith(docId: docId));
   }
 }

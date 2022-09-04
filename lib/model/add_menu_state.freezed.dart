@@ -18,12 +18,15 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AddMenuState {
   String? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
-  int? get rate => throw _privateConstructorUsedError;
+  int? get rateAkane => throw _privateConstructorUsedError;
+  int? get rateBaek => throw _privateConstructorUsedError;
   File? get imageFile => throw _privateConstructorUsedError;
   List<String> get tag => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
   String? get memo => throw _privateConstructorUsedError;
+  String? get uid => throw _privateConstructorUsedError;
+  String? get docId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddMenuStateCopyWith<AddMenuState> get copyWith =>
@@ -38,12 +41,15 @@ abstract class $AddMenuStateCopyWith<$Res> {
   $Res call(
       {String? id,
       String? name,
-      int? rate,
+      int? rateAkane,
+      int? rateBaek,
       File? imageFile,
       List<String> tag,
       DateTime? createdAt,
       String? url,
-      String? memo});
+      String? memo,
+      String? uid,
+      String? docId});
 }
 
 /// @nodoc
@@ -58,12 +64,15 @@ class _$AddMenuStateCopyWithImpl<$Res> implements $AddMenuStateCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? rate = freezed,
+    Object? rateAkane = freezed,
+    Object? rateBaek = freezed,
     Object? imageFile = freezed,
     Object? tag = freezed,
     Object? createdAt = freezed,
     Object? url = freezed,
     Object? memo = freezed,
+    Object? uid = freezed,
+    Object? docId = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -74,9 +83,13 @@ class _$AddMenuStateCopyWithImpl<$Res> implements $AddMenuStateCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      rate: rate == freezed
-          ? _value.rate
-          : rate // ignore: cast_nullable_to_non_nullable
+      rateAkane: rateAkane == freezed
+          ? _value.rateAkane
+          : rateAkane // ignore: cast_nullable_to_non_nullable
+              as int?,
+      rateBaek: rateBaek == freezed
+          ? _value.rateBaek
+          : rateBaek // ignore: cast_nullable_to_non_nullable
               as int?,
       imageFile: imageFile == freezed
           ? _value.imageFile
@@ -98,6 +111,14 @@ class _$AddMenuStateCopyWithImpl<$Res> implements $AddMenuStateCopyWith<$Res> {
           ? _value.memo
           : memo // ignore: cast_nullable_to_non_nullable
               as String?,
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String?,
+      docId: docId == freezed
+          ? _value.docId
+          : docId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -112,12 +133,15 @@ abstract class _$$_AddMenuStateCopyWith<$Res>
   $Res call(
       {String? id,
       String? name,
-      int? rate,
+      int? rateAkane,
+      int? rateBaek,
       File? imageFile,
       List<String> tag,
       DateTime? createdAt,
       String? url,
-      String? memo});
+      String? memo,
+      String? uid,
+      String? docId});
 }
 
 /// @nodoc
@@ -135,12 +159,15 @@ class __$$_AddMenuStateCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? rate = freezed,
+    Object? rateAkane = freezed,
+    Object? rateBaek = freezed,
     Object? imageFile = freezed,
     Object? tag = freezed,
     Object? createdAt = freezed,
     Object? url = freezed,
     Object? memo = freezed,
+    Object? uid = freezed,
+    Object? docId = freezed,
   }) {
     return _then(_$_AddMenuState(
       id: id == freezed
@@ -151,9 +178,13 @@ class __$$_AddMenuStateCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      rate: rate == freezed
-          ? _value.rate
-          : rate // ignore: cast_nullable_to_non_nullable
+      rateAkane: rateAkane == freezed
+          ? _value.rateAkane
+          : rateAkane // ignore: cast_nullable_to_non_nullable
+              as int?,
+      rateBaek: rateBaek == freezed
+          ? _value.rateBaek
+          : rateBaek // ignore: cast_nullable_to_non_nullable
               as int?,
       imageFile: imageFile == freezed
           ? _value.imageFile
@@ -175,6 +206,14 @@ class __$$_AddMenuStateCopyWithImpl<$Res>
           ? _value.memo
           : memo // ignore: cast_nullable_to_non_nullable
               as String?,
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String?,
+      docId: docId == freezed
+          ? _value.docId
+          : docId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -185,12 +224,15 @@ class _$_AddMenuState implements _AddMenuState {
   const _$_AddMenuState(
       {this.id,
       this.name,
-      this.rate,
+      this.rateAkane,
+      this.rateBaek,
       this.imageFile,
       final List<String> tag = const [],
       this.createdAt,
       this.url,
-      this.memo})
+      this.memo,
+      this.uid,
+      this.docId})
       : _tag = tag;
 
   @override
@@ -198,7 +240,9 @@ class _$_AddMenuState implements _AddMenuState {
   @override
   final String? name;
   @override
-  final int? rate;
+  final int? rateAkane;
+  @override
+  final int? rateBaek;
   @override
   final File? imageFile;
   final List<String> _tag;
@@ -215,10 +259,14 @@ class _$_AddMenuState implements _AddMenuState {
   final String? url;
   @override
   final String? memo;
+  @override
+  final String? uid;
+  @override
+  final String? docId;
 
   @override
   String toString() {
-    return 'AddMenuState(id: $id, name: $name, rate: $rate, imageFile: $imageFile, tag: $tag, createdAt: $createdAt, url: $url, memo: $memo)';
+    return 'AddMenuState(id: $id, name: $name, rateAkane: $rateAkane, rateBaek: $rateBaek, imageFile: $imageFile, tag: $tag, createdAt: $createdAt, url: $url, memo: $memo, uid: $uid, docId: $docId)';
   }
 
   @override
@@ -228,12 +276,15 @@ class _$_AddMenuState implements _AddMenuState {
             other is _$_AddMenuState &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.rate, rate) &&
+            const DeepCollectionEquality().equals(other.rateAkane, rateAkane) &&
+            const DeepCollectionEquality().equals(other.rateBaek, rateBaek) &&
             const DeepCollectionEquality().equals(other.imageFile, imageFile) &&
             const DeepCollectionEquality().equals(other._tag, _tag) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality().equals(other.url, url) &&
-            const DeepCollectionEquality().equals(other.memo, memo));
+            const DeepCollectionEquality().equals(other.memo, memo) &&
+            const DeepCollectionEquality().equals(other.uid, uid) &&
+            const DeepCollectionEquality().equals(other.docId, docId));
   }
 
   @override
@@ -241,12 +292,15 @@ class _$_AddMenuState implements _AddMenuState {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(rate),
+      const DeepCollectionEquality().hash(rateAkane),
+      const DeepCollectionEquality().hash(rateBaek),
       const DeepCollectionEquality().hash(imageFile),
       const DeepCollectionEquality().hash(_tag),
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(memo));
+      const DeepCollectionEquality().hash(memo),
+      const DeepCollectionEquality().hash(uid),
+      const DeepCollectionEquality().hash(docId));
 
   @JsonKey(ignore: true)
   @override
@@ -258,19 +312,24 @@ abstract class _AddMenuState implements AddMenuState {
   const factory _AddMenuState(
       {final String? id,
       final String? name,
-      final int? rate,
+      final int? rateAkane,
+      final int? rateBaek,
       final File? imageFile,
       final List<String> tag,
       final DateTime? createdAt,
       final String? url,
-      final String? memo}) = _$_AddMenuState;
+      final String? memo,
+      final String? uid,
+      final String? docId}) = _$_AddMenuState;
 
   @override
   String? get id => throw _privateConstructorUsedError;
   @override
   String? get name => throw _privateConstructorUsedError;
   @override
-  int? get rate => throw _privateConstructorUsedError;
+  int? get rateAkane => throw _privateConstructorUsedError;
+  @override
+  int? get rateBaek => throw _privateConstructorUsedError;
   @override
   File? get imageFile => throw _privateConstructorUsedError;
   @override
@@ -281,6 +340,10 @@ abstract class _AddMenuState implements AddMenuState {
   String? get url => throw _privateConstructorUsedError;
   @override
   String? get memo => throw _privateConstructorUsedError;
+  @override
+  String? get uid => throw _privateConstructorUsedError;
+  @override
+  String? get docId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_AddMenuStateCopyWith<_$_AddMenuState> get copyWith =>

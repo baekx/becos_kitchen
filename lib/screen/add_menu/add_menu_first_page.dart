@@ -21,7 +21,7 @@ class AddMenuFirstPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _vm = ref.watch(addMenuViewModelProvider);
+    final _vm = ref.watch(addMenuViewModelProvider.notifier);
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
@@ -78,8 +78,9 @@ class AddMenuFirstPage extends ConsumerWidget {
                 ButtonExpanded(
                   text: "次へ",
                   onPressed: () {
+                    _vm.setUid();
                     Navigator.of(context).push(CupertinoPageRoute(
-                      builder: (context) => const AddMenuSecondPage(),
+                      builder: (_) => const AddMenuSecondPage(),
                     ));
                   },
                   backgroundColor: const Color(green),

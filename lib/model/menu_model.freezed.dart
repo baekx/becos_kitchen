@@ -21,13 +21,16 @@ MenuModel _$MenuModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MenuModel {
   String get name => throw _privateConstructorUsedError;
-  int get rate => throw _privateConstructorUsedError;
+  int get rateBaek => throw _privateConstructorUsedError;
+  int get rateAkane => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   List<String> get tag => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
   String get memo => throw _privateConstructorUsedError;
   @CreatedAtField()
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  String get uid => throw _privateConstructorUsedError;
+  String get docId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,12 +44,15 @@ abstract class $MenuModelCopyWith<$Res> {
       _$MenuModelCopyWithImpl<$Res>;
   $Res call(
       {String name,
-      int rate,
+      int rateBaek,
+      int rateAkane,
       String image,
       List<String> tag,
       String url,
       String memo,
-      @CreatedAtField() DateTime? createdAt});
+      @CreatedAtField() DateTime? createdAt,
+      String uid,
+      String docId});
 }
 
 /// @nodoc
@@ -60,21 +66,28 @@ class _$MenuModelCopyWithImpl<$Res> implements $MenuModelCopyWith<$Res> {
   @override
   $Res call({
     Object? name = freezed,
-    Object? rate = freezed,
+    Object? rateBaek = freezed,
+    Object? rateAkane = freezed,
     Object? image = freezed,
     Object? tag = freezed,
     Object? url = freezed,
     Object? memo = freezed,
     Object? createdAt = freezed,
+    Object? uid = freezed,
+    Object? docId = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      rate: rate == freezed
-          ? _value.rate
-          : rate // ignore: cast_nullable_to_non_nullable
+      rateBaek: rateBaek == freezed
+          ? _value.rateBaek
+          : rateBaek // ignore: cast_nullable_to_non_nullable
+              as int,
+      rateAkane: rateAkane == freezed
+          ? _value.rateAkane
+          : rateAkane // ignore: cast_nullable_to_non_nullable
               as int,
       image: image == freezed
           ? _value.image
@@ -96,6 +109,14 @@ class _$MenuModelCopyWithImpl<$Res> implements $MenuModelCopyWith<$Res> {
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      docId: docId == freezed
+          ? _value.docId
+          : docId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -108,12 +129,15 @@ abstract class _$$_MenuModelCopyWith<$Res> implements $MenuModelCopyWith<$Res> {
   @override
   $Res call(
       {String name,
-      int rate,
+      int rateBaek,
+      int rateAkane,
       String image,
       List<String> tag,
       String url,
       String memo,
-      @CreatedAtField() DateTime? createdAt});
+      @CreatedAtField() DateTime? createdAt,
+      String uid,
+      String docId});
 }
 
 /// @nodoc
@@ -129,21 +153,28 @@ class __$$_MenuModelCopyWithImpl<$Res> extends _$MenuModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = freezed,
-    Object? rate = freezed,
+    Object? rateBaek = freezed,
+    Object? rateAkane = freezed,
     Object? image = freezed,
     Object? tag = freezed,
     Object? url = freezed,
     Object? memo = freezed,
     Object? createdAt = freezed,
+    Object? uid = freezed,
+    Object? docId = freezed,
   }) {
     return _then(_$_MenuModel(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      rate: rate == freezed
-          ? _value.rate
-          : rate // ignore: cast_nullable_to_non_nullable
+      rateBaek: rateBaek == freezed
+          ? _value.rateBaek
+          : rateBaek // ignore: cast_nullable_to_non_nullable
+              as int,
+      rateAkane: rateAkane == freezed
+          ? _value.rateAkane
+          : rateAkane // ignore: cast_nullable_to_non_nullable
               as int,
       image: image == freezed
           ? _value.image
@@ -165,22 +196,34 @@ class __$$_MenuModelCopyWithImpl<$Res> extends _$MenuModelCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      docId: docId == freezed
+          ? _value.docId
+          : docId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_MenuModel implements _MenuModel {
+class _$_MenuModel extends _MenuModel {
   const _$_MenuModel(
       {this.name = '',
-      this.rate = 0,
+      this.rateBaek = 0,
+      this.rateAkane = 0,
       this.image = '',
       final List<String> tag = const [],
       this.url = '',
       this.memo = '',
-      @CreatedAtField() this.createdAt})
-      : _tag = tag;
+      @CreatedAtField() this.createdAt,
+      this.uid = '',
+      this.docId = ''})
+      : _tag = tag,
+        super._();
 
   factory _$_MenuModel.fromJson(Map<String, dynamic> json) =>
       _$$_MenuModelFromJson(json);
@@ -190,7 +233,10 @@ class _$_MenuModel implements _MenuModel {
   final String name;
   @override
   @JsonKey()
-  final int rate;
+  final int rateBaek;
+  @override
+  @JsonKey()
+  final int rateAkane;
   @override
   @JsonKey()
   final String image;
@@ -211,10 +257,16 @@ class _$_MenuModel implements _MenuModel {
   @override
   @CreatedAtField()
   final DateTime? createdAt;
+  @override
+  @JsonKey()
+  final String uid;
+  @override
+  @JsonKey()
+  final String docId;
 
   @override
   String toString() {
-    return 'MenuModel(name: $name, rate: $rate, image: $image, tag: $tag, url: $url, memo: $memo, createdAt: $createdAt)';
+    return 'MenuModel(name: $name, rateBaek: $rateBaek, rateAkane: $rateAkane, image: $image, tag: $tag, url: $url, memo: $memo, createdAt: $createdAt, uid: $uid, docId: $docId)';
   }
 
   @override
@@ -223,12 +275,15 @@ class _$_MenuModel implements _MenuModel {
         (other.runtimeType == runtimeType &&
             other is _$_MenuModel &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.rate, rate) &&
+            const DeepCollectionEquality().equals(other.rateBaek, rateBaek) &&
+            const DeepCollectionEquality().equals(other.rateAkane, rateAkane) &&
             const DeepCollectionEquality().equals(other.image, image) &&
             const DeepCollectionEquality().equals(other._tag, _tag) &&
             const DeepCollectionEquality().equals(other.url, url) &&
             const DeepCollectionEquality().equals(other.memo, memo) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt));
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            const DeepCollectionEquality().equals(other.uid, uid) &&
+            const DeepCollectionEquality().equals(other.docId, docId));
   }
 
   @JsonKey(ignore: true)
@@ -236,12 +291,15 @@ class _$_MenuModel implements _MenuModel {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(rate),
+      const DeepCollectionEquality().hash(rateBaek),
+      const DeepCollectionEquality().hash(rateAkane),
       const DeepCollectionEquality().hash(image),
       const DeepCollectionEquality().hash(_tag),
       const DeepCollectionEquality().hash(url),
       const DeepCollectionEquality().hash(memo),
-      const DeepCollectionEquality().hash(createdAt));
+      const DeepCollectionEquality().hash(createdAt),
+      const DeepCollectionEquality().hash(uid),
+      const DeepCollectionEquality().hash(docId));
 
   @JsonKey(ignore: true)
   @override
@@ -254,15 +312,19 @@ class _$_MenuModel implements _MenuModel {
   }
 }
 
-abstract class _MenuModel implements MenuModel {
+abstract class _MenuModel extends MenuModel {
   const factory _MenuModel(
       {final String name,
-      final int rate,
+      final int rateBaek,
+      final int rateAkane,
       final String image,
       final List<String> tag,
       final String url,
       final String memo,
-      @CreatedAtField() final DateTime? createdAt}) = _$_MenuModel;
+      @CreatedAtField() final DateTime? createdAt,
+      final String uid,
+      final String docId}) = _$_MenuModel;
+  const _MenuModel._() : super._();
 
   factory _MenuModel.fromJson(Map<String, dynamic> json) =
       _$_MenuModel.fromJson;
@@ -270,7 +332,9 @@ abstract class _MenuModel implements MenuModel {
   @override
   String get name => throw _privateConstructorUsedError;
   @override
-  int get rate => throw _privateConstructorUsedError;
+  int get rateBaek => throw _privateConstructorUsedError;
+  @override
+  int get rateAkane => throw _privateConstructorUsedError;
   @override
   String get image => throw _privateConstructorUsedError;
   @override
@@ -282,6 +346,10 @@ abstract class _MenuModel implements MenuModel {
   @override
   @CreatedAtField()
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  @override
+  String get uid => throw _privateConstructorUsedError;
+  @override
+  String get docId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_MenuModelCopyWith<_$_MenuModel> get copyWith =>

@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 enum Person {
   baek(
     'baek',
@@ -14,4 +16,14 @@ enum Person {
   final String imagePath;
   final String uid;
   const Person(this.name, this.imagePath, this.uid);
+
+  static Person getPersonFromUid(String uid) {
+    return Person.values.firstWhereOrNull((element) => element.uid == uid) ??
+        Person.baek;
+  }
+}
+
+extension PersonExt on Person {
+  bool get isBaek => this == Person.baek;
+  bool get isAkane => this == Person.akane;
 }
