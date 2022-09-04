@@ -63,7 +63,7 @@ class MenuCard extends StatelessWidget {
                           ),
                       itemCount: 5,
                       itemSize: 16.0,
-                      initialRating: menu.rate.toDouble(),
+                      initialRating: menu.getHigherRate().toDouble(),
                       ignoreGestures: true,
                       onRatingUpdate: (_) {}),
                 )

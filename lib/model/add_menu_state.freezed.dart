@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AddMenuState {
   String? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
-  int? get rate => throw _privateConstructorUsedError;
+  int? get rateAkane => throw _privateConstructorUsedError;
+  int? get rateBaek => throw _privateConstructorUsedError;
   File? get imageFile => throw _privateConstructorUsedError;
   List<String> get tag => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
@@ -39,7 +40,8 @@ abstract class $AddMenuStateCopyWith<$Res> {
   $Res call(
       {String? id,
       String? name,
-      int? rate,
+      int? rateAkane,
+      int? rateBaek,
       File? imageFile,
       List<String> tag,
       DateTime? createdAt,
@@ -60,7 +62,8 @@ class _$AddMenuStateCopyWithImpl<$Res> implements $AddMenuStateCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? rate = freezed,
+    Object? rateAkane = freezed,
+    Object? rateBaek = freezed,
     Object? imageFile = freezed,
     Object? tag = freezed,
     Object? createdAt = freezed,
@@ -77,9 +80,13 @@ class _$AddMenuStateCopyWithImpl<$Res> implements $AddMenuStateCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      rate: rate == freezed
-          ? _value.rate
-          : rate // ignore: cast_nullable_to_non_nullable
+      rateAkane: rateAkane == freezed
+          ? _value.rateAkane
+          : rateAkane // ignore: cast_nullable_to_non_nullable
+              as int?,
+      rateBaek: rateBaek == freezed
+          ? _value.rateBaek
+          : rateBaek // ignore: cast_nullable_to_non_nullable
               as int?,
       imageFile: imageFile == freezed
           ? _value.imageFile
@@ -119,7 +126,8 @@ abstract class _$$_AddMenuStateCopyWith<$Res>
   $Res call(
       {String? id,
       String? name,
-      int? rate,
+      int? rateAkane,
+      int? rateBaek,
       File? imageFile,
       List<String> tag,
       DateTime? createdAt,
@@ -143,7 +151,8 @@ class __$$_AddMenuStateCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? rate = freezed,
+    Object? rateAkane = freezed,
+    Object? rateBaek = freezed,
     Object? imageFile = freezed,
     Object? tag = freezed,
     Object? createdAt = freezed,
@@ -160,9 +169,13 @@ class __$$_AddMenuStateCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      rate: rate == freezed
-          ? _value.rate
-          : rate // ignore: cast_nullable_to_non_nullable
+      rateAkane: rateAkane == freezed
+          ? _value.rateAkane
+          : rateAkane // ignore: cast_nullable_to_non_nullable
+              as int?,
+      rateBaek: rateBaek == freezed
+          ? _value.rateBaek
+          : rateBaek // ignore: cast_nullable_to_non_nullable
               as int?,
       imageFile: imageFile == freezed
           ? _value.imageFile
@@ -198,7 +211,8 @@ class _$_AddMenuState implements _AddMenuState {
   const _$_AddMenuState(
       {this.id,
       this.name,
-      this.rate,
+      this.rateAkane,
+      this.rateBaek,
       this.imageFile,
       final List<String> tag = const [],
       this.createdAt,
@@ -212,7 +226,9 @@ class _$_AddMenuState implements _AddMenuState {
   @override
   final String? name;
   @override
-  final int? rate;
+  final int? rateAkane;
+  @override
+  final int? rateBaek;
   @override
   final File? imageFile;
   final List<String> _tag;
@@ -234,7 +250,7 @@ class _$_AddMenuState implements _AddMenuState {
 
   @override
   String toString() {
-    return 'AddMenuState(id: $id, name: $name, rate: $rate, imageFile: $imageFile, tag: $tag, createdAt: $createdAt, url: $url, memo: $memo, uid: $uid)';
+    return 'AddMenuState(id: $id, name: $name, rateAkane: $rateAkane, rateBaek: $rateBaek, imageFile: $imageFile, tag: $tag, createdAt: $createdAt, url: $url, memo: $memo, uid: $uid)';
   }
 
   @override
@@ -244,7 +260,8 @@ class _$_AddMenuState implements _AddMenuState {
             other is _$_AddMenuState &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.rate, rate) &&
+            const DeepCollectionEquality().equals(other.rateAkane, rateAkane) &&
+            const DeepCollectionEquality().equals(other.rateBaek, rateBaek) &&
             const DeepCollectionEquality().equals(other.imageFile, imageFile) &&
             const DeepCollectionEquality().equals(other._tag, _tag) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
@@ -258,7 +275,8 @@ class _$_AddMenuState implements _AddMenuState {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(rate),
+      const DeepCollectionEquality().hash(rateAkane),
+      const DeepCollectionEquality().hash(rateBaek),
       const DeepCollectionEquality().hash(imageFile),
       const DeepCollectionEquality().hash(_tag),
       const DeepCollectionEquality().hash(createdAt),
@@ -276,7 +294,8 @@ abstract class _AddMenuState implements AddMenuState {
   const factory _AddMenuState(
       {final String? id,
       final String? name,
-      final int? rate,
+      final int? rateAkane,
+      final int? rateBaek,
       final File? imageFile,
       final List<String> tag,
       final DateTime? createdAt,
@@ -289,7 +308,9 @@ abstract class _AddMenuState implements AddMenuState {
   @override
   String? get name => throw _privateConstructorUsedError;
   @override
-  int? get rate => throw _privateConstructorUsedError;
+  int? get rateAkane => throw _privateConstructorUsedError;
+  @override
+  int? get rateBaek => throw _privateConstructorUsedError;
   @override
   File? get imageFile => throw _privateConstructorUsedError;
   @override

@@ -33,7 +33,8 @@ class MenuRepositoryImpl implements MenuRepository {
         final data = {
           'name': menu.name,
           'image': value,
-          'rate': menu.rate,
+          'rateAkane': menu.rateAkane,
+          'rateBaek': menu.rateBaek,
           'tag': menu.tag,
           'url': menu.url,
           'memo': menu.memo,

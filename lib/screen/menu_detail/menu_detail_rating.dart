@@ -29,7 +29,9 @@ class MenuDetailRating extends ConsumerWidget {
           ),
           itemCount: 5,
           itemSize: 24,
-          initialRating: menu.rate.toDouble(),
+          initialRating: person.isBaek
+              ? menu.rateBaek.toDouble()
+              : menu.rateAkane.toDouble(),
           ignoreGestures: true,
           onRatingUpdate: (_) {},
         )

@@ -6,9 +6,11 @@ part 'menu_model.g.dart';
 
 @freezed
 class MenuModel with _$MenuModel {
+  const MenuModel._();
   const factory MenuModel({
     @Default('') String name,
-    @Default(0) int rate,
+    @Default(0) int rateBaek,
+    @Default(0) int rateAkane,
     @Default('') String image,
     @Default([]) List<String> tag,
     @Default('') String url,
@@ -19,4 +21,12 @@ class MenuModel with _$MenuModel {
 
   factory MenuModel.fromJson(Map<String, dynamic> json) =>
       _$MenuModelFromJson(json);
+
+  int getHigherRate() {
+    if (rateBaek >= rateAkane) {
+      return rateBaek;
+    } else {
+      return rateAkane;
+    }
+  }
 }

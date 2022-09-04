@@ -15,3 +15,8 @@ enum Person {
   final String uid;
   const Person(this.name, this.imagePath, this.uid);
 }
+
+extension PersonExt on Person {
+  bool get isBaek => this == Person.baek;
+  bool get isAkane => this == Person.akane;
+}

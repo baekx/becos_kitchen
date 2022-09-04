@@ -17,7 +17,8 @@ class MenuDetailViewModel extends StateNotifier<MenuModel> {
             name: menu.name,
             image: menu.image,
             createdAt: menu.createdAt,
-            rate: menu.rate,
+            rateBaek: menu.rateBaek,
+            rateAkane: menu.rateAkane,
             url: menu.url,
             tag: menu.tag,
             memo: menu.memo));

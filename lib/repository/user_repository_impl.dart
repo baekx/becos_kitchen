@@ -1,4 +1,6 @@
+import 'package:becos_kitchen/model/person.dart';
 import 'package:becos_kitchen/repository/user_repository.dart';
+import 'package:collection/collection.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class UserRepositoryImpl implements UserRepository {
@@ -25,6 +27,13 @@ class UserRepositoryImpl implements UserRepository {
     } on FirebaseAuthException catch (e) {
       throw convertAuthError(e.code);
     }
+  }
+
+  @override
+  Person get currentUser {
+    return Person.values
+            .firstWhereOrNull((e) => e.uid == _auth.currentUser?.uid) ??
+        Person.baek;
   }
 }
 

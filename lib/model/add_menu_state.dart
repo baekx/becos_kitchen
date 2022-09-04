@@ -9,7 +9,8 @@ class AddMenuState with _$AddMenuState {
   const factory AddMenuState({
     String? id,
     String? name,
-    int? rate,
+    int? rateAkane,
+    int? rateBaek,
     File? imageFile,
     @Default([]) List<String> tag,
     DateTime? createdAt,
