@@ -7,8 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class RateChangeDialog extends StatelessWidget {
-  const RateChangeDialog({Key? key, required this.person}) : super(key: key);
+  const RateChangeDialog(
+      {Key? key,
+      required this.person,
+      required this.onRatingUpdate,
+      required this.initialRate,
+      required this.onChange})
+      : super(key: key);
   final Person person;
+  final Function onRatingUpdate;
+  final double initialRate;
+  final VoidCallback? onChange;
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +40,11 @@ class RateChangeDialog extends StatelessWidget {
             Icons.star,
             color: Colors.amber,
           ),
-          onRatingUpdate: (_) {},
+          onRatingUpdate: (value) {
+            onRatingUpdate(value);
+          },
           itemPadding: const EdgeInsets.symmetric(horizontal: 8.0),
-          initialRating: 3.0,
+          initialRating: initialRate,
         ),
         const ColumnPadding(height: 24),
         Row(
@@ -64,9 +75,7 @@ class RateChangeDialog extends StatelessWidget {
               width: 120,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(primary: const Color(green)),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
+                onPressed: onChange,
                 child: const Text(
                   '変更',
                   style: TextStyle(

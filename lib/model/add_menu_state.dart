@@ -17,5 +17,6 @@ class AddMenuState with _$AddMenuState {
     String? url,
     String? memo,
     String? uid,
+    String? docId,
   }) = _AddMenuState;
 }

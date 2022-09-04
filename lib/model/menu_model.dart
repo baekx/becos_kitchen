@@ -17,6 +17,7 @@ class MenuModel with _$MenuModel {
     @Default('') String memo,
     @CreatedAtField() DateTime? createdAt,
     @Default('') String uid,
+    @Default('') String docId,
   }) = _MenuModel;
 
   factory MenuModel.fromJson(Map<String, dynamic> json) =>

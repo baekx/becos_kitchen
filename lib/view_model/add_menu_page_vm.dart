@@ -117,6 +117,7 @@ class AddMenuViewModel extends StateNotifier<AddMenuState> {
   }
 
   Future<void> addMenuData() async {
-    _menuRepository.addMenuData(state);
+    final docId = DateTime.now().millisecondsSinceEpoch.toString();
+    _menuRepository.addMenuData(state.copyWith(docId: docId));
   }
 }

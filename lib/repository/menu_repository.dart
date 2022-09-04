@@ -5,4 +5,5 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 abstract class MenuRepository {
   Stream<QuerySnapshot<MenuModel>> menuListSnapshot();
   Future<void> addMenuData(AddMenuState menu);
+  Future<void> updateMenuData(MenuModel menu);
 }

@@ -40,11 +40,17 @@ class MenuRepositoryImpl implements MenuRepository {
           'memo': menu.memo,
           'createdAt': menu.createdAt,
           'uid': menu.uid,
+          'docId': menu.docId,
         };
-        firebaseModule.menuCollection.doc().set(data);
+        firebaseModule.menuCollection.doc(menu.docId).set(data);
       });
     } catch (e) {
       print(e);
     }
+  }
+
+  @override
+  Future<void> updateMenuData(MenuModel menu) async {
+    firebaseModule.menuCollection.doc(menu.docId).update(menu.toJson());
   }
 }

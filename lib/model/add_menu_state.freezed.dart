@@ -26,6 +26,7 @@ mixin _$AddMenuState {
   String? get url => throw _privateConstructorUsedError;
   String? get memo => throw _privateConstructorUsedError;
   String? get uid => throw _privateConstructorUsedError;
+  String? get docId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddMenuStateCopyWith<AddMenuState> get copyWith =>
@@ -47,7 +48,8 @@ abstract class $AddMenuStateCopyWith<$Res> {
       DateTime? createdAt,
       String? url,
       String? memo,
-      String? uid});
+      String? uid,
+      String? docId});
 }
 
 /// @nodoc
@@ -70,6 +72,7 @@ class _$AddMenuStateCopyWithImpl<$Res> implements $AddMenuStateCopyWith<$Res> {
     Object? url = freezed,
     Object? memo = freezed,
     Object? uid = freezed,
+    Object? docId = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -112,6 +115,10 @@ class _$AddMenuStateCopyWithImpl<$Res> implements $AddMenuStateCopyWith<$Res> {
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String?,
+      docId: docId == freezed
+          ? _value.docId
+          : docId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -133,7 +140,8 @@ abstract class _$$_AddMenuStateCopyWith<$Res>
       DateTime? createdAt,
       String? url,
       String? memo,
-      String? uid});
+      String? uid,
+      String? docId});
 }
 
 /// @nodoc
@@ -159,6 +167,7 @@ class __$$_AddMenuStateCopyWithImpl<$Res>
     Object? url = freezed,
     Object? memo = freezed,
     Object? uid = freezed,
+    Object? docId = freezed,
   }) {
     return _then(_$_AddMenuState(
       id: id == freezed
@@ -201,6 +210,10 @@ class __$$_AddMenuStateCopyWithImpl<$Res>
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String?,
+      docId: docId == freezed
+          ? _value.docId
+          : docId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -218,7 +231,8 @@ class _$_AddMenuState implements _AddMenuState {
       this.createdAt,
       this.url,
       this.memo,
-      this.uid})
+      this.uid,
+      this.docId})
       : _tag = tag;
 
   @override
@@ -247,10 +261,12 @@ class _$_AddMenuState implements _AddMenuState {
   final String? memo;
   @override
   final String? uid;
+  @override
+  final String? docId;
 
   @override
   String toString() {
-    return 'AddMenuState(id: $id, name: $name, rateAkane: $rateAkane, rateBaek: $rateBaek, imageFile: $imageFile, tag: $tag, createdAt: $createdAt, url: $url, memo: $memo, uid: $uid)';
+    return 'AddMenuState(id: $id, name: $name, rateAkane: $rateAkane, rateBaek: $rateBaek, imageFile: $imageFile, tag: $tag, createdAt: $createdAt, url: $url, memo: $memo, uid: $uid, docId: $docId)';
   }
 
   @override
@@ -267,7 +283,8 @@ class _$_AddMenuState implements _AddMenuState {
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality().equals(other.url, url) &&
             const DeepCollectionEquality().equals(other.memo, memo) &&
-            const DeepCollectionEquality().equals(other.uid, uid));
+            const DeepCollectionEquality().equals(other.uid, uid) &&
+            const DeepCollectionEquality().equals(other.docId, docId));
   }
 
   @override
@@ -282,7 +299,8 @@ class _$_AddMenuState implements _AddMenuState {
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(url),
       const DeepCollectionEquality().hash(memo),
-      const DeepCollectionEquality().hash(uid));
+      const DeepCollectionEquality().hash(uid),
+      const DeepCollectionEquality().hash(docId));
 
   @JsonKey(ignore: true)
   @override
@@ -301,7 +319,8 @@ abstract class _AddMenuState implements AddMenuState {
       final DateTime? createdAt,
       final String? url,
       final String? memo,
-      final String? uid}) = _$_AddMenuState;
+      final String? uid,
+      final String? docId}) = _$_AddMenuState;
 
   @override
   String? get id => throw _privateConstructorUsedError;
@@ -323,6 +342,8 @@ abstract class _AddMenuState implements AddMenuState {
   String? get memo => throw _privateConstructorUsedError;
   @override
   String? get uid => throw _privateConstructorUsedError;
+  @override
+  String? get docId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_AddMenuStateCopyWith<_$_AddMenuState> get copyWith =>

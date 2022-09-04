@@ -30,6 +30,7 @@ mixin _$MenuModel {
   @CreatedAtField()
   DateTime? get createdAt => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
+  String get docId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,7 +51,8 @@ abstract class $MenuModelCopyWith<$Res> {
       String url,
       String memo,
       @CreatedAtField() DateTime? createdAt,
-      String uid});
+      String uid,
+      String docId});
 }
 
 /// @nodoc
@@ -72,6 +74,7 @@ class _$MenuModelCopyWithImpl<$Res> implements $MenuModelCopyWith<$Res> {
     Object? memo = freezed,
     Object? createdAt = freezed,
     Object? uid = freezed,
+    Object? docId = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -110,6 +113,10 @@ class _$MenuModelCopyWithImpl<$Res> implements $MenuModelCopyWith<$Res> {
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
+      docId: docId == freezed
+          ? _value.docId
+          : docId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -129,7 +136,8 @@ abstract class _$$_MenuModelCopyWith<$Res> implements $MenuModelCopyWith<$Res> {
       String url,
       String memo,
       @CreatedAtField() DateTime? createdAt,
-      String uid});
+      String uid,
+      String docId});
 }
 
 /// @nodoc
@@ -153,6 +161,7 @@ class __$$_MenuModelCopyWithImpl<$Res> extends _$MenuModelCopyWithImpl<$Res>
     Object? memo = freezed,
     Object? createdAt = freezed,
     Object? uid = freezed,
+    Object? docId = freezed,
   }) {
     return _then(_$_MenuModel(
       name: name == freezed
@@ -191,6 +200,10 @@ class __$$_MenuModelCopyWithImpl<$Res> extends _$MenuModelCopyWithImpl<$Res>
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
+      docId: docId == freezed
+          ? _value.docId
+          : docId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -207,7 +220,8 @@ class _$_MenuModel extends _MenuModel {
       this.url = '',
       this.memo = '',
       @CreatedAtField() this.createdAt,
-      this.uid = ''})
+      this.uid = '',
+      this.docId = ''})
       : _tag = tag,
         super._();
 
@@ -246,10 +260,13 @@ class _$_MenuModel extends _MenuModel {
   @override
   @JsonKey()
   final String uid;
+  @override
+  @JsonKey()
+  final String docId;
 
   @override
   String toString() {
-    return 'MenuModel(name: $name, rateBaek: $rateBaek, rateAkane: $rateAkane, image: $image, tag: $tag, url: $url, memo: $memo, createdAt: $createdAt, uid: $uid)';
+    return 'MenuModel(name: $name, rateBaek: $rateBaek, rateAkane: $rateAkane, image: $image, tag: $tag, url: $url, memo: $memo, createdAt: $createdAt, uid: $uid, docId: $docId)';
   }
 
   @override
@@ -265,7 +282,8 @@ class _$_MenuModel extends _MenuModel {
             const DeepCollectionEquality().equals(other.url, url) &&
             const DeepCollectionEquality().equals(other.memo, memo) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            const DeepCollectionEquality().equals(other.uid, uid));
+            const DeepCollectionEquality().equals(other.uid, uid) &&
+            const DeepCollectionEquality().equals(other.docId, docId));
   }
 
   @JsonKey(ignore: true)
@@ -280,7 +298,8 @@ class _$_MenuModel extends _MenuModel {
       const DeepCollectionEquality().hash(url),
       const DeepCollectionEquality().hash(memo),
       const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(uid));
+      const DeepCollectionEquality().hash(uid),
+      const DeepCollectionEquality().hash(docId));
 
   @JsonKey(ignore: true)
   @override
@@ -303,7 +322,8 @@ abstract class _MenuModel extends MenuModel {
       final String url,
       final String memo,
       @CreatedAtField() final DateTime? createdAt,
-      final String uid}) = _$_MenuModel;
+      final String uid,
+      final String docId}) = _$_MenuModel;
   const _MenuModel._() : super._();
 
   factory _MenuModel.fromJson(Map<String, dynamic> json) =
@@ -328,6 +348,8 @@ abstract class _MenuModel extends MenuModel {
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @override
   String get uid => throw _privateConstructorUsedError;
+  @override
+  String get docId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_MenuModelCopyWith<_$_MenuModel> get copyWith =>

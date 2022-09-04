@@ -22,7 +22,15 @@ class MenuDetailRating extends ConsumerWidget {
           showDialog(
             context: context,
             builder: (_) {
-              return RateChangeDialog(person: person);
+              return RateChangeDialog(
+                person: person,
+                onRatingUpdate: (value) => vm.setRate(value),
+                initialRate: vm.getMyRate(),
+                onChange: () async {
+                  await vm.updateMenu();
+                  Navigator.of(context).pop();
+                },
+              );
             },
           );
         }
