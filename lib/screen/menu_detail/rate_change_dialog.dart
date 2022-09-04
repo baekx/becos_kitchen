@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class RateChangeDialog extends StatelessWidget {
-  const RateChangeDialog({Key? key}) : super(key: key);
+  const RateChangeDialog({Key? key, required this.person}) : super(key: key);
+  final Person person;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class RateChangeDialog extends StatelessWidget {
         const ColumnPadding(height: 16),
         CircleUserAvatar(
           size: 40,
-          icon: Person.baek.imagePath,
+          icon: person.imagePath,
         ),
         const ColumnPadding(height: 16),
         RatingBar.builder(
@@ -34,7 +35,7 @@ class RateChangeDialog extends StatelessWidget {
           itemPadding: const EdgeInsets.symmetric(horizontal: 8.0),
           initialRating: 3.0,
         ),
-        const ColumnPadding(height: 16),
+        const ColumnPadding(height: 24),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.min,

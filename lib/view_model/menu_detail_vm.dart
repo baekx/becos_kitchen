@@ -1,17 +1,18 @@
+import 'package:becos_kitchen/di/repository_provider.dart';
 import 'package:becos_kitchen/model/menu_model.dart';
 import 'package:becos_kitchen/model/person.dart';
-import 'package:collection/collection.dart';
+import 'package:becos_kitchen/repository/user_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final menuDetailViewModelFamily = StateNotifierProvider.family
-    .autoDispose<MenuDetailViewModel, MenuModel, MenuModel>(
-        (ref, menu) => MenuDetailViewModel(menu: menu));
+    .autoDispose<MenuDetailViewModel, MenuModel, MenuModel>((ref, menu) =>
+        MenuDetailViewModel(ref.watch(userRepositoryProvider), menu: menu));
 final menuDetailViewModelProvider =
     StateNotifierProvider.autoDispose<MenuDetailViewModel, MenuModel>(
         (ref) => throw UnimplementedError());
 
 class MenuDetailViewModel extends StateNotifier<MenuModel> {
-  MenuDetailViewModel({required MenuModel menu})
+  MenuDetailViewModel(this._userRepository, {required MenuModel menu})
       : _menu = menu,
         super(MenuModel(
             name: menu.name,
@@ -24,11 +25,14 @@ class MenuDetailViewModel extends StateNotifier<MenuModel> {
             memo: menu.memo));
 
   final MenuModel _menu;
+  final UserRepository _userRepository;
 
   Person getUser() {
-    return Person.values
-            .firstWhereOrNull((element) => element.uid == state.uid) ??
-        Person.baek;
+    return Person.getPersonFromUid(state.uid);
+  }
+
+  Person currentUser() {
+    return _userRepository.currentUser;
   }
 
   bool hasMemo() {

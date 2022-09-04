@@ -15,13 +15,17 @@ class MenuDetailRating extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final menu = ref.watch(menuDetailViewModelProvider);
+    final vm = ref.watch(menuDetailViewModelProvider.notifier);
     return GestureDetector(
       onTap: () {
-        showDialog(
+        if (vm.currentUser() == person) {
+          showDialog(
             context: context,
             builder: (_) {
-              return RateChangeDialog();
-            });
+              return RateChangeDialog(person: person);
+            },
+          );
+        }
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
