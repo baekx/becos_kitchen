@@ -40,6 +40,7 @@ class RateChangeDialog extends StatelessWidget {
             Icons.star,
             color: Colors.amber,
           ),
+          itemSize: 32,
           onRatingUpdate: (value) {
             onRatingUpdate(value);
           },
